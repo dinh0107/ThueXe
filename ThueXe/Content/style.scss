@@ -1,0 +1,149 @@
+﻿
+@font-face {
+    font-family: 'Display-Bold';
+    font-display: swap;
+    src: url('../webfonts/SF-Pro-Display-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Display-Medium';
+    font-display: swap;
+    src: url('../webfonts/SF-Pro-Display-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Display-Regular';
+    font-display: swap;
+    src: url('../webfonts/SF-Pro-Display-Regular.woff2') format('woff2');
+}
+
+@mixin Bold {
+    font-family: 'Display-Bold';
+}
+@mixin Medium {
+    font-family: 'Display-Medium';
+}
+@mixin Regular {
+    font-family: 'Display-Regular';
+}
+$gradient-orange: linear-gradient(180deg, #FF4605 0%, #FF8A05 100%);
+$gradient-blue: linear-gradient(90deg, #0075FF 0%, #004596 100%);
+$orange: #FF4605 ;
+$blue: #004596;
+$red: #d10000;
+$white: #fff;
+$blur: #F0F0F0;
+$black: #000;
+$yeallow: #f7a730;
+$text-blur: #656565;
+
+@mixin letterSpacing($value, $value2) {
+    .slick-slide {
+        margin: 0 $value;
+    }
+
+    .slick-list {
+        margin: 0 $value2;
+    }
+}
+
+@mixin Flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+@mixin maxWidth($value) {
+    @media (max-width: $value) {
+        @content;
+    }
+}
+@mixin img-transition {
+    transition: all .5s;
+}
+
+
+@mixin before($width, $height) {
+    content: '';
+    position: absolute;
+    width: $width;
+    height: $height;
+}
+
+@mixin flex-item($content, $align) {
+    display: flex;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin text-center {
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+@mixin item-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    @include Regular;
+    top: 0 !important;
+}
+
+.container {
+    max-width: 1170px;
+
+    @include maxWidth(1366px) {
+        max-width: 1230px;
+    }
+
+    @include maxWidth(1100px) {
+        max-width: 1090px;
+    }
+
+    @include maxWidth(768px) {
+        max-width: 764px;
+    }
+}
+
+a, a:hover {
+    color: $blue;
+    color: #000;
+    text-decoration: none;
+}
+
+@mixin truncate($value) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: $value;
+}
+
+.btn-primary {
+    background: $red;
+    border-color: $red;
+
+    &:hover {
+        background: $red;
+        border-color: $red;
+        opacity: .8;
+    }
+}
+
+.ul-reset {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style: none;
+    }
+}

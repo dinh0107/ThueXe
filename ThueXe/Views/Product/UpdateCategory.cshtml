@@ -1,0 +1,161 @@
+﻿@model ThueXe.ViewModel.InsertProductCatViewModel
+@{
+    ViewBag.Title = "Cập nhật danh mục";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="page-title">
+        <i class="fa-solid fa-align-right fa-rotate-180 fa-sm"></i>
+        <span>Cập nhật danh mục sản phẩm</span>
+    </div>
+    <a href="#" onclick="history.go(-1)" class="btn-main btn-labeled bg-brown">
+        <span class="icon">
+            <i class="fa-solid fa-left"></i>
+        </span>
+        Quay lại
+    </a>
+</div>
+
+<div class="content">
+    <div class="accordion">
+        <div class="accordion-item border-left-slate">
+            <div class="accordion-header">
+                <div class="card-title">
+                    <i class="fa-light fa-octagon-plus fa-lg"></i>
+                    Cập nhật danh mục sản phẩm
+                </div>
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#editForm" aria-expanded="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+            <div id="editForm" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    @using (Html.BeginForm("UpdateCategory", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(a => a.ProductCategory.Id)
+
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ParentId, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.DropDownListFor(a => Model.ParentId, (SelectList)ViewBag.RootCats, "Danh mục cha", new { @class = "form_control" })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="ProductCategory_CategoryName">Tên danh mục <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => Model.ProductCategory.CategoryName)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => Model.ProductCategory.Image, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => Model.ProductCategory.Image, new { type = "file" })
+                                <div class="text-danger mt-2">Chấp nhận ảnh jpg, png, gif, jpeg < 4MB</div>
+                            </div>
+                        </div>
+                        if (Model.ProductCategory.Image != null)
+                        {
+                            <div class="mb-3 row" id="ImgPreview2">
+                                <label class="col-form-label col-lg-3"></label>
+                                <div class="col-lg-9">
+                                    <img class="img-border mb-2" src="@Path.Combine("/images/productCategory/", Model.ProductCategory.Image)" />
+                                    <a href="javascript:;" onclick="$('#ImgPreview2').hide(); $('#CurrentFile2').val('');" class="delete-img">
+                                        <img src="~/Content/images/admin/icon-delete-red.png" alt="" style="vertical-align: middle; margin-top: 0; height: 10px;" /> Xóa ảnh
+                                    </a>
+                                    <input type="hidden" name="CurrentFile2" id="CurrentFile2" value="@Model.ProductCategory.Image" />
+                                </div>
+                            </div>
+                        }
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => Model.ProductCategory.Body, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => Model.ProductCategory.Body)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => Model.ProductCategory.Url, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => Model.ProductCategory.Url)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => Model.ProductCategory.CategorySort, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => Model.ProductCategory.CategorySort)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ProductCategory.ShowMenu, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="ProductCategory.ShowMenu" @if (Model.ProductCategory.ShowMenu) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ProductCategory.ShowFooter, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="ProductCategory.ShowFooter" @if (Model.ProductCategory.ShowFooter) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ProductCategory.CategoryActive, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="ProductCategory.CategoryActive" @if (Model.ProductCategory.CategoryActive) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ProductCategory.TitleMeta, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.ProductCategory.TitleMeta)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ProductCategory.DescriptionMeta, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.ProductCategory.DescriptionMeta)
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" class="btn-main btn-primary text-white">
+                                <span>Lưu</span>
+                                <i class="fa-solid fa-floppy-disk ms-2"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @Html.Action("ListCategory", "Product")
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#thumb').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+        $("#Image").change(function () {
+            readURL(this);
+        });
+        function triggerImage() {
+            $('.file-select').trigger('click');
+        }
+        function changeImage(event) {
+            $('#image-name').html($('.file-select').val());
+        }
+    </script>
+}
