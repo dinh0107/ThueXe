@@ -16,6 +16,8 @@ namespace ThueXe.Models
         public int CategorySort { get; set; }
         [Display(Name = "Hoạt động")]
         public bool CategoryActive { get; set; }
+        [Display(Name = "Điều hướng")]
+        public bool Redirect { get; set; }
         [Display(Name = "Danh mục cha")]
         public int? ParentId { get; set; }
         [Display(Name = "Hiển thị menu")]
@@ -43,5 +45,7 @@ namespace ThueXe.Models
         Policy,
         [Display(Name = "Đối tác")]
         Partner,
+        [Display(Name = "Dịch vụ")]
+        Service,
     }
 }

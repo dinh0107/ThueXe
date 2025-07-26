@@ -54,7 +54,7 @@
                                 @Html.EditorFor(a => a.Banner.Slogan)
                             </div>
                         </div>
-                        <div class="mb-3 row" id="Images" @if (Model.Banner.Image == null) { @Html.Raw("style='display: none'") }>
+                        <div class="mb-3 row" id="Images" >
                             @Html.LabelFor(a => a.Banner.Image, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 @Html.TextBoxFor(a => a.Banner.Image, new { type = "file" })
@@ -70,45 +70,6 @@
                                 </div>
                             </div>
                         }
-                        <div id="ListImage" class="mb-3 row" @if (Model.Banner.GroupId != 3) { @Html.Raw("style='display: none'") }>
-                            <div class="col-form-label col-lg-3">@Html.LabelFor(model => model.Banner.ListImage)</div>
-                            <div class="col-lg-9">
-                                <div class="alert alert-info">
-                                    <p class="btn btn-success fileinput-button">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        <span>Chọn ảnh...</span>
-                                        <input type="file" id="fileupload" name="files[]" accept="image/*" multiple="" />
-                                    </p><br />
-                                    - Chọn ảnh để upload: (gif, png, jpg, jpeg < 4MB)<br />
-                                    - Kích thước: 800x 800px<br />
-                                    - Ảnh đầu tiên sẽ là ảnh đại diện<br />
-                                </div>
-                                <div id="progress" class="progress">
-                                    <div class="progress-bar progress-bar-success"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row" @if (Model.Banner.GroupId != 3) { @Html.Raw("style='display: none'") }>
-                            <div class="col-form-label col-lg-3"></div>
-                            <div class="col-lg-9">
-                                <ul id="ListImages">
-                                    @if (Model.Banner.ListImage != null)
-                                    {
-                                        var i = 1;
-                                        var arrPic = Model.Banner.ListImage.Split(',');
-                                        foreach (var item in arrPic)
-                                        {
-                                            <li class="thumb-img-box">
-                                                <input type="hidden" name="Pictures" value="@item" />
-                                                <img src="@Path.Combine("/images/banners/",item)?w=80&h=80&mode=crop" alt="" />
-                                                <a href="javascript:;" id="@i" onclick="delfile( '@i')"><img src="~/Content/images/admin/icon-delete.png" alt="" /></a>
-                                            </li>
-                                            i = i + 1;
-                                        }
-                                    }
-                                </ul>
-                            </div>
-                        </div>
                         <div class="mb-3 row">
                             @Html.LabelFor(a => a.Banner.Content, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
@@ -148,69 +109,3 @@
         </div>
     </div>
 </div>
-
-@section scripts{
-    <script>
-        $(function () {
-            $("#ListImages").sortable();
-            $("#ListImages").disableSelection();
-
-            $("#Banner_GroupId").on("change", function () {
-                $("#ListImage").hide();
-                $("#Images").show();
-                var value = parseInt($("#Banner_GroupId").val());
-                if (value == 3) {
-                    $("#ListImage").show();
-                    $("#Images").hide();
-                }
-            });
-        });
-        var i = 1;
-        $("#fileupload").fileupload({
-            add: function (e, data) {
-                var uploadErrors = [];
-                var acceptFileTypes = /^image\/(gif|jpe?g|png)$/i;
-                if (data.originalFiles[0]["type"].length && !acceptFileTypes.test(data.originalFiles[0]["type"])) {
-                    uploadErrors.push("Chỉ chấp nhận định dạng jpeg, jpg, png, gif");
-                }
-                if (data.originalFiles[0]["size"] > 4000000) {
-                    uploadErrors.push("Dung lượng ảnh lớn hơn 4MB");
-                }
-                var totalImg = $("#ListImages .thumb-img-box").length;
-                if (totalImg >= 10) {
-                    uploadErrors.push("Chỉ đăng tối đa 10 ảnh");
-                }
-                if (uploadErrors.length > 0) {
-                    alert(uploadErrors.join("\n"));
-                    return false;
-                } else {
-                    data.submit();
-                }
-                return true;
-            },
-            url: "/Uploader/Upload?folder=banners&r=" + Math.random(),
-            dataType: "json",
-            done: function (e, data) {
-                $.each(data.result.files, function (index, file) {
-                    $('#ListImages').append('<li class="thumb-img-box"><input type="hidden" name="Pictures" value ="' + file.name + '" /><img src="/images/banners/' + file.name + '?w=80&h=80"/><a href="javascript:;" id="' + i + '" onclick="delfile(' + i + ')"><img src="/Content/images/admin/icon-delete.png" alt="" style="vertical-align:middle" /></a></li>');
-                });
-                i = i + 1;
-                $("#progress").fadeOut(2000);
-            },
-            start: function () {
-                $("#progress .progress-bar").css("width", "0");
-                $("#progress").show();
-            },
-            progressall: function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $("#progress .progress-bar").css("width", progress + "%");
-            }
-        }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
-
-        function delfile(divid) {
-            if (confirm('Bạn có chắc xóa ảnh này?')) {
-                $('#' + divid).parent().fadeOut().remove();
-            }
-        }
-    </script>
-}

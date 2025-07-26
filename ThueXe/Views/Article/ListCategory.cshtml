@@ -37,7 +37,16 @@
                                     <img src="@Path.Combine("/images/articleCategory/", category.Image)" style="width: 150px; height: 100px; object-fit: contain" />
                                 }
                             </td>
-                            <td class="left"><strong>@category.CategoryName</strong></td>
+                            <td class="left">
+                                <strong>
+                                    @category.CategoryName
+                                </strong>
+                                <br />
+                                @if (category.Redirect)
+                                {
+                                    <span class="text-danger">[Chuyển hướng]</span>
+                                }
+                            </td>
                             <td>@Html.DisplayFor(a => category.TypePost)</td>
                             <td>
                                 <label class="form-check-label">
@@ -75,7 +84,14 @@
                                         <img src="@Path.Combine("/images/articleCategory/", child.Image)" style="width: 150px; height: 100px; object-fit: contain" />
                                     }
                                 </td>
-                                <td class="left"><strong><i class="fal fa-window-minimize"></i> @child.CategoryName</strong></td>
+                                <td class="left">
+                                    <strong><i class="fal fa-window-minimize"></i> @child.CategoryName</strong>
+                                    <br />
+                                    @if (child.Redirect)
+                                    {
+                                        <span class="text-danger">[Chuyển hướng]</span>
+                                    }
+                                </td>
                                 <td>@Html.DisplayFor(a => child.TypePost)</td>
                                 <td>
                                     <label class="form-check-label">

@@ -8,13 +8,8 @@ namespace ThueXe.ViewModel
     public class HomeViewModel
     {
         public IEnumerable<Banner> Banners { get; set; }
-        public IEnumerable<Product> Products { get; set; }
         public IEnumerable<Article> Articles { get; set; }
-        [Display(Name = "Ngày đi"), Required(ErrorMessage = "Ngày đi không được bỏ trống")]
-        public string FromDate { get; set; }
-        [Display(Name = "Ngày về")]
-        public string ToDate { get; set; }
-        public Contact Contact { get; set; }
+        public IEnumerable<ArticleCategory> Services { get; set; }
     }
 
     public class HeaderViewModel

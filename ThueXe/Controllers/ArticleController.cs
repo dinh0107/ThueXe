@@ -64,9 +64,14 @@ namespace ThueXe.Controllers
                         model.Image = imgFile;
                     }
                 }
-
-                model.Url = HtmlHelpers.ConvertToUnSign(null, model.Url ?? model.CategoryName);
-
+                if (model.Redirect)
+                {
+                    model.Url = model.Url;
+                }
+                else
+                {
+                    model.Url = HtmlHelpers.ConvertToUnSign(null, model.Url ?? model.CategoryName);
+                }
                 _unitOfWork.ArticleCategoryRepository.Insert(model);
                 _unitOfWork.Save();
                 return RedirectToAction("ArticleCategory", new { result = "success" });
@@ -121,8 +126,14 @@ namespace ThueXe.Controllers
                 {
                     category.Image = fc["CurrentFile"] == "" ? null : fc["CurrentFile"];
                 }
-
-                category.Url = HtmlHelpers.ConvertToUnSign(null, category.Url ?? category.CategoryName);
+                if (category.Redirect)
+                {
+                    category.Url = category.Url;
+                }
+                else
+                {
+                    category.Url = HtmlHelpers.ConvertToUnSign(null, category.Url ?? category.CategoryName);
+                }
                 _unitOfWork.ArticleCategoryRepository.Update(category);
                 _unitOfWork.Save();
                 return RedirectToAction("ArticleCategory", new { result = "update" });

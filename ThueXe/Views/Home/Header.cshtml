@@ -1,0 +1,64 @@
+﻿@model ThueXe.ViewModel.HeaderViewModel
+@using ThueXe.Models
+@{
+    var config = (ConfigSite)HttpContext.Current.Application["ConfigSite"];
+}
+<header>
+    <div class="container">
+        <ul class="ul-reset nav">
+            <li>
+                <a href="/">
+
+                    @if (config.Image != null)
+                    {
+                        <img src="@Path.Combine("/images/configs/", config.Image)" alt="@config.Title" class="logo" />
+                    }
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Introduce")">Giới thiệu</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Introduce")">Bảng giá</a>
+            </li>
+            @if (Model.ArticleCategories.Any(a => a.ParentId == null))
+            {
+                foreach (var item in Model.ArticleCategories.Where(a => a.ParentId == null))
+                {
+                    <li @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id)) { @Html.Raw("class='has-dropdown'") }>
+                        <a href="@Url.Action("ArticleCategory", "Home", new { url = item.Url })">
+                            @item.CategoryName
+                            @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id))
+                            {
+                                <i class="fa-regular fa-angle-down"></i>
+                            }
+                        </a>
+                        @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id))
+                        {
+                            <ul class="ul-reset sub-nav">
+                                @foreach (var child in Model.ArticleCategories.Where(a => a.ParentId == item.Id))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("ArticleCategory", "Home", new { url = child.Url })">
+                                            @if (child.Image != null)
+                                            {
+                                                <img src="@Path.Combine("/images/productCategory/", child.Image)" alt="@child.CategoryName" />
+                                            }
+                                            <span>@child.CategoryName</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            }
+            <li>
+                <a href="@Url.Action("Contact")">Liên hệ</a>
+            </li>
+            <li>
+                <a href=""><i class="far fa-search"></i></a>
+            </li>
+        </ul>
+    </div>
+</header>

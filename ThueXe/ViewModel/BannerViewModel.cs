@@ -13,10 +13,10 @@ namespace ThueXe.ViewModel
         {
             var listgroup = new Dictionary<int, string>
             {
-                { 1, "Lợi ích" },
-                { 2, "Ảnh xe" },
-                { 3, "Phản hồi" },
-                { 4, "Những con số" }
+                { 1, "Banner" },
+                { 2, "Lợi ích" },
+                { 3, "Quy trình" },
+                { 4, "Câu hỏi" }
             };
             SelectGroup = new SelectList(listgroup, "Key", "Value");
         }
@@ -34,10 +34,10 @@ namespace ThueXe.ViewModel
         {
             var listgroup = new Dictionary<int, string>
             {
-                { 1, "Lợi ích" },
-                { 2, "Ảnh xe" },
-                { 3, "Phản hồi" },
-                { 4, "Những con số" }
+                { 1, "Banner" },
+                { 2, "Lợi ích" },
+                { 3, "Quy trình" },
+                { 4, "Câu hỏi" }
             };
             SelectGroup = new SelectList(listgroup, "Key", "Value");
         }

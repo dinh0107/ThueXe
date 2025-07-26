@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202507260917355_add-table.Designer.cs">
       <DependentUpon>202507260917355_add-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202507260935460_add-redirect.cs" />
+    <Compile Include="Migrations\202507260935460_add-redirect.Designer.cs">
+      <DependentUpon>202507260935460_add-redirect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Article.cs" />
@@ -260,6 +264,12 @@
     <Content Include="Content\select2.css" />
     <Content Include="Content\skitter.css" />
     <Content Include="Content\slick.css" />
+    <Content Include="Content\style.css">
+      <DependentUpon>style.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="Content\styleLanding.css" />
     <Content Include="Content\styleLanding.min.css" />
     <Content Include="Content\themes\adminSite.css" />
@@ -1504,6 +1514,10 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper.min.js.map" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Google_element.js" />
     <Content Include="Scripts\gulpfile.js" />
@@ -1746,6 +1760,8 @@
     <Content Include="Scripts\umd\popper.js.flow" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1793,6 +1809,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202507260917355_add-table.resx">
       <DependentUpon>202507260917355_add-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507260935460_add-redirect.resx">
+      <DependentUpon>202507260935460_add-redirect.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
