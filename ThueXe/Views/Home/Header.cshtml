@@ -40,10 +40,6 @@
                                 {
                                     <li>
                                         <a href="@Url.Action("ArticleCategory", "Home", new { url = child.Url })">
-                                            @if (child.Image != null)
-                                            {
-                                                <img src="@Path.Combine("/images/productCategory/", child.Image)" alt="@child.CategoryName" />
-                                            }
                                             <span>@child.CategoryName</span>
                                         </a>
                                     </li>

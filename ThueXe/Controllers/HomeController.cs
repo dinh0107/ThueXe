@@ -59,7 +59,10 @@ namespace ThueXe.Controllers
             };
             return View(model);
         }
-
+        public PartialViewResult Form()
+        {
+            return PartialView();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

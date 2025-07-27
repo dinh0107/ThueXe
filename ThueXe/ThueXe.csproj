@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder">
-      <HintPath>..\..\..\CKFinder.dll</HintPath>
+      <HintPath>..\..\..\Downloads\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
@@ -55,7 +55,7 @@
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Helpers">
-      <HintPath>..\..\..\Helpers.dll</HintPath>
+      <HintPath>..\..\..\Downloads\Helpers.dll</HintPath>
     </Reference>
     <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageResizer.4.2.8\lib\net45\ImageResizer.dll</HintPath>
@@ -222,6 +222,7 @@
     <Content Include="Content\images\admin\icon-delete-red.png" />
     <Content Include="Content\images\admin\icon-delete.png" />
     <Content Include="Content\images\admin\icon_profile.png" />
+    <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\img-main\artLDP1a.png" />
     <Content Include="Content\images\img-main\artLDP5-copy-3.png" />
     <Content Include="Content\images\img-main\artLDP5-copy-4.png" />
@@ -1762,6 +1763,7 @@
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Views\Home\Header.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Home\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
