@@ -227,6 +227,7 @@
     <Content Include="Content\images\admin\icon-delete.png" />
     <Content Include="Content\images\admin\icon_profile.png" />
     <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\icon.svg" />
     <Content Include="Content\images\img-main\artLDP1a.png" />
     <Content Include="Content\images\img-main\artLDP5-copy-3.png" />
     <Content Include="Content\images\img-main\artLDP5-copy-4.png" />

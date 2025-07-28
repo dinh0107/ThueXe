@@ -90,6 +90,183 @@
         </div>
     </div>
 </section>
+<section class="page-section">
+    <h2 class="title">bảng giá dịch vụ minh bạch </h2>
+    <div class="container">
+        <div class="box-price">
+            <table class="table table-bordered" id="myTable">
+                <thead class="header-tb">
+                    <tr>
+                        <td scope="col">Hành trình</td>
+                        <td scope="col">khoảng cách</td>
+                        <td scope="col">4 chỗ</td>
+                        <td scope="col">7 chỗ</td>
+                        <td scope="col">16 chỗ</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">Hà Nội - Sơn La</td>
+                        <td>198km</td>
+                        <td>2.376.000 đ</td>
+                        <td>2.772.000 đ</td>
+                        <td>4.752.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Hà Nội - Điện Biên</td>
+                        <td>436km</td>
+                        <td>5.232.000 đ</td>
+                        <td>6.104.000 đ</td>
+                        <td>10.464.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Hà Nội - Lai Châu</td>
+                        <td>447km</td>
+                        <td>5.364.000 đ</td>
+                        <td>6.258.000 đ</td>
+                        <td>10.728.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Hà Nội - Lào Cai</td>
+                        <td>291km</td>
+                        <td>3.492.000 đ</td>
+                        <td>4.074.000 đ</td>
+                        <td>6.984.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Hà Nội - Yên Bái</td>
+                        <td>160km</td>
+                        <td>1.920.000 đ</td>
+                        <td>2.240.000 đ</td>
+                        <td>3.840.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Hà Nội - Phú Thọ</td>
+                        <td>102km</td>
+                        <td>1.224.000 đ</td>
+                        <td>1.428.000 đ</td>
+                        <td>2.448.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Hà Nội - Hà Giang</td>
+                        <td>297km</td>
+                        <td>3.564.000 đ</td>
+                        <td>4.158.000 đ</td>
+                        <td>7.128.000 đ</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center pb-2">
+                <div id="show-more-table" class="btn-color">
+                    xem bảng giá đầy đủ
+                    <div class="box-icon">
+                        <i class="far fa-long-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="step">
+                    <h2 class="title text-left">quy trình thuê xe đơn giản</h2>
+                    @foreach (var item in Model.Banners.Where(a => a.GroupId == 3))
+                    {
+                        int count = 1;
+                        <div class="d-flex mt-4">
+                            <div class="step-count">
+                                @count
+                            </div>
+                            <div class="step-name">
+                                @item.BannerName
+                            </div>
+                        </div>
+                        count++;
+                    }
+                </div>
+            </div>
+            <div class="col-lg-8 position-relative QA">
+                <h2 class="title">Câu hỏi thường gặp</h2>
+                <p class="sub-title">Câu hỏi thường gặp</p>
+                @{
+                    var banners = Model.Banners.Where(a => a.GroupId == 4).ToList();
+                    int index = 0;
+                }
+
+                <div class="accordion" id="accordionExample">
+                    @foreach (var item in banners)
+                    {
+                        var headingId = $"heading{index}";
+                        var collapseId = $"collapse{index}";
+                        bool isFirst = index == 0;
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="@headingId">
+                                <button class="accordion-button @(isFirst ? "" : "collapsed")"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#@collapseId"
+                                        aria-expanded="@(isFirst.ToString().ToLower())"
+                                        aria-controls="@collapseId">
+                                    @item.BannerName
+                                </button>
+                            </h2>
+                            <div id="@collapseId"
+                                 class="accordion-collapse collapse @(isFirst ? "show" : "")"
+                                 aria-labelledby="@headingId"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @Html.Raw(item.Content)
+                                </div>
+                            </div>
+                        </div>
+
+                        index++;
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section feedback">
+    <div class="container">
+        <h2 class="title text-white">Feedback</h2>
+        <p class="sub-title text-white">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true</p>
+    </div>
+</section>
+<section class="page-section">
+    <div class="container">
+        <h2 class="title ">tin tức -  sự kiện</h2>
+        <p class="sub-title  mb-4">
+            Dịch vụ thuê xe có lái chuyên nghiệp – linh hoạt theo ngày / tháng / năm đáp ứng mọi nhu cầu di chuyển cá nhân.
+        </p>
+        <div class="row">
+            @foreach (var item in Model.Articles)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <article class="article mb-4">
+                        @if (item.Image != null)
+                        {
+                            <a href="@Url.Action("ArticleDetail", new {url = item.Url})">
+                                <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articles/", item.Image)" alt="@item.Subject" class="lazyload" />
+                            </a>
+                        }
+                        <div class="date my-2">
+                            <i class="fa-regular fa-clock"></i> @item.CreateDate.ToString("dd/MM/yyyy") - @item.CreateDate.ToString("HH:mm")
+                        </div>
+                        <a class="subject" href="@Url.Action("ArticleDetail", new {url = item.Url})">@item.Subject</a>
+                        <hr />
+                        <a href="@Url.Action("ArticleDetail", new {url = item.Url})" class="see">Đọc thêm <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
 @section scripts{
     <script>
         homeJs()

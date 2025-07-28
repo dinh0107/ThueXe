@@ -55,7 +55,7 @@ namespace ThueXe.Controllers
             {
                 Banners = banner,
                 Services = service,
-                Articles = articles,
+                Articles = articles.Take(6),
             };
             return View(model);
         }

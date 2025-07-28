@@ -33,6 +33,15 @@ function homeJs() {
             }
         ]
     });
+    var rows = $("#myTable tbody tr");
+    var showCount = 5; 
+    rows.slice(showCount).hide();
+
+    $("#show-more-table").click(function () {
+        rows.show();           
+        $(this).hide();        
+    });
+
 }
 
 function productDetail() {

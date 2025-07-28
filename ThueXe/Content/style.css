@@ -1,4 +1,5 @@
-﻿@font-face {
+﻿@charset "UTF-8";
+@font-face {
   font-family: "Display-Bold";
   font-display: swap;
   src: url("../webfonts/SF-Pro-Display-Bold.woff2") format("woff2");
@@ -229,7 +230,7 @@ header {
   align-items: center;
   gap: 10px;
   border-radius: 10px;
-  max-width: 175px;
+  max-width: max-content;
 }
 .btn-color:hover {
   color: #fff;
@@ -465,4 +466,177 @@ header {
 .service-slide .slick-dots li.slick-active button {
   border: 1px solid #FF4605;
   background: linear-gradient(180deg, #FF4605 0%, #FF8A05 100%);
+}
+
+.box-price {
+  border: 13px solid #FF4605;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+.box-price tbody tr th {
+  color: #004596;
+  font-size: 16px;
+  font-family: "Display-Regular";
+}
+.box-price tbody tr td {
+  padding: 15px 34px;
+  text-align: center;
+  color: #004596;
+  font-size: 16px;
+}
+.box-price tbody tr td:first-child {
+  text-align: left;
+}
+
+.header-tb {
+  border-radius: 5px 5px 0 0;
+}
+.header-tb tr td {
+  width: 20%;
+  background: #004596;
+  height: 47px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Display-Medium";
+  letter-spacing: 3px;
+}
+
+.step {
+  background: #ebebeb;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+.step h2 {
+  text-align: left;
+}
+
+.step-count {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #FF4605 0%, #FF8A05 100%);
+  position: relative;
+  border-radius: 50%;
+  color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Display-Medium";
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+.step-count:before {
+  content: "";
+  position: absolute;
+  width: 41px;
+  border-radius: 50%;
+  height: 41px;
+  border: 1px solid #FF4605;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.step-name {
+  color: #000;
+  font-size: 16px;
+}
+
+.QA:before {
+  content: "";
+  position: absolute;
+  background: url(images/icon.svg);
+  width: 168.127px;
+  height: 109.618px;
+  top: 0;
+  right: 0;
+}
+
+.accordion-button:not(.collapsed) {
+  background: #ebebeb;
+}
+
+.accordion-item {
+  margin-top: 20px;
+  border: 0;
+  background: #ebebeb;
+}
+
+.accordion-button {
+  font-weight: 600;
+  background: #ebebeb;
+  box-shadow: none;
+  border: none;
+}
+
+.accordion-button::after {
+  content: "";
+  background: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 6L6 1L11 6' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center no-repeat;
+  background-color: #d1d5db; /* màu xám khi đóng */
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: rotate(0deg);
+}
+
+.accordion-button.collapsed::after {
+  /* icon xuống khi đóng */
+  background: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 2L6 7L11 2' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center no-repeat;
+  background-color: #d1d5db;
+}
+
+.accordion-button:not(.collapsed)::after {
+  /* icon lên + màu cam khi mở */
+  background-color: #ff7c1e;
+}
+
+.feedback {
+  background: linear-gradient(180deg, #FF4605 0%, #FF8A05 100%);
+}
+
+.article img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1.5;
+  border-radius: 10px;
+}
+.article .date {
+  color: #000;
+  font-size: 16px;
+}
+.article .date i {
+  color: #004596;
+}
+
+.subject {
+  color: #000;
+  font-size: 20px;
+  font-family: "Display-Bold";
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.see {
+  display: flex;
+  width: max-content;
+  height: 39px;
+  padding: 14px 23px 15px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  border: 1px solid #757579;
+  color: #757579;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Display-Medium";
+  text-transform: uppercase;
 }
