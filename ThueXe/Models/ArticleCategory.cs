@@ -16,6 +16,8 @@ namespace ThueXe.Models
         public int CategorySort { get; set; }
         [Display(Name = "Hoạt động")]
         public bool CategoryActive { get; set; }
+        [Display(Name = "Hiện trang chủ")]
+        public bool Home { get; set; }
         [Display(Name = "Điều hướng")]
         public bool Redirect { get; set; }
         [Display(Name = "Danh mục cha")]

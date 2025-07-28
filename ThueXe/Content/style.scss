@@ -92,6 +92,50 @@ $text-blur: #656565;
     top: 50%;
     transform: translate(-50%, -50%);
 }
+@mixin vartical-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.slick-arrow {
+    position: absolute;
+    @include vartical-center;
+    border: 0;
+    color: $black;
+    padding: 2px 8px;
+    z-index: 9;
+    background: no-repeat;
+
+    i {
+        color: $black;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        @include before(100%, 100%);
+        top: 0;
+        left: 0;
+        opacity: 0.25;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+        border-radius: 5px;
+    }
+
+    i {
+        position: relative;
+        font-size: 30px;
+    }
+}
+.slick-next {
+    right: 0;
+}
+
+.slick-prev {
+    left: 0;
+}
 
 html {
     scroll-behavior: smooth;
@@ -156,9 +200,9 @@ header {
     position: sticky;
     width: 100%;
     z-index: 1;
-    top:0;
+    top: 0;
     padding: 20px 0;
-    background:$orange;
+    background: $orange;
 }
 
 .logo {
@@ -287,7 +331,8 @@ header {
 
 
     &:hover {
-        color:$white;
+        color: $white;
+
         .box-icon {
             i {
                 animation: moveIcon 0.6s ease forwards;
@@ -335,7 +380,7 @@ header {
 
 .list-banner {
     h2 {
-        margin-top:30px;
+        margin-top: 30px;
         color: $white;
         font-size: 36px;
         font-style: normal;
@@ -343,10 +388,12 @@ header {
         text-transform: uppercase;
     }
 }
+
 .slogan {
     color: $white;
     font-size: 16px;
 }
+
 .contact-part {
     padding: 20px;
     border-radius: 10px;
@@ -371,26 +418,174 @@ header {
         @include Bold;
         text-transform: uppercase;
         width: 100%;
-        border:0;
+        border: 0;
         margin-top: 30px;
     }
 }
+
 .policy-form {
     color: $blue;
     font-size: 14px;
     line-height: 20px;
 
     a {
-        color: #08F ;
+        color: #08F;
         font-size: 14px;
         line-height: 20px;
         @include Bold;
     }
 }
+
 .img-banner {
     width: 100%;
     object-fit: contain;
     aspect-ratio: 2.9;
     margin-top: 116px;
     margin-left: -112px;
+}
+
+.intro {
+    gap:10px;
+    align-items:center;
+    img {
+        width: 70px;
+        height: 70px;
+        object-fit:contain;
+    }
+
+    h2 {
+        color: $blue;
+        font-size: 24px;
+        @include Bold;
+        text-transform: capitalize;
+        margin:0;
+    }
+}
+
+.page-section{
+    padding:30px 0;
+}
+.title {
+    color: $blue;
+    text-align: center;
+    font-size: 36px;
+    @include Bold;  
+    text-transform: uppercase;
+}
+.sub-title {
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+}
+.service-slide {
+    @include letterSpacing(10px, -10px);
+
+    article {
+        padding: 35px 20px;
+        border-radius: 20px;
+        background: #ebebeb;
+        transition: all 1s;
+    }
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        aspect-ratio: 1;
+    }
+
+    h2 {
+        color: #000;
+        font-size: 24px;
+        @include Bold;
+        text-transform: capitalize;
+    }
+
+    .tag {
+        border-radius: 50px;
+        background: #FF4605;
+        color: #FFF;
+        font-size: 16px;
+        width: max-content;
+        @include Medium;
+        text-transform: capitalize;
+        padding: 4px 14px;
+        margin-bottom: 10px;
+    }
+
+    .slick-current {
+        transform: scale(.9);
+
+        h2 {
+            font-size: 32px;
+        }
+    }
+
+    .slick-slide {
+        transition: all 1s;
+
+        &:not(.slick-current) {
+            transform: scale(.8);
+        }
+    }
+
+    a {
+        color: #FFF;
+        text-align: center;
+        font-size: 14px;
+        text-transform: uppercase;
+        @include Medium;
+        padding: 14px 23px 15px 23px;
+        border-radius: 10px;
+    }
+
+    .btn-blue {
+        background: $blue;
+        border-color: $blue;
+
+        &:hover {
+            background: $blue;
+            border-color: $blue;
+            opacity: .8;
+        }
+    }
+
+    .btn-orange {
+        background: $orange;
+        border-color: $orange;
+
+        &:hover {
+            background: $orange;
+            border-color: $orange;
+            opacity: .8;
+        }
+    }
+
+    .slick-dots {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 1rem 0;
+        list-style-type: none;
+
+        li {
+            margin: 0 0.25rem;
+        }
+
+        button {
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            padding: 0;
+            border: none;
+            border-radius: 100%;
+            border: 1px solid $orange;
+            text-indent: -9999px;
+            background:$white;
+        }
+
+        li.slick-active button {
+            border: 1px solid $orange;
+            background: $gradient-orange;
+        }
+    }
 }

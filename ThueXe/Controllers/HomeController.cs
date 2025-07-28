@@ -49,7 +49,7 @@ namespace ThueXe.Controllers
         public ActionResult Index()
         {
             var banner = _unitOfWork.BannerRepository.GetQuery(a => a.Active  , o => o.OrderBy(a => a.Sort ));
-            var service = _unitOfWork.ArticleCategoryRepository.GetQuery(a => a.CategoryActive && a.TypePost == TypePost.Service, o => o.OrderBy(a => a.CategorySort));
+            var service = _unitOfWork.ArticleCategoryRepository.GetQuery(a => a.CategoryActive && (a.TypePost == TypePost.Service && a.Home), o => o.OrderBy(a => a.CategorySort));
             var articles = _unitOfWork.ArticleRepository.GetQuery(a => a.Active && (a.ArticleCategory.TypePost == TypePost.Article && a.Home), o => o.OrderByDescending(a => a.CreateDate));
             var model = new HomeViewModel
             {

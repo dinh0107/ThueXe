@@ -39,7 +39,6 @@ namespace ThueXe
                       "~/Content/jquery.toast.css",
                       "~/Content/jquery.fancybox.css",
                       "~/Content/daterangepicker.css",
-                      "~/Content/styleLanding.css",
                       "~/Content/style.css"));
 
             bundles.Add(new StyleBundle("~/Content/admincss").Include(
