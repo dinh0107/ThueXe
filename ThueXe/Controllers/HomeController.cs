@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,7 @@ namespace ThueXe.Controllers
         private static string Password => WebConfigurationManager.AppSettings["password"];
         public ConfigSite ConfigSite => (ConfigSite)HttpContext.Application["ConfigSite"];
 
-        private IEnumerable<ArticleCategory> ArticleCategories =>
+        private IEnumerable<ArticleCategory> ArticleCategories() =>
             _unitOfWork.ArticleCategoryRepository.Get(a => a.CategoryActive, q => q.OrderBy(a => a.CategorySort));
         private IEnumerable<ProductCategory> ProductCategories =>
             _unitOfWork.ProductCategoryRepository.Get(a => a.CategoryActive, q => q.OrderBy(a => a.CategorySort));
@@ -30,7 +31,7 @@ namespace ThueXe.Controllers
             var model = new HeaderViewModel
             {
                 ProductCategories = ProductCategories.Where(a => a.ShowMenu),
-                ArticleCategories = ArticleCategories.Where(a => a.ShowMenu),
+                ArticleCategories = ArticleCategories().Where(a => a.ShowMenu),
                 Banner = _unitOfWork.BannerRepository.GetQuery(a => a.Active && a.GroupId == 1 && a.Image != null).FirstOrDefault()
             };
             return PartialView(model);
@@ -40,9 +41,7 @@ namespace ThueXe.Controllers
         {
             var model = new FooterViewModel
             {
-                Articles = _unitOfWork.ArticleRepository.GetQuery(a => a.Active && a.ArticleCategory.TypePost == TypePost.Policy, o => o.OrderByDescending(a => a.CreateDate)),
-                ProductCategories = ProductCategories.Where(a => a.ShowFooter),
-                ArticleCategories = ArticleCategories.Where(a => a.ShowFooter)
+                ArticleCategories = ArticleCategories().Where(a => a.ShowFooter)
             };
             return PartialView(model);
         }
@@ -59,21 +58,104 @@ namespace ThueXe.Controllers
             };
             return View(model);
         }
+        
+        public ActionResult ServiceCar()
+        {
+            var banner = _unitOfWork.BannerRepository.GetQuery(a => a.Active, o => o.OrderBy(a => a.Sort));
+            var service = _unitOfWork.ArticleCategoryRepository.GetQuery(a => a.CategoryActive && (a.TypePost == TypePost.Service && a.Home), o => o.OrderBy(a => a.CategorySort));
+            var articles = _unitOfWork.ArticleRepository.GetQuery(a => a.Active && (a.ArticleCategory.TypePost == TypePost.Article && a.Home), o => o.OrderByDescending(a => a.CreateDate));
+            var model = new ServiceCarViewModel
+            {
+                Banners = banner,
+                Services = service,
+                Articles = articles.Take(6),
+            };
+            return View(model);
+        }
+        [Route("news/{url}", Order = 0)]
+        public ActionResult ArticleCategory(string url, int? page)
+        {
+            var category = _unitOfWork.ArticleCategoryRepository.GetQuery(a => a.CategoryActive && a.Url == url).FirstOrDefault();
+            if (category == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var articles = _unitOfWork.ArticleRepository.GetQuery(
+                a => a.Active && (a.ArticleCategoryId == category.Id || a.ArticleCategory.ParentId == category.Id),
+                q => q.OrderByDescending(a => a.CreateDate));
+            var pageNumber = page ?? 1;
+
+            if (articles.Count() == 1)
+            {
+                var fi = articles.First();
+                return RedirectToAction("ArticleDetail", new { url = fi.Url });
+            }
+            var model = new ArticleCategoryViewModel
+            {
+                Category = category,
+                Articles = articles.ToPagedList(pageNumber, 11),
+                Categories = ArticleCategories(),
+            };
+
+            if (category.ParentId != null)
+            {
+                model.RootCategory = _unitOfWork.ArticleCategoryRepository.GetById(category.ParentId);
+            }
+            return View(model);
+        }
+        [Route("{url}.html")]
+        public ActionResult ArticleDetail(string url, string view = "")
+        {
+            var article = _unitOfWork.ArticleRepository.GetQuery(a => a.Url == url).FirstOrDefault();
+            if (article == null)
+            {
+                return RedirectToActionPermanent("Index", "Home");
+            }
+            if (view == "")
+            {
+                article.View++;
+                _unitOfWork.ArticleRepository.Update(article);
+                _unitOfWork.Save();
+            }
+
+            var model = new ArticleViewModel
+            {
+                Article = article,
+                Articles = _unitOfWork.ArticleRepository.GetQuery(a => a.Active && (a.ArticleCategoryId == article.ArticleCategoryId && a.Id != article.Id)).OrderByDescending(a => a.CreateDate).Take(6)
+            };
+            if (article.ArticleCategory.ParentId != null)
+            {
+                model.RootCategory = _unitOfWork.ArticleCategoryRepository.GetById(article.ArticleCategory.ParentId);
+            }
+            return View(model);
+        }
+        public PartialViewResult ArticleHot()
+        {
+            var articles = _unitOfWork.ArticleRepository
+                .GetQuery(a => a.Active || a.View >= 100,
+                          o => o.OrderByDescending(a => a.CreateDate))
+                .ToList();
+
+            var model = new NavArticleViewModel
+            {
+                Articles = articles
+            };
+
+            return PartialView(model);
+
+        }
         public PartialViewResult Form()
         {
             return PartialView();
         }
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

@@ -16,7 +16,8 @@ namespace ThueXe.ViewModel
                 { 1, "Banner" },
                 { 2, "Lợi ích" },
                 { 3, "Quy trình" },
-                { 4, "Câu hỏi" }
+                { 4, "Câu hỏi" },
+                { 5, "Feedback" }
             };
             SelectGroup = new SelectList(listgroup, "Key", "Value");
         }
@@ -37,7 +38,8 @@ namespace ThueXe.ViewModel
                 { 1, "Banner" },
                 { 2, "Lợi ích" },
                 { 3, "Quy trình" },
-                { 4, "Câu hỏi" }
+                { 4, "Câu hỏi" },
+                { 5, "Feedback" }
             };
             SelectGroup = new SelectList(listgroup, "Key", "Value");
         }

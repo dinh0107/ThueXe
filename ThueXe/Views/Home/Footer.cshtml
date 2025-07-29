@@ -1,1 +1,61 @@
-﻿
+﻿@model ThueXe.ViewModel.FooterViewModel
+@using ThueXe.Models
+@{
+    var config = (ConfigSite)HttpContext.Current.Application["ConfigSite"];
+}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h2>Liên hệ</h2>
+                <div class="text-white">
+                    @Html.Raw(config.InfoFooter)
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h2>Link nhanh</h2>
+                <ul class="ul-reset ul-ft">
+                    <li>
+                        <a href="@Url.Action("Index")"#myTable>Bảng giá</a>
+                    </li>
+                    @foreach (var item in Model.ArticleCategories)
+                    {
+                        <li>
+                            <a href="@Url.Action("ArticleCategory", new { url = item.Url })">@item.CategoryName</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h2>fanpage</h2>
+
+            </div>
+        </div>
+        <div class="row border-top pt-3">
+            <div class="col-6">
+                <a href="/">
+                    @if (config.Image != null)
+                    {
+                        <img src="@Path.Combine("/images/configs/", config.Image)" alt="@config.Title" class="logo" />
+                    }
+                </a>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <ul class="ul-reset ul-icon">
+                    <li>
+                        <a href="@config.Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="@config" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fab fa-skype"></i></a>
+                    </li>
+                    <li>
+                        <a href="@config.Youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

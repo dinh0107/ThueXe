@@ -1,5 +1,5 @@
 ﻿@using ThueXe.Models
-@model ThueXe.ViewModel.HomeViewModel
+@model ThueXe.ViewModel.ServiceCarViewModel
 @{
     var config = (ConfigSite)HttpContext.Current.Application["ConfigSite"];
     ViewBag.Title = config.Title;
@@ -11,34 +11,25 @@
     //    ViewBag.ImageShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/configs/", share);
     //}
 }
-<section class="banner">
+<section class="banner custom-baner">
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-lg-8 d-flex align-items-center justify-content-center">
-                @foreach (var item in Model.Banners.Where(a => a.GroupId == 1))
-                {
-                    <div class="list-banner">
-                        <div class="title-banner">Dịch vụ</div>
-                        <h2>@item.BannerName</h2>
-                        <div class="slogan">
-                            @item.Slogan
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="" class="btn-color">
-                                tìm hiểu thêm
-                                <div class="box-icon">
-                                    <i class="far fa-long-arrow-right"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="img-ban">
-                            @if (item.Image != null)
-                            {
-                                <img src="@Path.Combine("/images/banners/", item.Image)" alt="@item.BannerName" class="img-banner" />
-                            }
-                        </div>
+                <div class="list-banner">
+                    <div class="service-title">
+                        Lorem ipsum dolor sit amet
+                        consectetur adipis
                     </div>
-                }
+                    <div class="service-sub">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </div>
+                    <a href="" class="btn-color color--orange mt-3">
+                        tìm hiểu thêm
+                        <div class="box-icon">
+                            <i class="far fa-long-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
             <div class="col-lg-4 d-flex align-items-center">
                 @Html.Action("Form")
@@ -46,18 +37,20 @@
         </div>
     </div>
 </section>
-<section class="page-section ">
-    <div class="container border-bottom pb-4">
+<section class="page-section">
+    <div class="container">
+        <h2 class="title">ưu điểm vượt trội</h2>
+        <p class="sub-title">Câu hỏi thường gặp</p>
         <div class="row">
-            @foreach (var item in Model.Banners.Where(a => a.GroupId == 2))
+            @for (var i = 0; i < 4; i++)
             {
-                <div class="col-lg-3">
-                    <div class="d-flex intro">
-                        @if (item.Image != null)
-                        {
-                            <img src="@Path.Combine("/images/banners/", item.Image)" alt="@item.BannerName" />
-                        }
-                        <h2>@Html.Raw(item.BannerName)</h2>
+                <div class="col-lg-6">
+                    <div class="d-flex gap-3 mt-3">
+                        <img src="~/Content/images/svg/drive.svg" alt="Alternate Text" class="icon-img" />
+                        <div class="uu-info">
+                            <p>Tài xế chuyên nghiệp</p>
+                            <span>CRM (Customer Relationship Management) software helps businesses centralize dat</span>
+                        </div>
                     </div>
                 </div>
             }
@@ -65,32 +58,21 @@
     </div>
 </section>
 <section class="page-section">
-    <h2 class="title">Dịch vụ của chúng tôi</h2>
-    <p class="sub-title">Dịch vụ thuê xe có lái chuyên nghiệp – linh hoạt theo ngày / tháng / năm đáp ứng mọi nhu cầu di chuyển cá nhân.</p>
     <div class="container">
-        <div class="service-slide">
-            @foreach (var item in Model.Services)
+        <h2 class="title">các dòng xe 7 chỗ có lái </h2>
+        <p class="sub-title">Dịch vụ thuê xe có lái chuyên nghiệp – linh hoạt theo ngày / tháng / năm đáp ứng mọi nhu cầu di chuyển cá nhân.</p>
+        <div class="list-car">
+            @for (var i = 0; i < 4; i++)
             {
-                var match = System.Text.RegularExpressions.Regex.Match(item.CategoryName, @"\d+");
-                var seatCount = match.Success ? match.Value : null;
-                <article>
-                    <div class="tag">
-                        <i class="fas fa-user"></i> @seatCount chỗ
+                <div class="car-item">
+                   <img src="~/Content/images/img-main/Rounded rectangle.jpg" alt="Alternate Text" />
+                    <div class="car-name">
+                        Audi A4 4-door sedan blue
                     </div>
-                    <h2>@item.CategoryName</h2>
-                    @if (item.Image != null)
-                    {
-                        <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articleCategory/", item.Image)" alt="@item.CategoryName" class="lazyload" />
-                    }
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <a href="#" class="btn-blue">tìm hiểu thêm</a>
-                        </div>
-                        <div class="col-lg-6">
-                            <a href="#" class="btn-orange">Đặt lịch ngay</a>
-                        </div>
+                    <div class="year-car">
+                        Năm 2020
                     </div>
-                </article>
+                </div>
             }
         </div>
     </div>
@@ -306,30 +288,8 @@
         </div>
     </div>
 </section>
-
-<section class="page-section">
-    <div class="container">
-        <div class="last-section">
-            <div class="row">
-                <div class="col-lg-5">
-                    <h2 class="title text-white">Lorem ipsum dolor </h2>
-                    <span class="sub-title text-white">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true</span>
-                    <a href="" class="btn-color mt-4">
-                        đặt xe ngay
-                        <div class="box-icon">
-                            <i class="far fa-long-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-7">
-                    <img src="~/Content/images/svg/oto.svg" alt="@config.Title" class="fa-motorcycle" />
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 @section scripts{
     <script>
         homeJs()
     </script>
-}
+    }

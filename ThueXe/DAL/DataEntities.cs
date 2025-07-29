@@ -23,5 +23,8 @@ namespace ThueXe.DAL
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Voucher> Vouchers { get; set; }
+        public DbSet<CarService> CarServices { get; set; }
+        public DbSet<CarServiceDetail>  CarServiceDetails { get; set; }
+        public DbSet<CarServicePrice> CarServicePrices { get; set; }
     }
 }

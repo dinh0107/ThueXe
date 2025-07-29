@@ -21,6 +21,18 @@ namespace ThueXe.DAL
         private GenericRepository<ProductCategory> _productCategoryRepository;
         private GenericRepository<Trip> _tripRepository;
         private GenericRepository<Voucher> _voucherRepository;
+        private GenericRepository<CarService> _carServiceRepository;
+        private GenericRepository<CarServiceDetail> _carServiceDetailRepository;
+        private GenericRepository<CarServicePrice> _carServicePriceRepository;
+
+
+
+        public GenericRepository<CarService> CarServiceRepository =>
+            _carServiceRepository ?? (_carServiceRepository = new GenericRepository<CarService>(_context));
+        public GenericRepository<CarServiceDetail> CarServiceDetailRepository =>
+            _carServiceDetailRepository ?? (_carServiceDetailRepository = new GenericRepository<CarServiceDetail>(_context));
+        public GenericRepository<CarServicePrice> CarServicePriceRepository =>
+            _carServicePriceRepository ?? (_carServicePriceRepository = new GenericRepository<CarServicePrice>(_context));
 
         public GenericRepository<Admin> AdminRepository =>
             _adminRepository ?? (_adminRepository = new GenericRepository<Admin>(_context));

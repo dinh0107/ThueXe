@@ -1,0 +1,89 @@
+﻿@using PagedList.Mvc
+@using Helpers
+@model ThueXe.ViewModel.ArticleCategoryViewModel
+@{
+    ViewBag.Title = (Model.Category.TitleMeta ?? Model.Category.CategoryName) + (Model.Articles.PageNumber > 1 ? " | Trang " + Model.Articles.PageNumber : null);
+    ViewBag.Description = Model.Category.Description ?? Model.Category.CategoryName;
+    ViewBag.Canonical = Request.Url?.GetLeftPart(UriPartial.Authority) + Url.Action("ArticleCategory", new { url = Model.Category.Url });
+
+    ViewContext.HttpContext.Items["CatId"] = Model.Category.Id;
+    if (Model.Category.Image != null)
+    {
+        ViewBag.ImgShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/articleCategory/", Model.Category.Image);
+    }
+}
+<link href="~/Content/sweetalert2.css" rel="stylesheet" />
+<div class="container-rs mt-5">
+    <h1 class="title-section text-center">@(Model.Category.CategoryName)</h1>
+    <div class="row box-articles">
+        <div class="col-lg-9">
+            <div class="row">
+                @foreach (var firstRecord in Model.Articles.Take(2))
+                {
+                    <div class="col-lg-6">
+                        <article class="hot-article card mb-lg-4 mb-3">
+                            <a href="@Url.Action("ArticleDetail", "Home", new {  url = firstRecord.Url })">
+                                @if (firstRecord.Image != null)
+                                {
+                                    <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articles/", firstRecord.Image)" alt="@firstRecord.Subject" class="lazyload img-fluid" />
+                                }
+                            </a>
+                            <div class="card-body p-3">
+                                <div class="info">
+                                    <a href="@Url.Action("ArticleCategory", "Home", new { url = firstRecord.ArticleCategory.Url})">@firstRecord.ArticleCategory.CategoryName</a>
+                                    <span>@firstRecord.CreateDate.ToString("dd.MM.yyyy")</span>
+                                </div>
+                                <h2><a class="subject-h" href="@Url.Action("ArticleDetail", "Home", new {  url = firstRecord.Url })">@firstRecord.Subject</a></h2>
+                                <div class="article-des">
+                                    @firstRecord.Description
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+            @if (Model.Articles.Count() > 2)
+            {
+                <div class="row">
+                    @foreach (var item in Model.Articles.Skip(2))
+                    {
+                        <div class="col-lg-4 mb-lg-4 mb-3">
+                            <article class="article-item card">
+                                <a href="@Url.Action("ArticleDetail", "Home", new {  url = item.Url })">
+                                    @if (item.Image != null)
+                                    {
+                                        <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articles/", item.Image)" alt="@item.Subject" class="lazyload img-fluid" />
+                                    }
+                                </a>
+                                <div class="card-body p-3">
+                                    <div class="info">
+                                        <a href="@Url.Action("ArticleCategory", "Home", new { url = item.ArticleCategory.Url})">@item.ArticleCategory.CategoryName</a>
+                                        <span>@item.CreateDate.ToString("dd.MM.yyyy")</span>
+                                    </div>
+                                    <h2><a class="subject-h" href="@Url.Action("ArticleDetail", "Home", new { url = item.Url })">@item.Subject</a></h2>
+                                    <div class="article-des">
+                                        @item.Description
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    }
+                </div>
+            }
+            @if (Model.Articles.PageCount > 1)
+            {
+                <div class="text-center mt-3">
+                    @Html.PagedListPager(Model.Articles, page => Url.Action("ArticleCategory", "Home", new { page, url = Model.Category.Url }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                </div>
+            }
+        </div>
+        <div class="col-lg-3 pr-0">
+            @Html.Action("ArticleHot")
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        DetailJs()
+    </script>
+}
