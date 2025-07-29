@@ -213,6 +213,7 @@ header {
 }*/
 .custom-baner {
   height: 70vh !important;
+  background-image: var(--bg) !important;
 }
 
 .color--orange {
@@ -1179,4 +1180,9 @@ footer h2 {
   flex-direction: column;
   height: 8.438rem;
   justify-content: space-evenly;
+}
+
+.step-name-custom {
+  font-size: 14px;
+  text-align: center;
 }

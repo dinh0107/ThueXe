@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initdb : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -28,6 +28,8 @@
                         Url = c.String(maxLength: 500),
                         CategorySort = c.Int(nullable: false),
                         CategoryActive = c.Boolean(nullable: false),
+                        Home = c.Boolean(nullable: false),
+                        Redirect = c.Boolean(nullable: false),
                         ParentId = c.Int(),
                         ShowMenu = c.Boolean(nullable: false),
                         ShowFooter = c.Boolean(nullable: false),
@@ -77,6 +79,52 @@
                         ListImage = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.CarServiceDetails",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CarServiceId = c.Int(nullable: false),
+                        Image = c.String(),
+                        Name = c.String(nullable: false),
+                        Desciption = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CarServices", t => t.CarServiceId, cascadeDelete: true)
+                .Index(t => t.CarServiceId);
+            
+            CreateTable(
+                "dbo.CarServices",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(),
+                        Slug = c.String(),
+                        Description = c.String(),
+                        ImageUrl = c.String(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        Active = c.Boolean(nullable: false),
+                        TitleMeta = c.String(maxLength: 100),
+                        DescriptionMeta = c.String(maxLength: 500),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.CarServicePrices",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CarServiceId = c.Int(nullable: false),
+                        RouteDescription = c.String(nullable: false),
+                        Price = c.String(nullable: false),
+                        Km = c.String(),
+                        Hot = c.Boolean(nullable: false),
+                        Sort = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CarServices", t => t.CarServiceId, cascadeDelete: true)
+                .Index(t => t.CarServiceId);
             
             CreateTable(
                 "dbo.ConfigSites",
@@ -151,19 +199,37 @@
                         ToDate = c.DateTime(),
                         Distance = c.Int(nullable: false),
                         Price = c.Decimal(precision: 18, scale: 2),
+                        PriceChange = c.Decimal(precision: 18, scale: 2),
                         PriceSale = c.Decimal(precision: 18, scale: 2),
                         Tolls = c.Decimal(precision: 18, scale: 2),
-                        Gas = c.Decimal(precision: 18, scale: 2),
                         Other = c.Decimal(precision: 18, scale: 2),
+                        Pile = c.Decimal(precision: 18, scale: 2),
                         Note = c.String(maxLength: 500),
                         Active = c.Boolean(nullable: false),
                         CreateDate = c.DateTime(nullable: false),
                         Status = c.Int(nullable: false),
+                        TypeCar = c.Int(nullable: false),
+                        TypeTrip = c.Int(nullable: false),
+                        Source = c.Int(nullable: false),
                         CustomerId = c.Int(nullable: false),
+                        DriverId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
-                .Index(t => t.CustomerId);
+                .ForeignKey("dbo.Drivers", t => t.DriverId)
+                .Index(t => t.CustomerId)
+                .Index(t => t.DriverId);
+            
+            CreateTable(
+                "dbo.Drivers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        CreateDate = c.DateTime(nullable: false),
+                        Active = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Vouchers",
@@ -181,6 +247,22 @@
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Customers", t => t.CustomerId)
                 .Index(t => t.CustomerId);
+            
+            CreateTable(
+                "dbo.Expenses",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Expenditure = c.Int(nullable: false),
+                        Price = c.Decimal(precision: 18, scale: 2),
+                        CreateDate = c.DateTime(nullable: false),
+                        Status = c.Int(nullable: false),
+                        Note = c.String(maxLength: 500),
+                        DriverId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Drivers", t => t.DriverId, cascadeDelete: true)
+                .Index(t => t.DriverId);
             
             CreateTable(
                 "dbo.Introduces",
@@ -246,22 +328,35 @@
         {
             DropForeignKey("dbo.Products", "ProductCategoryId", "dbo.ProductCategories");
             DropForeignKey("dbo.ProductCategories", "ParentId", "dbo.ProductCategories");
+            DropForeignKey("dbo.Expenses", "DriverId", "dbo.Drivers");
             DropForeignKey("dbo.Vouchers", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.Trips", "DriverId", "dbo.Drivers");
             DropForeignKey("dbo.Trips", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.CarServicePrices", "CarServiceId", "dbo.CarServices");
+            DropForeignKey("dbo.CarServiceDetails", "CarServiceId", "dbo.CarServices");
             DropForeignKey("dbo.Articles", "ArticleCategoryId", "dbo.ArticleCategories");
             DropIndex("dbo.Products", new[] { "ProductCategoryId" });
             DropIndex("dbo.ProductCategories", new[] { "ParentId" });
+            DropIndex("dbo.Expenses", new[] { "DriverId" });
             DropIndex("dbo.Vouchers", new[] { "CustomerId" });
+            DropIndex("dbo.Trips", new[] { "DriverId" });
             DropIndex("dbo.Trips", new[] { "CustomerId" });
+            DropIndex("dbo.CarServicePrices", new[] { "CarServiceId" });
+            DropIndex("dbo.CarServiceDetails", new[] { "CarServiceId" });
             DropIndex("dbo.Articles", new[] { "ArticleCategoryId" });
             DropTable("dbo.Products");
             DropTable("dbo.ProductCategories");
             DropTable("dbo.Introduces");
+            DropTable("dbo.Expenses");
             DropTable("dbo.Vouchers");
+            DropTable("dbo.Drivers");
             DropTable("dbo.Trips");
             DropTable("dbo.Customers");
             DropTable("dbo.Contacts");
             DropTable("dbo.ConfigSites");
+            DropTable("dbo.CarServicePrices");
+            DropTable("dbo.CarServices");
+            DropTable("dbo.CarServiceDetails");
             DropTable("dbo.Banners");
             DropTable("dbo.Articles");
             DropTable("dbo.ArticleCategories");

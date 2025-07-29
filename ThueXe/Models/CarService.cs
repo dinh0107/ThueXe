@@ -24,6 +24,7 @@ namespace ThueXe.Models
         [Display(Name = "Thẻ mô tả"), StringLength(500, ErrorMessage = "Tối đa 500 ký tự"), UIHint("TextArea")]
         public string DescriptionMeta { get; set; }
         public virtual ICollection<CarServiceDetail> Details { get; set; }
+        public virtual ICollection<CarServicePrice>  CarServicePrices { get; set; }
     }
 
     public class CarServiceDetail
@@ -32,9 +33,14 @@ namespace ThueXe.Models
         public int CarServiceId { get; set; }
         public string Image { get; set; }
         [Required]
-        [Display(Name = "Tên xe")]
+        [Display(Name = "Tên xe"), UIHint("TextBox")]
         public string Name { get; set; }
+        [Display(Name = "Mô tả"), UIHint("TextArea")]
         public string Desciption { get; set; }
+        [Display(Name = "Thứ tự"), Required(ErrorMessage = "Hãy nhập số thứ tự"), RegularExpression(@"\d+", ErrorMessage = "Chỉ nhập số nguyên dương"), UIHint("NumberBox")]
+        public int Sort { get; set; }
+        [Display(Name = "Loại")]
+        public CarServiceType CarServiceType { get; set; }
         public virtual CarService CarService { get; set; }
     }
     public class CarServicePrice
@@ -42,12 +48,16 @@ namespace ThueXe.Models
         public int Id { get; set; }
         public int CarServiceId { get; set; }
         [Required]
-        [Display(Name = "Lộ trình")]
+        [Display(Name = "Lộ trình"), UIHint("TextBox")]
         public string RouteDescription { get; set; }
         [Required]
-        [Display(Name = "Giá")]
+        [Display(Name = "Giá"), UIHint("TextBox")]
         public string Price { get; set; }
+        [Display(Name = "Km"), UIHint("TextBox")]
+        public string Km { get; set; }
         public bool Hot { get; set; }
+        [Display(Name = "Thứ tự"), Required(ErrorMessage = "Hãy nhập số thứ tự"), RegularExpression(@"\d+", ErrorMessage = "Chỉ nhập số nguyên dương"), UIHint("NumberBox")]
+        public int Sort { get; set; }
         public virtual CarService CarService { get; set; }
     }
     public enum CarServiceType

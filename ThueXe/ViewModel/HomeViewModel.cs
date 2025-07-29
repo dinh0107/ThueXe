@@ -17,6 +17,7 @@ namespace ThueXe.ViewModel
         public IEnumerable<Banner> Banners { get; set; }
         public IEnumerable<Article> Articles { get; set; }
         public IEnumerable<ArticleCategory> Services { get; set; }
+        public CarService  CarService { get; set; }
     }
 
     public class HeaderViewModel

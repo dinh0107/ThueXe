@@ -7,13 +7,13 @@ namespace ThueXe.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class addhome : IMigrationMetadata
+    public sealed partial class upcontact : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addhome));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(upcontact));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507280746473_add-home"; }
+            get { return "202507291655533_up-contact"; }
         }
         
         string IMigrationMetadata.Source

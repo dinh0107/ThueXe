@@ -1,7 +1,9 @@
-﻿using PagedList;
+﻿using Helpers;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -58,9 +60,14 @@ namespace ThueXe.Controllers
             };
             return View(model);
         }
-        
-        public ActionResult ServiceCar()
+        [Route("{url}")]
+        public ActionResult ServiceCar(string url)
         {
+            var carService = _unitOfWork.CarServiceRepository.GetQuery(a => a.Slug ==  url).FirstOrDefault();
+            if(carService == null)
+            {
+                return RedirectToAction("Index");
+            }
             var banner = _unitOfWork.BannerRepository.GetQuery(a => a.Active, o => o.OrderBy(a => a.Sort));
             var service = _unitOfWork.ArticleCategoryRepository.GetQuery(a => a.CategoryActive && (a.TypePost == TypePost.Service && a.Home), o => o.OrderBy(a => a.CategorySort));
             var articles = _unitOfWork.ArticleRepository.GetQuery(a => a.Active && (a.ArticleCategory.TypePost == TypePost.Article && a.Home), o => o.OrderByDescending(a => a.CreateDate));
@@ -69,6 +76,7 @@ namespace ThueXe.Controllers
                 Banners = banner,
                 Services = service,
                 Articles = articles.Take(6),
+                CarService = carService
             };
             return View(model);
         }
@@ -148,6 +156,34 @@ namespace ThueXe.Controllers
         public PartialViewResult Form()
         {
             return PartialView();
+        }
+        [HttpPost, ValidateAntiForgeryToken]
+        public JsonResult ContactForm(Contact model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { status = false, msg = "Hãy điền đúng định dạng." });
+            }
+
+            if (model.ToDate != null)
+            {
+                model.ToDate = Convert.ToDateTime(model.ToDate);
+            }
+          
+            _unitOfWork.ContactRepository.Insert(model);
+            _unitOfWork.Save();
+
+            var subject = "Email liên hệ từ website: " + Request.Url?.Host;
+            var body = $"<p>Điểm đi: {model.From},</p>" +
+                       $"<p>Điểm đến: {model.To},</p>" +
+                       $"<p>Ngày đi: {model.FromDate.ToString("dd/MM/yyyy HH:mm")},</p>" +
+                       $"<p>Ngày về: {model.ToDate?.ToString("dd/MM/yyyy HH:mm")},</p>" +
+                       $"<p>Loại xe: {model.TypeCar},</p>" +
+                       $"<p>Số điện thoại: {model.Mobile},</p>" +
+                       $"<p>Đây là hệ thống gửi email tự động, vui lòng không phản hồi lại email này.</p>";
+            Task.Run(() => HtmlHelpers.SendEmail("gmail", subject, body, ConfigSite.Email, Email, Email, Password, "Thuê xe Nam Anh"));
+
+            return Json(new { status = true, msg = "Gửi liên hệ thành công.\nChúng tôi sẽ liên lạc với bạn sớm nhất có thể." });
         }
         public ActionResult About()
         {

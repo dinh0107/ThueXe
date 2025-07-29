@@ -7,13 +7,13 @@ namespace ThueXe.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class addtitle : IMigrationMetadata
+    public sealed partial class inittypesevice : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addtitle));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inittypesevice));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507290630095_addtitle"; }
+            get { return "202507291540116_init-typesevice"; }
         }
         
         string IMigrationMetadata.Source

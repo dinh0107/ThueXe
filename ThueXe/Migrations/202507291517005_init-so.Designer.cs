@@ -7,13 +7,13 @@ namespace ThueXe.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class initdb : IMigrationMetadata
+    public sealed partial class initso : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initdb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initso));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507260901274_init-db"; }
+            get { return "202507291517005_init-so"; }
         }
         
         string IMigrationMetadata.Source

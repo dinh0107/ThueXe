@@ -7,13 +7,13 @@ namespace ThueXe.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class addservicepage : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addservicepage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507290449257_add-servicepage"; }
+            get { return "202507291455049_init"; }
         }
         
         string IMigrationMetadata.Source

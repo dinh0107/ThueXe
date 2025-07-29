@@ -1,0 +1,84 @@
+﻿@model ThueXe.ViewModel.DetailViewModel
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="page-title">
+        <i class="fa-solid fa-align-right fa-rotate-180 fa-sm"></i>
+        <span>Thêm mới</span>
+    </div>
+    <a href="#" onclick="history.go(-1)" class="btn-main btn-labeled bg-brown">
+        <span class="icon">
+            <i class="fa-solid fa-left"></i>
+        </span>
+        Quay lại
+    </a>
+</div>
+<div class="content">
+    <div class="accordion">
+        <div class="accordion-item border-left-slate">
+            <div class="accordion-header">
+                <div class="card-title">
+                    <i class="fa-light fa-octagon-plus fa-lg"></i>
+                    Thêm mới
+                </div>
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#createForm" aria-expanded="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+            <div id="createForm" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    @using (Html.BeginForm("Detail", "CarService", FormMethod.Post, new { @id = "data-insert-form", enctype = "multipart/form-data" }))
+                    {
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(a => a.CarService.Id)
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.CarServiceDetail.CarServiceType, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EnumDropDownListFor(a => a.CarServiceDetail.CarServiceType, new { @class = "form_control" })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="Article_Subject">Tiêu đề <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.CarServiceDetail.Name)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="Article_Description">Trích dẫn ngắn <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.CarServiceDetail.Desciption)
+                                @Html.ValidationMessageFor(a => a.CarServiceDetail.Desciption)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.CarServiceDetail.Image, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.CarServiceDetail.Image, new { type = "file" })
+                                <div class="text-danger mt-2">Chấp nhận ảnh jpg, png, gif, jpeg < 4MB</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.CarServiceDetail.Sort, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.CarServiceDetail.Sort)
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="reset" onclick="resetAnyFormById('data-insert-form');" class="btn-main btn-white" id="reset">
+                                <span>Đặt lại</span>
+                                <i class="fa-solid fa-rotate-right ms-2"></i>
+                            </button>
+                            <button type="submit" class="btn-main btn-primary text-white ms-3">
+                                <span>Lưu</span>
+                                <i class="fa-solid fa-floppy-disk ms-2"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

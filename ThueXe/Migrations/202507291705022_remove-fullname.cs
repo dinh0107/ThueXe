@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addredirect : DbMigration
+    public partial class removefullname : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.ArticleCategories", "Redirect", c => c.Boolean(nullable: false));
+            DropColumn("dbo.Contacts", "Fullname");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.ArticleCategories", "Redirect");
+            AddColumn("dbo.Contacts", "Fullname", c => c.String(nullable: false, maxLength: 100));
         }
     }
 }

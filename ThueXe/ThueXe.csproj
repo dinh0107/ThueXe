@@ -155,33 +155,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507260901274_init-db.cs" />
-    <Compile Include="Migrations\202507260901274_init-db.Designer.cs">
-      <DependentUpon>202507260901274_init-db.cs</DependentUpon>
+    <Compile Include="Migrations\202507291455049_init.cs" />
+    <Compile Include="Migrations\202507291455049_init.Designer.cs">
+      <DependentUpon>202507291455049_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507260909177_add-some.cs" />
-    <Compile Include="Migrations\202507260909177_add-some.Designer.cs">
-      <DependentUpon>202507260909177_add-some.cs</DependentUpon>
+    <Compile Include="Migrations\202507291517005_init-so.cs" />
+    <Compile Include="Migrations\202507291517005_init-so.Designer.cs">
+      <DependentUpon>202507291517005_init-so.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507260917355_add-table.cs" />
-    <Compile Include="Migrations\202507260917355_add-table.Designer.cs">
-      <DependentUpon>202507260917355_add-table.cs</DependentUpon>
+    <Compile Include="Migrations\202507291540116_init-typesevice.cs" />
+    <Compile Include="Migrations\202507291540116_init-typesevice.Designer.cs">
+      <DependentUpon>202507291540116_init-typesevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507260935460_add-redirect.cs" />
-    <Compile Include="Migrations\202507260935460_add-redirect.Designer.cs">
-      <DependentUpon>202507260935460_add-redirect.cs</DependentUpon>
+    <Compile Include="Migrations\202507291655533_up-contact.cs" />
+    <Compile Include="Migrations\202507291655533_up-contact.Designer.cs">
+      <DependentUpon>202507291655533_up-contact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507280746473_add-home.cs" />
-    <Compile Include="Migrations\202507280746473_add-home.Designer.cs">
-      <DependentUpon>202507280746473_add-home.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507290449257_add-servicepage.cs" />
-    <Compile Include="Migrations\202507290449257_add-servicepage.Designer.cs">
-      <DependentUpon>202507290449257_add-servicepage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507290630095_addtitle.cs" />
-    <Compile Include="Migrations\202507290630095_addtitle.Designer.cs">
-      <DependentUpon>202507290630095_addtitle.cs</DependentUpon>
+    <Compile Include="Migrations\202507291705022_remove-fullname.cs" />
+    <Compile Include="Migrations\202507291705022_remove-fullname.Designer.cs">
+      <DependentUpon>202507291705022_remove-fullname.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -207,6 +199,7 @@
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\ServiceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\adminSite.css" />
@@ -1768,6 +1761,12 @@
     <Content Include="Views\Home\ArticleCategory.cshtml" />
     <Content Include="Views\Home\ArticleHot.cshtml" />
     <Content Include="Views\Home\ArticleDetail.cshtml" />
+    <Content Include="Views\CarService\ListPrice.cshtml" />
+    <Content Include="Views\CarService\AddPrice.cshtml" />
+    <Content Include="Views\CarService\UpdatePrice.cshtml" />
+    <Content Include="Views\CarService\Detail.cshtml" />
+    <Content Include="Views\CarService\ListDetail.cshtml" />
+    <Content Include="Views\CarService\UpdateDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1806,26 +1805,20 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507260901274_init-db.resx">
-      <DependentUpon>202507260901274_init-db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507291455049_init.resx">
+      <DependentUpon>202507291455049_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507260909177_add-some.resx">
-      <DependentUpon>202507260909177_add-some.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507291517005_init-so.resx">
+      <DependentUpon>202507291517005_init-so.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507260917355_add-table.resx">
-      <DependentUpon>202507260917355_add-table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507291540116_init-typesevice.resx">
+      <DependentUpon>202507291540116_init-typesevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507260935460_add-redirect.resx">
-      <DependentUpon>202507260935460_add-redirect.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507291655533_up-contact.resx">
+      <DependentUpon>202507291655533_up-contact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507280746473_add-home.resx">
-      <DependentUpon>202507280746473_add-home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507290449257_add-servicepage.resx">
-      <DependentUpon>202507290449257_add-servicepage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507290630095_addtitle.resx">
-      <DependentUpon>202507290630095_addtitle.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507291705022_remove-fullname.resx">
+      <DependentUpon>202507291705022_remove-fullname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

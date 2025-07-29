@@ -7,13 +7,13 @@ namespace ThueXe.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class addredirect : IMigrationMetadata
+    public sealed partial class removefullname : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addredirect));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removefullname));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507260935460_add-redirect"; }
+            get { return "202507291705022_remove-fullname"; }
         }
         
         string IMigrationMetadata.Source

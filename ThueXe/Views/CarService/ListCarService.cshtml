@@ -18,8 +18,8 @@
                         <th>Hình ảnh</th>
                         <th>Tên</th>
                         <th>Hoạt động</th>
-                        <th style="width: 160px"></th>
                         <th>Nội dung</th>
+                        <th style="width: 160px"></th>
                     </tr>
                 </thead>
                 <tbody id="sortable-cat">
@@ -47,12 +47,12 @@
                                 </label>
                             </td>
                             <td class="action-col">
-                                @Html.ActionLink("Sửa", "UpdateCarService", new { catId = category.Id }) -
-                                <a href="javascript:;" onclick="deleteArtCategory('@category.Id')" style="color: red">Xóa</a>
+                                @Html.ActionLink("Chi tiết", "ListDetail", new { id = category.Id })
                             </td>
                             <td class="action-col">
-                                <a href="#">Bảng giá</a>
-                                <a href="#">Chi tiết</a>
+                                @Html.ActionLink("Bảng giá", "ListPrice", new { id = category.Id }) -
+                                @Html.ActionLink("Sửa", "UpdateCarService", new { catId = category.Id }) -
+                                <a href="javascript:;" onclick="deleteArtCategory('@category.Id')" style="color: red">Xóa</a>
                             </td>
                         </tr>
                     }
@@ -62,51 +62,27 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    function deleteArtCategory(id) {
-        if (confirm("Bạn có chắc chắn xóa không?")) {
-            $.post("/CarService/DeleteCarService", { catId: id }, function (data) {
-                if (data) {
-                    $.toast({
-                        text: 'Đang xóa',
-                        position: 'bottom-right',
-                        icon: 'success',
-                    })
-                    $("tr[data-id='" + id + "']").fadeOut();
-                } else {
-                    $.toast({
-                        text: 'Quá trình thực hiện không thành công. Hãy thử lại',
-                        icon: 'error',
-                    })
-                }
-            });
-        }
-    }
-
-    function updateCategory(id) {
-        var divId = $("tr[data-id='" + id + "']");
-        var sort = divId.find("input[name=Sort]").val();
-        var active = divId.find("input#Active").prop("checked");
-        var menu = divId.find("input#Menu").prop("checked");
-        var footer = divId.find("input#Footer").prop("checked");
-
-        if (sort == "") {
-            alert("Bạn hãy nhập số thứ tự");
-        }
-
-        $.post("/Article/UpdateArticleCat", { articleCatId: id, sort, active, menu, footer }, function (data) {
-            if (data) {
-                $.toast({
-                    text: 'Cập nhật thành công',
-                    position: 'bottom-right',
-                    icon: 'success',
-                })
-            } else {
-                $.toast({
-                    text: 'Quá trình thực hiện không thành công. Hãy thử lại',
-                    icon: 'error',
-                })
+@section scripts{
+    <script>
+        function deleteArtCategory(id) {
+            if (confirm("Bạn có chắc chắn xóa không?")) {
+                $.post("/CarService/DeleteCarService", { catId: id }, function (data) {
+                    if (data) {
+                        $.toast({
+                            text: 'Đang xóa',
+                            position: 'bottom-right',
+                            icon: 'success',
+                        })
+                        $("tr[data-id='" + id + "']").fadeOut();
+                    } else {
+                        $.toast({
+                            text: 'Quá trình thực hiện không thành công. Hãy thử lại',
+                            icon: 'error',
+                        })
+                    }
+                });
             }
-        });
+        }
+
+    </script>
     }
-</script>
