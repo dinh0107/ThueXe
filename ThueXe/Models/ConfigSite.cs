@@ -17,6 +17,8 @@ namespace ThueXe.Models
         public string Messenger { get; set; }
         [Display(Name = "Logo"), UIHint("ImageConfig")]
         public string Image { get; set; }
+        [Display(Name = "Ảnh chia sẻ"), UIHint("ImageConfig")]
+        public string ImageShare { get; set; }
 
         [Display(Name = "Xe 4 chỗ"), UIHint("ImageConfig")]
         public string Car4 { get; set; }

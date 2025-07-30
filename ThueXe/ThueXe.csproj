@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder">
-      <HintPath>..\..\..\Downloads\CKFinder.dll</HintPath>
+      <HintPath>..\..\..\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
@@ -55,7 +55,7 @@
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Helpers">
-      <HintPath>..\..\..\Downloads\Helpers.dll</HintPath>
+      <HintPath>..\..\..\Helpers.dll</HintPath>
     </Reference>
     <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageResizer.4.2.8\lib\net45\ImageResizer.dll</HintPath>
@@ -155,25 +155,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507291455049_init.cs" />
-    <Compile Include="Migrations\202507291455049_init.Designer.cs">
-      <DependentUpon>202507291455049_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507291517005_init-so.cs" />
-    <Compile Include="Migrations\202507291517005_init-so.Designer.cs">
-      <DependentUpon>202507291517005_init-so.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507291540116_init-typesevice.cs" />
-    <Compile Include="Migrations\202507291540116_init-typesevice.Designer.cs">
-      <DependentUpon>202507291540116_init-typesevice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507291655533_up-contact.cs" />
-    <Compile Include="Migrations\202507291655533_up-contact.Designer.cs">
-      <DependentUpon>202507291655533_up-contact.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507291705022_remove-fullname.cs" />
-    <Compile Include="Migrations\202507291705022_remove-fullname.Designer.cs">
-      <DependentUpon>202507291705022_remove-fullname.cs</DependentUpon>
+    <Compile Include="Migrations\202507300500103_init-db.cs" />
+    <Compile Include="Migrations\202507300500103_init-db.Designer.cs">
+      <DependentUpon>202507300500103_init-db.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -232,6 +216,7 @@
     <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\bg-fb.png" />
     <Content Include="Content\images\bg.png" />
+    <Content Include="Content\images\hot-gif.gif" />
     <Content Include="Content\images\icon.svg" />
     <Content Include="Content\images\img-main\banner.jpg" />
     <Content Include="Content\images\img-main\base64.gif" />
@@ -306,6 +291,244 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\articleCategory\2025\07\26\pngegg-3-1-189.png" />
+    <Content Include="images\articleCategory\2025\07\26\pngegg-3-2-1-369.png" />
+    <Content Include="images\articleCategory\2025\07\26\pngegg-3-2-528.png" />
+    <Content Include="images\articleCategory\2025\07\27\pngegg-3-1-474.png" />
+    <Content Include="images\articleCategory\2025\07\27\pngegg-3-2-1-669.png" />
+    <Content Include="images\articleCategory\2025\07\27\pngegg-3-2-2-455.png" />
+    <Content Include="images\articleCategory\2025\07\28\cho-thue-xe-16-cho-removebg-preview-829.png" />
+    <Content Include="images\articleCategory\2025\07\28\cho-thue-xe-16-cho-tai-ha-noi-1-842.jpg" />
+    <Content Include="images\articles\2024\10\14\gt1-68.png" />
+    <Content Include="images\articles\2024\10\14\tx16-616.jpg" />
+    <Content Include="images\articles\2024\10\14\tx29-303.jpg" />
+    <Content Include="images\articles\2024\10\14\tx7-277.jpg" />
+    <Content Include="images\articles\2024\10\14\tx7-318.jpg" />
+    <Content Include="images\articles\2024\10\14\tx7-943.jpg" />
+    <Content Include="images\articles\2024\10\18\layer2-255.png" />
+    <Content Include="images\articles\2024\10\18\layer4-361.png" />
+    <Content Include="images\articles\2024\10\22\hy-154.jpg" />
+    <Content Include="images\articles\2024\10\23\520243049-0.jpg" />
+    <Content Include="images\articles\2024\10\23\8227-hung-yen-tang-cuong-quang-ba-xuc-tien-du-lich-425.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-1-620.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-2-734.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-3-912.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-4-647.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-5-527.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-520.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-6-823.jpg" />
+    <Content Include="images\articles\2024\10\23\anh-bia-du-lich-7-496.jpg" />
+    <Content Include="images\articles\2024\10\23\du-lich-1-913.jpg" />
+    <Content Include="images\articles\2024\10\23\du-lich-2-704.jpg" />
+    <Content Include="images\articles\2024\10\23\du-lich-2-764.jpg" />
+    <Content Include="images\articles\2024\10\23\du-lich-3-531.jpg" />
+    <Content Include="images\articles\2024\10\23\du-lich-902.jpg" />
+    <Content Include="images\articles\2024\10\23\du-lich-937.jpg" />
+    <Content Include="images\articles\2024\10\23\hung-yen-co-gi-choi-22-415.jpg" />
+    <Content Include="images\articles\2024\10\23\khu-nghi-duong-bac-ninh-4-869.jpg" />
+    <Content Include="images\articles\2024\10\23\thue-xe-nam-anh-891.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-1-253.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-10-161.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-11-734.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-2-49.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-3-110.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-3-604.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-4-308.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-4-677.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-435.png" />
+    <Content Include="images\articles\2024\10\24\du-lich-5-229.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-533.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-6-749.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-7-440.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-8-385.jpg" />
+    <Content Include="images\articles\2024\10\24\du-lich-9-284.jpg" />
+    <Content Include="images\articles\2024\10\26\du-lich-5-695.jpg" />
+    <Content Include="images\articles\2024\10\26\kinh-nghiem-du-lich-bac-giang-1-247.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-12-645.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-13-399.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-14-105.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-15-896.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-16-715.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-17-866.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-18-106.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-19-215.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-20-938.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-21-552.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-22-405.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-23-300.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-24-614.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-25-734.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-26-409.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-27-18.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-28-563.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-29-191.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-30-935.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-31-728.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-32-807.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-33-251.jpg" />
+    <Content Include="images\articles\2024\10\27\du-lich-34-199.jpg" />
+    <Content Include="images\articles\2024\10\27\khach-san-o-bac-giang-lua-chon-hoan-hao-cho-chuyen-du-lich-cua-ban-762.jpg" />
+    <Content Include="images\articles\2024\10\27\khach-san-o-thai-nguyen-tim-chon-nghi-chan-ly-tuong-cho-chuyen-du-lich-de-nhat-danh-tra-198.jpg" />
+    <Content Include="images\articles\2024\10\27\kinh-nghiem-du-lich-thai-nguyen-hanh-trinh-kham-pha-de-nhat-danh-tra-186.jpg" />
+    <Content Include="images\articles\2024\10\27\top-4-dia-diem-du-lich-o-bac-giang-ban-khong-nen-bo-lo-10.jpg" />
+    <Content Include="images\articles\2024\10\27\top-5-le-hoi-van-hoa-dac-sac-ban-khong-nen-bo-qua-khi-toi-thai-nguyen-516.jpg" />
+    <Content Include="images\articles\2024\10\28\kham-pha-nhung-khach-san-tuyet-voi-o-hoa-binh-cho-ky-nghi-dang-nho-531.jpg" />
+    <Content Include="images\articles\2024\10\28\nhung-le-hoi-van-hoa-dac-sac-o-vinh-phuc-ban-khong-nen-bo-qua-khi-toi-949.jpg" />
+    <Content Include="images\articles\2024\10\28\top-3-mon-an-o-phu-tho-khien-thuc-khach-nho-mai-khong-quen-788.jpg" />
+    <Content Include="images\articles\2024\10\28\top-3-mon-an-o-vinh-phuc-khien-ban-nho-mai-khong-quen-381.jpg" />
+    <Content Include="images\articles\2024\10\28\top-5-dia-diem-du-lich-o-phu-tho-ban-khong-nen-bo-lo-130.jpg" />
+    <Content Include="images\articles\2024\10\28\top-5-mon-an-o-hai-phong-khien-ban-phai-long-thanh-pho-cang-817.jpg" />
+    <Content Include="images\articles\2024\10\29\kinh-nghiem-du-lich-hoa-binh-kham-pha-ve-dep-tay-bac-834.jpg" />
+    <Content Include="images\articles\2024\10\29\top-6-dia-diem-du-lich-o-hoa-binh-ban-khong-nen-bo-lo-372.jpg" />
+    <Content Include="images\articles\2024\10\30\cam-nang-kinh-nghiem-du-lich-ninh-binh-tu-a-den-z-phien-ban-chi-tiet-54.jpg" />
+    <Content Include="images\articles\2024\11\02\du-lich-35-554.jpg" />
+    <Content Include="images\articles\2024\11\02\du-lich-36-43.jpg" />
+    <Content Include="images\articles\2024\11\02\giao-thong-1-51.jpg" />
+    <Content Include="images\articles\2024\11\02\giao-thong-1-682.jpg" />
+    <Content Include="images\articles\2024\11\02\giao-thong-2-635.jpg" />
+    <Content Include="images\articles\2024\11\02\giao-thong-644.jpg" />
+    <Content Include="images\banners\2024\10\14\3-691.jpg" />
+    <Content Include="images\banners\2024\10\14\3-886.jpg" />
+    <Content Include="images\banners\2024\10\14\dich-vu-3.jpg" />
+    <Content Include="images\banners\2024\10\14\dich-vu-410.jpg" />
+    <Content Include="images\banners\2024\10\14\dich-vu-thue-xe-60.png" />
+    <Content Include="images\banners\2024\10\14\learn-more-691.jpg" />
+    <Content Include="images\banners\2024\10\14\thue-xe-963.png" />
+    <Content Include="images\banners\2024\10\22\z5954388992270-3f04c66c52fc28ae4b2b13e6aa8c2d02-321.jpg" />
+    <Content Include="images\banners\2024\11\22\banner-03-398.jpg" />
+    <Content Include="images\banners\2024\12\24\customer-experience-759.png" />
+    <Content Include="images\banners\2024\12\24\feedback-65.jpg" />
+    <Content Include="images\banners\2024\12\24\feedback-953.jpg" />
+    <Content Include="images\banners\2024\12\24\proactive-388.png" />
+    <Content Include="images\banners\2024\12\24\saving-money-849.png" />
+    <Content Include="images\banners\2024\12\24\stacked-travelling-cars-frontal-view-499.png" />
+    <Content Include="images\banners\2024\12\25\1-130.png" />
+    <Content Include="images\banners\2024\12\25\1-227.png" />
+    <Content Include="images\banners\2024\12\25\1-333.png" />
+    <Content Include="images\banners\2024\12\25\banner-xe-2-864.jpg" />
+    <Content Include="images\banners\2024\12\25\banner-xe-879.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-543.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-60.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe-110.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe1-195.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe1-553.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe2-258.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe2-553.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe3-2.jpg" />
+    <Content Include="images\banners\2024\12\25\feedback-xe3-258.jpg" />
+    <Content Include="images\banners\2024\12\25\thiet-ke-chua-co-ten-1-545.png" />
+    <Content Include="images\banners\2024\12\25\thiet-ke-chua-co-ten-1-595.png" />
+    <Content Include="images\banners\2024\12\25\thiet-ke-chua-co-ten-1-646.png" />
+    <Content Include="images\banners\2024\12\25\thiet-ke-chua-co-ten-2-161.png" />
+    <Content Include="images\banners\2024\12\25\thiet-ke-chua-co-ten-3-19.jpg" />
+    <Content Include="images\banners\2024\12\25\thiet-ke-chua-co-ten-3-925.png" />
+    <Content Include="images\banners\2024\12\25\z6163027904605-4be5a91dd4079c8408875956f8b24af8-770.jpg" />
+    <Content Include="images\banners\2025\07\26\anh-1-19.svg" />
+    <Content Include="images\banners\2025\07\26\group-2399-252.svg" />
+    <Content Include="images\banners\2025\07\26\group-2399-294.svg" />
+    <Content Include="images\banners\2025\07\27\group-2399-121.png" />
+    <Content Include="images\banners\2025\07\28\vector-1-468.svg" />
+    <Content Include="images\banners\2025\07\28\vector-187.svg" />
+    <Content Include="images\banners\2025\07\28\vector-2-889.svg" />
+    <Content Include="images\banners\2025\07\28\vector-3-554.svg" />
+    <Content Include="images\banners\2025\07\29\ellipse-17-135.jpg" />
+    <Content Include="images\banners\2025\07\29\thiet-ke-website-5-768x384-1-2-204.png" />
+    <Content Include="images\banners\2025\07\29\thiet-ke-website-5-768x384-1-2-578.png" />
+    <Content Include="images\banners\2025\07\29\thiet-ke-website-5-768x384-1-2-998.png" />
+    <Content Include="images\carService\2025\07\29\rectangle-1405-106.jpg" />
+    <Content Include="images\carService\2025\07\29\rectangle-1405-45.jpg" />
+    <Content Include="images\carService\2025\07\29\rectangle-1405-803.jpg" />
+    <Content Include="images\configs\2024\10\14\logo-o-to-removebg-preview-287.png" />
+    <Content Include="images\configs\2024\10\14\logo-o-to-removebg-preview-303.png" />
+    <Content Include="images\configs\2024\10\15\gt1-569.jpg" />
+    <Content Include="images\configs\2024\10\15\logo-nam-anh-jpg-01-401.jpg" />
+    <Content Include="images\configs\2024\10\15\logo-nam-anh-jpg-01-933.jpg" />
+    <Content Include="images\configs\2024\10\15\logo-nam-anh-jpg-01-removebg-preview-441.png" />
+    <Content Include="images\configs\2024\10\15\logo-nam-anh-jpg-01-removebg-preview-538.png" />
+    <Content Include="images\configs\2024\10\15\logo-o-to-removebg-preview-124.png" />
+    <Content Include="images\configs\2024\10\15\logo-o-to-removebg-preview-93.png" />
+    <Content Include="images\configs\2024\10\22\group-3974-5966-764.png" />
+    <Content Include="images\configs\2024\10\22\logo-nam-anh-goc-01-360.png" />
+    <Content Include="images\configs\2024\10\22\logo-nam-anh-goc-01-423.png" />
+    <Content Include="images\configs\2024\10\22\logo-nam-anh-goc-03-107.png" />
+    <Content Include="images\configs\2024\10\22\logo-nam-anh-goc-03-407.png" />
+    <Content Include="images\configs\2024\10\22\z5935715901095-20213638640335119fa1b67c75c4d76e-44.jpg" />
+    <Content Include="images\configs\2024\10\22\z5935715901095-20213638640335119fa1b67c75c4d76e-917.png" />
+    <Content Include="images\configs\2024\12\25\1-786.png" />
+    <Content Include="images\configs\2024\12\25\1-872.png" />
+    <Content Include="images\configs\2024\12\25\artldp2b-692.jpg" />
+    <Content Include="images\configs\2024\12\25\artldp2b-837.png" />
+    <Content Include="images\configs\2024\12\25\banner-xe-119.jpg" />
+    <Content Include="images\configs\2024\12\25\chua-co-ten-360-x-270-px-813.jpg" />
+    <Content Include="images\configs\2025\01\23\favicon-930.png" />
+    <Content Include="images\detail\2025\07\29\driver-1-1-424.png" />
+    <Content Include="images\detail\2025\07\29\driver-1-191.png" />
+    <Content Include="images\detail\2025\07\29\driver-1-2-602.png" />
+    <Content Include="images\detail\2025\07\29\driver-1-3-716.png" />
+    <Content Include="images\detail\2025\07\29\rounded-rectangle-2-130.jpg" />
+    <Content Include="images\detail\2025\07\29\rounded-rectangle-2-158.jpg" />
+    <Content Include="images\detail\2025\07\29\rounded-rectangle-2-36.jpg" />
+    <Content Include="images\detail\2025\07\29\rounded-rectangle-2-843.jpg" />
+    <Content Include="images\detail\2025\07\30\driver-1-1-568.jpg" />
+    <Content Include="images\detail\2025\07\30\driver-1-2-464.jpg" />
+    <Content Include="images\detail\2025\07\30\driver-1-3-406.jpg" />
+    <Content Include="images\detail\2025\07\30\driver-1-522.jpg" />
+    <Content Include="images\detail\2025\07\30\rounded-rectangle-1-152.jpg" />
+    <Content Include="images\detail\2025\07\30\rounded-rectangle-1-21.jpg" />
+    <Content Include="images\detail\2025\07\30\rounded-rectangle-1-513.jpg" />
+    <Content Include="images\detail\2025\07\30\rounded-rectangle-1-825.jpg" />
+    <Content Include="images\feedbacks\2024\10\19\z5935715901095-20213638640335119fa1b67c75c4d76e-830.jpg" />
+    <Content Include="images\introduces\2024\10\14\gt1-148.jpg" />
+    <Content Include="images\introduces\2024\10\14\gt1-164.png" />
+    <Content Include="images\introduces\2024\10\14\gt1-990.png" />
+    <Content Include="images\introduces\2024\10\14\gt2-813.jpg" />
+    <Content Include="images\introduces\2024\11\20\1-174.png" />
+    <Content Include="images\introduces\2024\11\20\chua-co-ten-360-x-270-px-225.jpg" />
+    <Content Include="images\introduces\2024\11\20\gioi-thieu-718.jpg" />
+    <Content Include="images\introduces\2024\11\20\gioi-thieu-843.jpg" />
+    <Content Include="images\introduces\2024\11\20\picture1-713.png" />
+    <Content Include="images\introduces\2024\11\20\thiet-ke-chua-co-ten-1-580.jpg" />
+    <Content Include="images\introduces\2024\11\20\thiet-ke-chua-co-ten-2-288.jpg" />
+    <Content Include="images\introduces\2024\11\20\thue-xe-841.jpg" />
+    <Content Include="images\productCategory\2024\10\22\dcar-01-288.png" />
+    <Content Include="images\productCategory\2024\10\22\icon3-01-668.png" />
+    <Content Include="images\productCategory\2024\10\22\icon4-01-100.png" />
+    <Content Include="images\productCategory\2024\10\22\icon7-01-803.png" />
+    <Content Include="images\productCategory\2024\11\05\thue-xe-di-san-bay-900.jpg" />
+    <Content Include="images\productCategory\2024\11\05\thue-xe-thang-217.jpg" />
+    <Content Include="images\productCategory\2024\11\20\1-754.png" />
+    <Content Include="images\productCategory\2024\11\20\z5952017038399-67a84c860c986cb2721f750e1093d794-199.jpg" />
+    <Content Include="images\products\2024\10\14\di-tinh-471.jpg" />
+    <Content Include="images\products\2024\10\14\gt1-184.jpg" />
+    <Content Include="images\products\2024\10\14\tx16-536.jpg" />
+    <Content Include="images\products\2024\10\14\tx29-330.jpg" />
+    <Content Include="images\products\2024\10\14\tx7-352.jpg" />
+    <Content Include="images\products\2024\10\15\cuoi-375.jpg" />
+    <Content Include="images\products\2024\10\15\di-du-lich-752.jpg" />
+    <Content Include="images\products\2024\10\15\di-le-hoi-242.jpg" />
+    <Content Include="images\products\2024\10\15\di-san-bay-417.jpg" />
+    <Content Include="images\products\2024\10\15\tu-lai-1-733.jpg" />
+    <Content Include="images\products\2024\10\15\tu-lai-201.jpg" />
+    <Content Include="images\products\2024\10\15\tu-lai-889.jpg" />
+    <Content Include="images\upload\images\Banner 1.jpg" />
+    <Content Include="images\upload\images\Du lịch %285%29.jpg" />
+    <Content Include="images\upload\images\image.png" />
+    <Content Include="images\upload\images\Kinh nghiệm du lịch Bắc Giang %281%29.jpg" />
+    <Content Include="images\upload\images\Kinh nghiệm du lịch Bắc Giang.jpg" />
+    <Content Include="images\upload\images\Thanh %281%29.png" />
+    <Content Include="images\upload\images\Thanh %282%29.png" />
+    <Content Include="images\upload\images\Thanh.png" />
+    <Content Include="images\upload\images\Top 3 món ăn ở Bắc Ninh khiến bạn say lòng ngay từ lần đầu thưởng thức.jpg" />
+    <Content Include="images\upload\images\ảnh canva.jpg" />
+    <Content Include="images\upload\_thumbs\Images\Banner 1.jpg" />
+    <Content Include="images\upload\_thumbs\Images\Du lịch %285%29.jpg" />
+    <Content Include="images\upload\_thumbs\Images\Kinh nghiệm du lịch Bắc Giang %281%29.jpg" />
+    <Content Include="images\upload\_thumbs\Images\Kinh nghiệm du lịch Bắc Giang.jpg" />
+    <Content Include="images\upload\_thumbs\Images\Thanh %281%29.png" />
+    <Content Include="images\upload\_thumbs\Images\Thanh %282%29.png" />
+    <Content Include="images\upload\_thumbs\Images\Thanh.png" />
+    <Content Include="images\upload\_thumbs\Images\Top 3 món ăn ở Bắc Ninh khiến bạn say lòng ngay từ lần đầu thưởng thức.jpg" />
+    <Content Include="images\upload\_thumbs\Images\ảnh canva.jpg" />
     <Content Include="Scripts\aos.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1767,6 +1990,7 @@
     <Content Include="Views\CarService\Detail.cshtml" />
     <Content Include="Views\CarService\ListDetail.cshtml" />
     <Content Include="Views\CarService\UpdateDetail.cshtml" />
+    <Content Include="Views\Home\FormLanding.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1805,20 +2029,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507291455049_init.resx">
-      <DependentUpon>202507291455049_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507291517005_init-so.resx">
-      <DependentUpon>202507291517005_init-so.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507291540116_init-typesevice.resx">
-      <DependentUpon>202507291540116_init-typesevice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507291655533_up-contact.resx">
-      <DependentUpon>202507291655533_up-contact.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507291705022_remove-fullname.resx">
-      <DependentUpon>202507291705022_remove-fullname.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507300500103_init-db.resx">
+      <DependentUpon>202507300500103_init-db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

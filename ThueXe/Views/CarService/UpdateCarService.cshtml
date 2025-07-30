@@ -48,6 +48,18 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="CategoryName">Slogan<span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.Slogan, new { @class = "form_control w300" })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="CategoryName">Số ghế<span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.Car, new { @class = "form_control w300" })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.Description, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 @Html.EditorFor(a => a.Description)

@@ -14,18 +14,23 @@
                     }
                 </a>
             </li>
-            <li>
+            <li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Giới thiệu</a>
             </li>
-            <li>
+            <li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Bảng giá</a>
             </li>
             @if (Model.ArticleCategories.Any(a => a.ParentId == null))
             {
                 foreach (var item in Model.ArticleCategories.Where(a => a.ParentId == null))
                 {
-                    <li @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id)) { @Html.Raw("class='has-dropdown'") }>
-                        <a href="@Url.Action("ArticleCategory", "Home", new { url = item.Url })">
+                    var cat = Url.Action("ArticleCategory", "Home", new { url = item.Url });
+                    if (item.Redirect)
+                    {
+                        cat = item.Url;
+                    }
+                    <li  class="d-lg-block d-none @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id)) { @Html.Raw("'has-dropdown'") }">
+                        <a href="@cat">
                             @item.CategoryName
                             @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id))
                             {
@@ -37,8 +42,13 @@
                             <ul class="ul-reset sub-nav">
                                 @foreach (var child in Model.ArticleCategories.Where(a => a.ParentId == item.Id))
                                 {
+                                    var cat2 = Url.Action("ArticleCategory", "Home", new { url = child.Url });
+                                    if (child.Redirect)
+                                    {
+                                        cat2 = child.Url;
+                                    }
                                     <li>
-                                        <a href="@Url.Action("ArticleCategory", "Home", new { url = child.Url })">
+                                        <a href="@cat2">
                                             <span>@child.CategoryName</span>
                                         </a>
                                     </li>
@@ -48,12 +58,81 @@
                     </li>
                 }
             }
-            <li>
+            <li class="d-lg-block d-none">
                 <a href="@Url.Action("Contact")">Liên hệ</a>
             </li>
-            <li>
+            <li class="d-lg-block d-none">
                 <a href=""><i class="far fa-search"></i></a>
+            </li>
+            <li class="d-lg-none d-block">
+                <div class="d-flex text-right w-100 justify-content-end align-items-center">
+                    <div class="mobile-btn text-white" onclick="show()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
 </header>
+<div class="overflow" onclick="Close()">
+</div>
+
+<div class="header-mobile p-0 overflow-hidden">
+    <div class="row border-bottom p-2">
+        <div class="col-5">
+            <a href="/">
+                @if (config.Image != null)
+                {
+                    <img src="@Path.Combine("/images/configs/", config.Image)" alt="@config.Title" class="logo logo-mb">
+                }
+            </a>
+        </div>
+        <div class="col-7 text-right text-white">
+            <div class="close-header" onclick="Close()"><i class="fas fa-times"></i></div>
+        </div>
+    </div>
+    <ul class="ul-reset ul-mb mt-4">
+        @if (Model.ArticleCategories.Any(a => a.ParentId == null))
+        {
+            foreach (var item in Model.ArticleCategories.Where(a => a.ParentId == null))
+            {
+                var cat = Url.Action("ArticleCategory", "Home", new { url = item.Url });
+                if (item.Redirect)
+                {
+                    cat = item.Url;
+                }
+                <li class="li-mb">
+                    <div class="d-flex align-items-center justify-content-between p-2 mx-3">
+                        <a href="@cat">@item.CategoryName</a>
+                        @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id))
+                        {
+                            <i class="fas fa-caret-down"></i>
+                        }
+                    </div>
+                    @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id))
+                    {
+                        <ul>
+                            @foreach (var child in Model.ArticleCategories.Where(a => a.ParentId == item.Id))
+                            {
+                                var cat2 = Url.Action("ArticleCategory", "Home", new { url = child.Url });
+                                if (child.Redirect)
+                                {
+                                    cat2 = child.Url;
+                                }
+                                <li class="p-2">
+                                    <a class="mx-4" href="@cat2" @if (child.Redirect) { @Html.Raw(@Html.Raw("target='_blank'")) }>@child.CategoryName</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+
+        }
+        <li class="li-mb">
+            <div class="d-flex align-items-center justify-content-between p-2 mx-3">
+                <a href="@Url.Action("Contact")">Liên hệ</a>
+            </div>
+        </li>
+    </ul>
+</div>

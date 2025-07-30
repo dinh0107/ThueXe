@@ -7,13 +7,13 @@ namespace ThueXe.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class removefullname : IMigrationMetadata
+    public sealed partial class initdb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(removefullname));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initdb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507291705022_remove-fullname"; }
+            get { return "202507300500103_init-db"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,7 +4,7 @@
     var siteTitle = ViewBag.Title ?? config?.Title ?? "Trang chủ";
     var siteDescription = ViewBag.Description ?? config?.Description ?? "";
     var canonicalUrl = ViewBag.Canonical ?? Request?.Url?.AbsoluteUri;
-    //var imageShare = ViewBag.ImagShare ?? Url.Content("~/images/configs/" + (config?.ImageShare ?? config?.Image));
+    var imageShare = ViewBag.ImagShare ?? Url.Content("~/images/configs/" + (config?.ImageShare ?? config?.Image));
 }
 <!DOCTYPE html>
 <html lang="vi-VN">
@@ -28,7 +28,7 @@
     <meta property="og:description" content="@config.Description" />
     <meta property="og:url" content="@canonicalUrl" />
     <meta property="og:site_name" content="@siteTitle" />
-    @*<meta property="og:image" content="@imageShare" />*@
+    <meta property="og:image" content="@imageShare" />
     @Styles.Render("~/Content/css")
     @if (!string.IsNullOrWhiteSpace(config?.GoogleAnalytics))
     {

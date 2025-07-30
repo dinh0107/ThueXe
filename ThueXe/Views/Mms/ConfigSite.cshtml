@@ -79,6 +79,17 @@
                             </div>
                         }
                         <div class="mb-3 row">
+                            @Html.LabelFor(a => a.ImageShare, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">@Html.TextBoxFor(a => a.AboutImage, new { type = "file" })</div>
+                        </div>
+                        if (Model.ImageShare != null)
+                        {
+                            <div class="mb-3 row">
+                                <label class="col-form-label col-lg-3"></label>
+                                <div class="col-lg-9"><img class="img-border" src="@Path.Combine("/images/configs/", Model.ImageShare)?w=150" /></div>
+                            </div>
+                        }
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.AboutText, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">@Html.EditorFor(a => a.AboutText)</div>
                         </div>
@@ -111,9 +122,9 @@
                             <div class="col-lg-9">@Html.EditorFor(a => a.Hotline)</div>
                         </div>
                         @*<div class="mb-3 row">
-                            @Html.LabelFor(a => a.Hotline2, new { @class = "col-form-label col-lg-3" })
-                            <div class="col-lg-9">@Html.EditorFor(a => a.Hotline2)</div>
-                        </div>*@
+                @Html.LabelFor(a => a.Hotline2, new { @class = "col-form-label col-lg-3" })
+                <div class="col-lg-9">@Html.EditorFor(a => a.Hotline2)</div>
+            </div>*@
                         <div class="mb-3 row">
                             @Html.LabelFor(a => a.Email, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">@Html.EditorFor(a => a.Email)</div>

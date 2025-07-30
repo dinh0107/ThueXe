@@ -20,7 +20,7 @@
             <div class="col-lg-8 d-flex align-items-center justify-content-center">
                 <div class="list-banner">
                     <div class="service-title">
-                        @Model.CarService.Title
+                        @Model.CarService.Slogan
                     </div>
                     <div class="service-sub">
                         @Model.CarService.Description
@@ -33,14 +33,20 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 d-flex align-items-center">
-                @Html.Action("Form")
+            <div class="col-lg-4 d-lg-flex d-none align-items-center">
+                @Html.Action("FormLanding")
             </div>
         </div>
     </div>
 </section>
+<div class="container py-3">
+    <div class=" d-lg-none d-block align-items-center justify-content-center">
+        @Html.Action("FormLanding")
+    </div>
+</div>
 @if (Model.CarService.Details.Any(a => a.CarServiceType == CarServiceType.Highlight))
 {
+    var delay = 200;
     <section class="page-section">
         <div class="container">
             <h2 class="title">ưu điểm vượt trội</h2>
@@ -48,8 +54,8 @@
             <div class="row">
                 @foreach (var item in Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.Highlight))
                 {
-                    <div class="col-lg-6">
-                        <div class="d-flex gap-3 mt-3">
+                    <div class="col-6">
+                        <div class="d-flex gap-3 mt-3 custom-cloum"  data-aos-duration="700" data-aos-delay="@delay" data-aos="zoom-in">
                             @if (item.Image != null)
                             {
                                 <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/detail/", item.Image)" alt="@item.Name" class="icon-img lazyload" />
@@ -60,6 +66,7 @@
                             </div>
                         </div>
                     </div>
+                    delay += 200;
                 }
             </div>
         </div>
@@ -139,7 +146,7 @@
                         @foreach (var item in Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.ProcessStep))
                         {
                             int count = 1;
-                            <div class="col-lg-3">
+                            <div class="col-lg-3 col-6">
                                 <div class="d-flex flex-column align-items-center mt-4 gap-3">
                                     <div class="step-count">
                                         @count

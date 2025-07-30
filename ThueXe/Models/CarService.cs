@@ -10,6 +10,9 @@ namespace ThueXe.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Slogan { get; set; }
+        [Display(Name = "Loại xe")]
+        public string Car { get; set; }
         [UIHint("EditorBox")]
         public string Slug { get; set; }
         [UIHint("TextArea")]

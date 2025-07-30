@@ -9,17 +9,27 @@ function homeJs() {
         slidesToShow: 3,
         infinite: true,
         dots: true,
+        //autoplay: true,
+        //autoplaySpeed: 3000,
         prevArrow: "<button type='button' aria-label='bên trái' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button'aria-label='bên phải' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
 
         responsive: [
             {
+                breakpoint: 900,
+                settings: {
+                    arrows: false,
+                    centerMode: false, dots: true,
+                    slidesToShow: 3
+                }
+            },
+            {
                 breakpoint: 768,
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '0',
-                    slidesToShow: 3
+                    centerPadding: '0', dots: true,
+                    slidesToShow: 1
                 }
             },
             {
@@ -27,7 +37,7 @@ function homeJs() {
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '0',
+                    centerPadding: '0', dots: true,
                     slidesToShow: 1
                 }
             }
@@ -46,6 +56,8 @@ function homeJs() {
         slidesToShow: 2,
         infinite: true,
         dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
         prevArrow: "<button type='button' aria-label='bên trái' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button'aria-label='bên phải' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
 
@@ -53,12 +65,14 @@ function homeJs() {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2
+                    dots: true,
+                    slidesToShow: 1
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
+                    dots: true,
                     slidesToShow: 1
                 }
             }
@@ -68,6 +82,8 @@ function homeJs() {
         slidesToShow: 3,
         infinite: true,
         dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
         prevArrow: "<button type='button' aria-label='bên trái' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button'aria-label='bên phải' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
 
@@ -75,13 +91,15 @@ function homeJs() {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2
+                    slidesToShow: 2,
+                    dots: true,
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 1,
+                    dots: true,
                 }
             }
         ]
@@ -96,26 +114,36 @@ function homeJs() {
     });
 
 }
-
+function show() {
+    $(".header-mobile").addClass('active')
+    $(".overflow").addClass('active')
+}
+function Close() {
+    $(".header-mobile").removeClass('active')
+    $(".overflow").removeClass('active')
+}
 function productDetail() {
     $('.list-car').slick({
         slidesToShow: 3,
         infinite: true,
         dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
         prevArrow: "<button type='button' aria-label='bên trái' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button'aria-label='bên phải' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-
         responsive: [
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2
+                    slidesToShow: 2,
+                    dots: true,
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 1,
+                    dots: true,
                 }
             }
         ]
@@ -124,7 +152,7 @@ function productDetail() {
 
 
 $(function () {
-    $("#bookingForm").on("submit", function (e) {
+    $(".contact-part").on("submit", function (e) {
         e.preventDefault();
         if ($(this).valid()) {
             $.post("/Home/ContactForm", $(this).serialize(), function (data) {
@@ -135,7 +163,7 @@ $(function () {
                         icon: 'success',
                         position: "bottom-right"
                     })
-                    $("#bookingForm").trigger("reset");
+                    $(".contact-part").trigger("reset");
                 } else {
                     $.toast({
                         heading: 'Liên hệ không thành công',

@@ -16,6 +16,7 @@
     font-display: swap;
     src: url('../webfonts/SVN-Aguda Bold.woff2') format('woff2');
 }
+
 @font-face {
     font-family: 'Display-Medium';
     font-display: swap;
@@ -243,6 +244,7 @@ header {
     padding: 0 20px;
 
     li {
+        position:relative;
         > a {
             color: $white;
             font-size: 16px;
@@ -324,33 +326,39 @@ header {
     height: 70vh !important;
     background-image: var(--bg) !important;
 }
+
 .color--orange {
     background: $orange;
 }
+
 .service-title {
     color: #FFF;
     font-size: 36px;
     @include Bold;
     text-transform: uppercase;
 }
+
 .service-sub {
     color: #FFF;
     font-size: 16px;
 }
+
 .banner {
     width: 100%;
-    height: 90vh;
+    height: 74vh;
     background: url(../Content/images/img-main/banner.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
 }
+
 .title-banner {
     @include Blacksword;
     color: #004596;
     font-size: 64px;
-    text-align:center;
+    text-align: center;
 }
+
 .has-dropdown {
     position: relative;
 }
@@ -366,7 +374,7 @@ header {
         width: 588px;
         height: 66px;
         flex-shrink: 0;
-        background:$gradient-orange;
+        background: $gradient-orange;
         @include Flex-center;
     }
 }
@@ -451,6 +459,7 @@ header {
     width: 630px;
     height: 322px;
 }
+
 .slogan {
     color: $blue;
     @include Aguda;
@@ -994,7 +1003,7 @@ footer {
         font-size: 18px;
         @include Bold;
         line-height: normal;
-        margin-bottom:0
+        margin-bottom: 0
     }
 
     span {
@@ -1002,45 +1011,47 @@ footer {
         font-size: 16px;
     }
 }
+
 .icon-img {
     width: 56px;
     height: 56px;
     flex-shrink: 0;
     aspect-ratio: 1/1;
 }
+
 .car-item {
     img {
         width: 100%;
         object-fit: cover;
         aspect-ratio: 1.5;
-        border-radius:10px;
+        border-radius: 10px;
     }
 }
+
 .car-name {
     color: #000;
     @include Bold;
     font-size: 20px;
     text-transform: uppercase;
-    text-align:center;
+    text-align: center;
 }
+
 .year-car {
     color: #000;
     font-size: 16px;
-    text-align:center;
+    text-align: center;
 }
+
 .list-car {
     @include letterSpacing(20px, -20px);
     margin-top: 50px;
 
     .slick-next {
         right: -50px;
-
-       
     }
 
     .slick-prev {
         left: -50px;
-
     }
 
     .slick-dots {
@@ -1061,14 +1072,14 @@ footer {
             padding: 0;
             border: none;
             border-radius: 100%;
-            border: 1px solid $white;
+            border: 1px solid $orange;
             text-indent: -9999px;
             background: none;
         }
 
         li.slick-active button {
-            border: 1px solid $white;
-            background: $white;
+            border: 1px solid $orange;
+            background: $gradient-orange;
         }
     }
 }
@@ -1197,6 +1208,7 @@ footer {
     border-bottom: .063rem solid #e4e4e4;
     padding: .625rem 0;
 }
+
 .article-item {
     position: relative;
     margin-bottom: 30px;
@@ -1263,6 +1275,7 @@ footer {
         bottom: -20px;
     }
 }
+
 .box-articles {
     margin-top: 40px;
 }
@@ -1272,6 +1285,7 @@ footer {
     border: 0 !important;
     border-radius: 10px;
 }
+
 .article-info__share {
     align-items: center;
 
@@ -1294,6 +1308,7 @@ footer {
         }
     }
 }
+
 .title-relate {
     color: #000;
     font-size: 1.125rem;
@@ -1309,22 +1324,26 @@ footer {
         bottom: 0;
     }
 }
+
 .box-article article {
     border-bottom: .063rem solid #e4e4e4;
     padding: 1.25rem 0;
 }
+
 .body-relate {
     display: flex;
     flex-direction: column;
     height: 8.438rem;
     justify-content: space-evenly;
-    margin-left:20px;
+    margin-left: 20px;
 }
+
 .relate-img {
     width: 14.125rem;
     height: 8.438rem;
     object-fit: cover;
 }
+
 .relate-subject {
     color: #000;
     font-size: 1rem;
@@ -1350,7 +1369,398 @@ footer {
     height: 8.438rem;
     justify-content: space-evenly;
 }
-.step-name-custom{
-    font-size:14px;
-    text-align:center;
+
+.step-name-custom {
+    font-size: 14px;
+    text-align: center;
+}
+
+.hot {
+    td {
+        position: relative;
+        @include Bold;
+        color: $orange !important;
+    }
+
+    img {
+        position: absolute;
+        bottom: 17px;
+    }
+}
+
+.overflow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 62%);
+    z-index: 99;
+    top: 0;
+    left: -100%;
+    transition: all .6s;
+
+    &.active {
+        left: 0;
+    }
+}
+
+.header-mobile {
+    display: none;
+}
+.breadcrumb {
+    background-color: #f5f5f3;
+    color: #000;
+    font-size: .85rem;
+}
+@include maxWidth(900px) {
+    header {
+        background: #1b263b;
+    }
+
+    .close-header {
+        text-align: right;
+    }
+
+    .header-mobile {
+        display: block;
+        height: 100vh;
+        width: 50%;
+        background: #1b263b;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        z-index: 99999;
+        padding: 13px;
+        transition: all .6s;
+    }
+
+    .header-mobile.active {
+        right: 0;
+    }
+
+    .ul-mb {
+        .li-mb {
+            border-bottom: 1px solid $blue;
+
+            i {
+                color: $white;
+            }
+
+            a {
+                color: $white;
+                text-transform: uppercase;
+            }
+
+            ul {
+                padding-left: 0;
+                background: $white;
+
+                li {
+                    border-top: 1px solid $white;
+
+                    a {
+                        color: $black;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .intro {
+        justify-content: flex-start;
+        margin-bottom: 30px;
+
+        h2 {
+            font-size: 18px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .service-slide .slick-current {
+        transform: scale(1) !important;
+    }
+
+    .service-slide {
+        @include letterSpacing(10px, -10px);
+
+        article {
+            padding: 35px 20px;
+            border-radius: 20px;
+            background: #ebebeb;
+            transition: all 1s;
+        }
+
+        h2 {
+            font-size: 20px !important;
+        }
+
+        .tag {
+            font-size: 10px !important;
+        }
+
+
+        .slick-slide {
+            &:not(.slick-current) {
+                transform: scale(1) !important;
+            }
+        }
+
+        a {
+            .service-slide a {
+                font-size: 10px;
+                padding: 14px;
+            }
+        }
+
+
+
+        .slick-dots {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 1rem 0;
+            list-style-type: none;
+
+            li {
+                margin: 0 0.25rem;
+            }
+
+            button {
+                display: block;
+                width: 1rem;
+                height: 1rem;
+                padding: 0;
+                border: none;
+                border-radius: 100%;
+                border: 1px solid $orange;
+                text-indent: -9999px;
+                background: $white;
+            }
+
+            li.slick-active button {
+                border: 1px solid $orange;
+                background: $gradient-orange;
+            }
+        }
+    }
+
+    .header-tb tr td {
+        font-size: 12px;
+        padding-bottom: 15px;
+    }
+
+    .box-price tbody tr td {
+        padding: 15px 6px;
+        font-size: 14px;
+    }
+
+    .hot img {
+        position: absolute;
+        bottom: 17px;
+        right: -20px;
+        z-index: 1;
+    }
+
+    .feedback {
+        overflow: hidden;
+    }
+
+    .step {
+        margin-bottom: 30px;
+
+        h2 {
+            text-align: center;
+        }
+    }
+
+    .last-section img {
+        position: unset;
+        margin-top: -117px;
+    }
+
+    .car-name {
+        font-size: 14px;
+    }
+
+    .year-car {
+        font-size: 16px;
+    }
+
+    .breadcrumb {
+        display: flex !important;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow: auto;
+        padding-bottom: .625rem !important;
+        font-size: 14px;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        float: left;
+        padding-right: 1px;
+        color: #6c757d;
+        content: "/";
+    }
+
+    .breadcrumb-item + .breadcrumb-item {
+        padding-left: .5rem;
+    }
+
+    .box-article article {
+        flex-direction: column;
+    }
+
+    .box-article article img {
+        width: 100%;
+        height: 15.438rem;
+    }
+
+    .body-relate {
+        margin-top: .625rem;
+        margin-left: 0 !important;
+    }
+}
+@include maxWidth(600px) {
+    .detail-subject {
+        font-size: 1.5rem;
+    }
+
+    .header-mobile {
+        width: 90%;
+    }
+
+    .title-banner {
+        font-size: 30px;
+    }
+
+    .list-banner h2 {
+        font-size: 20px;
+        width: 66%;
+        height: 42px;
+        margin: 0 auto;
+    }
+
+    .banner {
+        width: 100%;
+        height: 40vh !important;
+    }
+
+    .slogan {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .btn-color {
+        padding: 9px 16px 9px 16px;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    .img-ban {
+        width: 56%;
+        height: 322px;
+        margin: 0 auto;
+    }
+
+    .intro img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .img-banner {
+        width: 100%;
+        margin-top: 42px;
+    }
+
+    .contact-part h2 {
+        font-size: 25px;
+    }
+
+    .contact-part button {
+        font-size: 14px;
+    }
+
+    .intro h2 {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .last-section {
+        padding: 20px 27px;
+    }
+
+    .last-section img {
+        width: 100%;
+        height: 200px;
+        right: 0;
+    }
+
+    .box-price {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .table {
+            display: grid;
+            justify-content: flex-start;
+            grid-auto-columns: max-content;
+            overflow: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-snap-stop: always;
+            touch-action: manipulation;
+            scroll-padding: 1rem;
+            grid-template-columns: unset;
+        }
+    }
+
+    .header-tb tr td {
+        width: 187px;
+    }
+
+    .box-price tbody tr td {
+        width: 187px;
+    }
+
+    .hot img {
+        position: absolute;
+        bottom: 17px;
+        right: 12px;
+    }
+
+    .see {
+        font-size: 12px;
+    }
+
+    .service-title {
+        font-size: 20px;
+    }
+
+    .custom-cloum {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .uu-info p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .uu-info span {
+        font-size: 14px;
+        text-align: center;
+        @include truncate(2);
+    }
+
+    .step-count {
+        margin-right: 0;
+    }
 }

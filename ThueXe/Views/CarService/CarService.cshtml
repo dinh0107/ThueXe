@@ -44,7 +44,19 @@
                         <div class="mb-3 row">
                             <label class="col-form-label col-lg-3" for="CategoryName">Tên<span class="text-danger">*</span></label>
                             <div class="col-lg-9">
-                                @Html.TextBoxFor(a => a.Title , new {@class= "form_control w300" })
+                                @Html.TextBoxFor(a => a.Title, new { @class = "form_control w300" })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="CategoryName">Slogan<span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.Slogan, new { @class = "form_control w300" })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-lg-3" for="CategoryName">Số ghế<span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.Car, new { @class = "form_control w300" })
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -100,7 +112,7 @@
                         </div>
                     }
                 </div>
-            </div>
+                    </div>
         </div>
         @Html.Action("ListCarService", "CarService")
     </div>

@@ -128,6 +128,14 @@ namespace ThueXe.Controllers
             {
                 return false;
             }
+            foreach (var detail in category.Details.ToList())
+            {
+                _unitOfWork.CarServiceDetailRepository.Delete(detail);
+            }
+            foreach (var price in category.CarServicePrices.ToList())
+            {
+                _unitOfWork.CarServicePriceRepository.Delete(price);
+            }
             _unitOfWork.CarServiceRepository.Delete(category);
             _unitOfWork.Save();
             return true;

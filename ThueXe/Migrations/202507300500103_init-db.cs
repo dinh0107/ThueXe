@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class initdb : DbMigration
     {
         public override void Up()
         {
@@ -89,6 +89,8 @@
                         Image = c.String(),
                         Name = c.String(nullable: false),
                         Desciption = c.String(),
+                        Sort = c.Int(nullable: false),
+                        CarServiceType = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.CarServices", t => t.CarServiceId, cascadeDelete: true)
@@ -100,6 +102,8 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(),
+                        Slogan = c.String(),
+                        Car = c.String(),
                         Slug = c.String(),
                         Description = c.String(),
                         ImageUrl = c.String(),
@@ -137,6 +141,7 @@
                         Instagram = c.String(maxLength: 500),
                         Messenger = c.String(maxLength: 500),
                         Image = c.String(),
+                        ImageShare = c.String(),
                         Car4 = c.String(),
                         Car7 = c.String(),
                         Car16 = c.String(),
@@ -172,6 +177,7 @@
                         Mobile = c.String(nullable: false, maxLength: 10),
                         CreateDate = c.DateTime(nullable: false),
                         StatusContact = c.Int(nullable: false),
+                        TypeCar = c.String(maxLength: 10),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -332,8 +338,8 @@
             DropForeignKey("dbo.Vouchers", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Trips", "DriverId", "dbo.Drivers");
             DropForeignKey("dbo.Trips", "CustomerId", "dbo.Customers");
-            DropForeignKey("dbo.CarServicePrices", "CarServiceId", "dbo.CarServices");
             DropForeignKey("dbo.CarServiceDetails", "CarServiceId", "dbo.CarServices");
+            DropForeignKey("dbo.CarServicePrices", "CarServiceId", "dbo.CarServices");
             DropForeignKey("dbo.Articles", "ArticleCategoryId", "dbo.ArticleCategories");
             DropIndex("dbo.Products", new[] { "ProductCategoryId" });
             DropIndex("dbo.ProductCategories", new[] { "ParentId" });

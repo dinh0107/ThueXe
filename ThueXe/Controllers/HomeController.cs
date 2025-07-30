@@ -157,6 +157,11 @@ namespace ThueXe.Controllers
         {
             return PartialView();
         }
+
+        public PartialViewResult FormLanding()
+        {
+            return PartialView();
+        }
         [HttpPost, ValidateAntiForgeryToken]
         public JsonResult ContactForm(Contact model)
         {

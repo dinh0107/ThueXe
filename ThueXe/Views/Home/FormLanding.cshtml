@@ -1,0 +1,39 @@
+﻿@model ThueXe.Models.Contact
+<form method="post" class="contact-part" id="bookingForm">
+    <h2 class="form-title">
+        Kiểm tra xe trống và <br />
+        Nhận báo giá ưu đãi ngay
+    </h2>
+    @Html.AntiForgeryToken()
+    <div class="mt-3">
+        @Html.LabelFor(a => a.Mobile, new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+        <small class="valid-feedback">
+            @Html.ValidationMessageFor(a => a.Mobile)
+        </small>
+    </div>
+    <div class="mt-3">
+        @Html.LabelFor(a => a.From, new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.From, new { @class = "form-control", placeholder = "Nhập điểm đi" })
+        <small class="valid-feedback">
+            @Html.ValidationMessageFor(a => a.From)
+        </small>
+    </div>
+    <div class="mt-3">
+        @Html.LabelFor(a => a.To, new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.To, new { @class = "form-control", placeholder = "Nhập điểm đến" })
+        <small class="valid-feedback">
+            @Html.ValidationMessageFor(a => a.From)
+        </small>
+    </div>
+    <div class="mt-3">
+        @Html.LabelFor(a => a.FromDate, new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.FromDate, new { @class = "form-control", placeholder = "Nhập ngày đi", type = "datetime-local" })
+        <small class="valid-feedback">
+            @Html.ValidationMessageFor(a => a.FromDate)
+        </small>
+    </div>
+    <button type="submit">
+        nhận báo giá ngay
+    </button>
+</form>

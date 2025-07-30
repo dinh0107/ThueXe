@@ -261,6 +261,10 @@ namespace ThueXe.Controllers
                     {
                         config.AboutImage = imgFile;
                     }
+                    else if (Request.Files.Keys[i] == "ImageShare")
+                    {
+                        config.ImageShare = imgFile;
+                    }
                 }
 
                 config.Facebook = model.Facebook;
