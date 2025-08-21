@@ -5,11 +5,11 @@
     ViewBag.Title = Model.CarService.TitleMeta ?? Model.CarService.Title;
     ViewBag.Description = Model.CarService.DescriptionMeta ?? Model.CarService.Description;
     ViewBag.Canonical = Request.Url?.GetLeftPart(UriPartial.Authority) + Url.Action("Index");
-    //var share = config.ImageShare ?? config.Image;
-    //if (share != null)
-    //{
-    //    ViewBag.ImageShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/configs/", share);
-    //}
+    var share = config.ImageShare ?? config.Image;
+    if (share != null)
+    {
+        ViewBag.ImageShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/configs/", share);
+    }
 }
 <section class="banner custom-baner"
          style="--bg: url('@(string.IsNullOrEmpty(Model.CarService?.ImageUrl)

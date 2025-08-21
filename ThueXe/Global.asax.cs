@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web;
 
 
 namespace ThueXe
@@ -25,6 +26,30 @@ namespace ThueXe
             using (var unitofWork = new UnitOfWork())
             {
                 Application["ConfigSite"] = unitofWork.ConfigSiteRepository.GetQuery().FirstOrDefault();
+            }
+        }
+        protected void Application_Error()
+        {
+            var exception = Server.GetLastError();
+            Response.Clear();
+
+            var httpException = exception as HttpException;
+            if (httpException != null)
+            {
+                var code = httpException.GetHttpCode();
+
+                if (code == 404)
+                {
+                    Response.Redirect("/404");
+                }
+                else
+                {
+                    Response.Redirect("/Home/Index"); 
+                }
+            }
+            else
+            {
+                Response.Redirect("/Home/Index");
             }
         }
     }

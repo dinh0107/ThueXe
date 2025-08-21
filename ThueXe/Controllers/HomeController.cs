@@ -195,9 +195,17 @@ namespace ThueXe.Controllers
             return View();
         }
 
+        [Route("lien-he")]
         public ActionResult Contact()
         {
             return View();
+        }
+        [Route("404")]
+        public ActionResult NotFound()
+        {
+            Response.StatusCode = 404;
+            Response.TrySkipIisCustomErrors = true; 
+            return View(); 
         }
     }
 }
