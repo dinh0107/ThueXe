@@ -144,6 +144,7 @@
     <Compile Include="Controllers\CarServiceController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MmsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -158,6 +159,10 @@
     <Compile Include="Migrations\202507300500103_init-db.cs" />
     <Compile Include="Migrations\202507300500103_init-db.Designer.cs">
       <DependentUpon>202507300500103_init-db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202508210851107_add-some-tb.cs" />
+    <Compile Include="Migrations\202508210851107_add-some-tb.Designer.cs">
+      <DependentUpon>202508210851107_add-some-tb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -218,11 +223,18 @@
     <Content Include="Content\images\bg.png" />
     <Content Include="Content\images\hot-gif.gif" />
     <Content Include="Content\images\icon.svg" />
+    <Content Include="Content\images\img-main\banner-min.jpg" />
     <Content Include="Content\images\img-main\banner.jpg" />
     <Content Include="Content\images\img-main\base64.gif" />
+    <Content Include="Content\images\img-main\bg-min.png" />
     <Content Include="Content\images\img-main\fb.svg" />
+    <Content Include="Content\images\img-main\icon-chat-messenger-1.png.png" />
+    <Content Include="Content\images\img-main\icon-chat-zalo-1.png.png" />
+    <Content Include="Content\images\img-main\icon-sms2-1.png.png" />
     <Content Include="Content\images\img-main\instagram.svg" />
     <Content Include="Content\images\img-main\linkedin.png" />
+    <Content Include="Content\images\img-main\mess.png" />
+    <Content Include="Content\images\img-main\phone-icon-2.png" />
     <Content Include="Content\images\img-main\qwdqwd.png" />
     <Content Include="Content\images\img-main\Rounded rectangle.jpg" />
     <Content Include="Content\images\img-main\tw.svg" />
@@ -598,6 +610,8 @@
     <Content Include="Views\CarService\UpdateDetail.cshtml" />
     <Content Include="Views\Home\FormLanding.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\General.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -638,6 +652,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202507300500103_init-db.resx">
       <DependentUpon>202507300500103_init-db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508210851107_add-some-tb.resx">
+      <DependentUpon>202508210851107_add-some-tb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

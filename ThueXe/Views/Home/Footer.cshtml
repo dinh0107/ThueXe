@@ -16,7 +16,7 @@
                 <h2>Link nhanh</h2>
                 <ul class="ul-reset ul-ft">
                     <li>
-                        <a href="@Url.Action("Index")"#myTable>Bảng giá</a>
+                        <a href="@Url.Action("Index")" #myTable>Bảng giá</a>
                     </li>
                     @foreach (var item in Model.ArticleCategories)
                     {
@@ -59,3 +59,39 @@
         </div>
     </div>
 </footer>
+
+
+
+<a href="https://@config.Messenger" target="_blank" rel="nofollow" class="social-fix mess">
+    <img src="~/Content/images/img-main/mess.png" alt="Messenger" />
+</a>
+<a href="https://zalo.me/@config.Zalo" target="_blank" rel="nofollow" class="social-fix zalo">
+    <img src="~/Content/images/img-main/zalo-logo.png" alt="Zalo" />
+</a>
+<a href="tel:@config.Hotline" class="suntory-alo-phone suntory-alo-green" id="suntory-alo-phoneIcon" style="left: 0; bottom: 0;"><div class="suntory-alo-ph-circle"></div><div class="suntory-alo-ph-circle-fill"></div><div class="suntory-alo-ph-img-circle"><i class="fa-solid fa-phone"></i></div><div class="tel"><p class="fone">@config.Hotline</p></div> </a>
+<ul class="ul-reset bottom-contact">
+    <li>
+        <a href="tel:@config.Hotline">
+            <img src="~/Content/images/img-main/phone-icon-2.png" /><br />
+            <span>Gọi điện</span>
+        </a>
+    </li>
+    <li>
+        <a href="sms:@config.Hotline">
+            <img src="~/Content/images/img-main/icon-sms2-1.png.png" /><br />
+            <span>Nhắn tin</span>
+        </a>
+    </li>
+    <li>
+        <a href="https://zalo.me/@config.Zalo">
+            <img src="~/Content/images/img-main/icon-chat-zalo-1.png.png" /><br />
+            <span>Chat Zalo</span>
+        </a>
+    </li>
+    <li>
+        <a href="https://@config.Messenger">
+            <img src="~/Content/images/img-main/icon-chat-messenger-1.png.png" /><br />
+            <span>Messenger</span>
+        </a>
+    </li>
+</ul>

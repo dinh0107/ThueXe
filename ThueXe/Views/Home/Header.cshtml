@@ -17,9 +17,9 @@
             <li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Giới thiệu</a>
             </li>
-            <li class="d-lg-block d-none">
+            @*<li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Bảng giá</a>
-            </li>
+            </li>*@
             @if (Model.ArticleCategories.Any(a => a.ParentId == null))
             {
                 foreach (var item in Model.ArticleCategories.Where(a => a.ParentId == null))
@@ -84,7 +84,7 @@
                 }
             </a>
         </div>
-        <div class="col-7 text-right text-white">
+        <div class="col-7 text-right text-white d-flex align-items-center justify-content-end">
             <div class="close-header" onclick="Close()"><i class="fas fa-times"></i></div>
         </div>
     </div>
@@ -126,10 +126,5 @@
             }
 
         }
-        <li class="li-mb">
-            <div class="d-flex align-items-center justify-content-between p-2 mx-3">
-                <a href="@Url.Action("Contact")">Liên hệ</a>
-            </div>
-        </li>
     </ul>
 </div>

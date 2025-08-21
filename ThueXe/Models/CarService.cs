@@ -26,6 +26,8 @@ namespace ThueXe.Models
         public string TitleMeta { get; set; }
         [Display(Name = "Thẻ mô tả"), StringLength(500, ErrorMessage = "Tối đa 500 ký tự"), UIHint("TextArea")]
         public string DescriptionMeta { get; set; }
+        [Display(Name = "Nội dung"), UIHint("EditorBox")]
+        public string Body { get; set; }
         public virtual ICollection<CarServiceDetail> Details { get; set; }
         public virtual ICollection<CarServicePrice>  CarServicePrices { get; set; }
     }

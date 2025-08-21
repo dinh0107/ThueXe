@@ -17,55 +17,26 @@
     <h1 class="title-section text-center">@(Model.Category.CategoryName)</h1>
     <div class="row box-articles">
         <div class="col-lg-9">
-            <div class="row">
-                @foreach (var firstRecord in Model.Articles.Take(2))
-                {
-                    <div class="col-lg-6">
-                        <article class="hot-article card mb-lg-4 mb-3">
-                            <a href="@Url.Action("ArticleDetail", "Home", new {  url = firstRecord.Url })">
-                                @if (firstRecord.Image != null)
-                                {
-                                    <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articles/", firstRecord.Image)" alt="@firstRecord.Subject" class="lazyload img-fluid" />
-                                }
-                            </a>
-                            <div class="card-body p-3">
-                                <div class="info">
-                                    <a href="@Url.Action("ArticleCategory", "Home", new { url = firstRecord.ArticleCategory.Url})">@firstRecord.ArticleCategory.CategoryName</a>
-                                    <span>@firstRecord.CreateDate.ToString("dd.MM.yyyy")</span>
-                                </div>
-                                <h2><a class="subject-h" href="@Url.Action("ArticleDetail", "Home", new {  url = firstRecord.Url })">@firstRecord.Subject</a></h2>
-                                <div class="article-des">
-                                    @firstRecord.Description
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                }
-            </div>
-            @if (Model.Articles.Count() > 2)
+            @if (Model.Articles.Any())
             {
                 <div class="row">
-                    @foreach (var item in Model.Articles.Skip(2))
+                    @foreach (var item in Model.Articles)
                     {
-                        <div class="col-lg-4 mb-lg-4 mb-3">
-                            <article class="article-item card">
-                                <a href="@Url.Action("ArticleDetail", "Home", new {  url = item.Url })">
-                                    @if (item.Image != null)
-                                    {
-                                        <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articles/", item.Image)" alt="@item.Subject" class="lazyload img-fluid" />
-                                    }
-                                </a>
-                                <div class="card-body p-3">
-                                    <div class="info">
-                                        <a href="@Url.Action("ArticleCategory", "Home", new { url = item.ArticleCategory.Url})">@item.ArticleCategory.CategoryName</a>
-                                        <span>@item.CreateDate.ToString("dd.MM.yyyy")</span>
-                                    </div>
-                                    <h2><a class="subject-h" href="@Url.Action("ArticleDetail", "Home", new { url = item.Url })">@item.Subject</a></h2>
-                                    <div class="article-des">
-                                        @item.Description
-                                    </div>
-                                </div>
-                            </article>
+                        <div class="col-lg-4 mb-lg-4 mb-3 col-6">
+                           <article class="article mb-4">
+                               @if (item.Image != null)
+                               {
+                                   <a href="@Url.Action("ArticleDetail", new {url = item.Url})">
+                                       <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articles/", item.Image)" alt="@item.Subject" class="lazyload" />
+                                   </a>
+                               }
+                               <div class="date my-2">
+                                   <i class="fa-regular fa-clock"></i> @item.CreateDate.ToString("dd/MM/yyyy") - @item.CreateDate.ToString("HH:mm")
+                               </div>
+                               <a class="subject" href="@Url.Action("ArticleDetail", new {url = item.Url})">@item.Subject</a>
+                               <hr />
+                               <a href="@Url.Action("ArticleDetail", new {url = item.Url})" class="see">Đọc thêm <i class="fa-solid fa-arrow-right"></i></a>
+                           </article>
                         </div>
                     }
                 </div>

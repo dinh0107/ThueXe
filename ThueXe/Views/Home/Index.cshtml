@@ -24,7 +24,7 @@
                             @item.Slogan
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href="" class="btn-color">
+                            <a href="@config.Zalo" class="btn-color">
                                 tìm hiểu thêm
                                 <div class="box-icon">
                                     <i class="far fa-long-arrow-right"></i>
@@ -47,7 +47,7 @@
     </div>
 </section>
 <div class="container py-3">
-    <div class=" d-lg-none d-block align-items-center justify-content-center">
+    <div class="d-lg-none d-block align-items-center justify-content-center">
         @Html.Action("Form")
     </div>
 </div>
@@ -69,6 +69,7 @@
         </div>
     </div>
 </section>
+
 <section class="page-section">
     <h2 class="title">Dịch vụ của chúng tôi</h2>
     <p class="sub-title">Dịch vụ thuê xe có lái chuyên nghiệp – linh hoạt theo ngày / tháng / năm đáp ứng mọi nhu cầu di chuyển cá nhân.</p>
@@ -94,10 +95,10 @@
                         <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articleCategory/", item.Image)" alt="@item.CategoryName" class="lazyload" />
                     }
                     <div class="row">
-                        <div class="col-lg-6 text-md-center col-6">
+                        <div class="col-lg-6 text-center col-6">
                             <a href="@cat" class="btn-blue d-lg-block d-md-block">tìm hiểu thêm</a>
                         </div>
-                        <div class="col-lg-6 col-6">
+                        <div class="col-lg-6 col-6 text-center">
                             <a href="#bookingForm" class="btn-orange d-lg-block d-md-none">Đặt lịch ngay</a>
                         </div>
                     </div>
@@ -106,10 +107,29 @@
         </div>
     </div>
 </section>
+
 <section class="page-section">
     <h2 class="title">bảng giá dịch vụ minh bạch </h2>
     <div class="container">
+
+        <div class="d-flex justify-content-center">
+            <div class="btn-group filer-btn" role="group" aria-label="Basic example">
+                <button type="button" id="btn-4cho" class="btn active">4 chỗ</button>
+                <button type="button" id="btn-7cho" class="btn ">7 chỗ</button>
+                <button type="button" id="btn-16cho" class="btn">16 chỗ</button>
+            </div>
+        </div>
         <div class="box-price">
+            <table id="priceTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Hành trình</th>
+                        <th>KM</th>
+                        <th id="priceHeader">Giá</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
             <table class="table table-bordered " id="myTable">
                 <thead class="header-tb">
                     <tr>
@@ -267,6 +287,7 @@
         </div>
     </div>
 </section>
+
 <section class="page-section">
     <div class="container">
         <div class="row">
@@ -276,11 +297,11 @@
                     @foreach (var item in Model.Banners.Where(a => a.GroupId == 3))
                     {
                         int count = 1;
-                        <div class="d-flex mt-4">
+                        <div class="d-flex mt-4 align-items-center gap-2">
                             <div class="step-count">
                                 @count
                             </div>
-                            <div class="step-name">
+                            <div class="step-name h-auto">
                                 @item.BannerName
                             </div>
                         </div>
@@ -303,7 +324,7 @@
                         var collapseId = $"collapse{index}";
                         bool isFirst = index == 0;
                         int delay = 200;
-                        <div class="accordion-item"  data-aos-duration="700" data-aos-delay="@delay" data-aos="zoom-in">
+                        <div class="accordion-item" data-aos-duration="700" data-aos-delay="@delay" data-aos="fade-right">
                             <h2 class="accordion-header" id="@headingId">
                                 <button onclick="toggleAccordion(this)" class="accordion-button @(isFirst ? "" : "collapsed")"
                                         type="button"
@@ -372,6 +393,7 @@
 
     </div>
 </section>
+
 <section class="page-section">
     <div class="container">
         <h2 class="title ">tin tức -  sự kiện</h2>
@@ -381,7 +403,7 @@
         <div class="row">
             @foreach (var item in Model.Articles)
             {
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-6">
                     <article class="article mb-4">
                         @if (item.Image != null)
                         {
@@ -402,27 +424,28 @@
     </div>
 </section>
 
-<section class="page-section">
+@*<section class="page-section">
     <div class="container">
         <div class="last-section">
             <div class="row">
                 <div class="col-lg-5 order-lg-0 order-1">
                     <h2 class="title text-white">Lorem ipsum dolor </h2>
                     <span class="sub-title text-white">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true</span>
-                    <a href="" class="btn-color mt-4">
+                    <a href="@config.Zalo" class="btn-color mt-4 d-flex">
                         đặt xe ngay
                         <div class="box-icon">
                             <i class="far fa-long-arrow-right"></i>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-7 order-lg-1 order-0" >
+                <div class="col-lg-7 order-lg-1 order-0">
                     <img src="~/Content/images/svg/oto.svg" alt="@config.Title" class="fa-motorcycle" />
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section>*@
+
 @section scripts{
     <script>
         homeJs()

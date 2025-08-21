@@ -87,10 +87,17 @@
                             </div>
                         }
                         <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Body, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.Body)
+                                @Html.ValidationMessageFor(a => Model.Body)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.Active, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 <label class="form-check-label">
-                                    <input type="checkbox" name="Active" value="true" checked />
+                                    <input type="checkbox" name="Active"  @if (Model.Active) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") }  />
                                     <span class="checkmark"></span>
                                 </label>
                             </div>

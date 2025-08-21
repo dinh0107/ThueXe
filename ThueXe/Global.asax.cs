@@ -40,16 +40,20 @@ namespace ThueXe
 
                 if (code == 404)
                 {
-                    Response.Redirect("/404");
+                    Response.Clear();
+                    Server.ClearError();
+                    Response.TrySkipIisCustomErrors = true;
                 }
                 else
                 {
-                    Response.Redirect("/Home/Index"); 
+                    Server.ClearError();
+                    Response.Redirect("/general");
                 }
             }
             else
             {
-                Response.Redirect("/Home/Index");
+                Server.ClearError();
+                Response.Redirect("/not-found");
             }
         }
     }
