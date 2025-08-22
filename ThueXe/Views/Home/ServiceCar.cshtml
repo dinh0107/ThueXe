@@ -10,6 +10,7 @@
     {
         ViewBag.ImageShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/configs/", share);
     }
+    int count = 1;
 }
 <section class="banner custom-baner"
          style="--bg: url('@(string.IsNullOrEmpty(Model.CarService?.ImageUrl)
@@ -102,8 +103,8 @@
                     <thead class="header-tb">
                         <tr>
                             <td scope="col">Hành trình</td>
-                            <td scope="col">khoảng cách</td>
-                            <td scope="col">Giá thành</td>
+                            <td scope="col">KM</td>
+                            <td scope="col">Giá</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -139,7 +140,6 @@
                     <div class="row">
                         @foreach (var item in Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.ProcessStep))
                         {
-                            int count = 1;
                             <div class="col-lg-3 col-6">
                                 <div class="d-flex flex-column align-items-center mt-4 gap-3">
                                     <div class="step-count">
@@ -150,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-                            count++;
+                            count+=1;
                         }
                     </div>
                 </div>

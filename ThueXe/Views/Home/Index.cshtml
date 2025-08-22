@@ -10,6 +10,7 @@
     {
         ViewBag.ImageShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/configs/", share);
     }
+    int count = 1;
 }
 <section class="banner">
     <div class="container h-100">
@@ -111,7 +112,6 @@
 <section class="page-section">
     <h2 class="title">bảng giá dịch vụ minh bạch </h2>
     <div class="container">
-
         <div class="d-flex justify-content-center">
             <div class="btn-group filer-btn" role="group" aria-label="Basic example">
                 <button type="button" id="btn-4cho" class="btn active">4 chỗ</button>
@@ -130,7 +130,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
-            <table class="table table-bordered " id="myTable">
+            <table class="table table-bordered d-lg-block d-none" id="myTable">
                 <thead class="header-tb">
                     <tr>
                         <td scope="col">Hành trình</td>
@@ -296,7 +296,6 @@
                     <h2 class="title text-left">quy trình thuê xe đơn giản</h2>
                     @foreach (var item in Model.Banners.Where(a => a.GroupId == 3))
                     {
-                        int count = 1;
                         <div class="d-flex mt-4 align-items-center gap-2">
                             <div class="step-count">
                                 @count
@@ -305,7 +304,7 @@
                                 @item.BannerName
                             </div>
                         </div>
-                        count++;
+                        count+=1;
                     }
                 </div>
             </div>

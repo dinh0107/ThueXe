@@ -522,7 +522,6 @@ header {
 }
 
 .custom-baner {
-    height: 70vh !important;
     background-image: var(--bg) !important;
 }
 
@@ -544,7 +543,7 @@ header {
 
 .banner {
     width: 100%;
-    height: 74vh;
+    height: 666px;
     background: url(../Content/images/img-main/banner-min.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -2157,7 +2156,7 @@ footer {
     }
 
     #bookingForm {
-        width: 80%;
+        width: 93%;
         margin: 0 auto
     }
 
@@ -2213,7 +2212,7 @@ footer {
 
     .banner {
         width: 100%;
-        height: 40vh !important;
+        height: 20vh !important;
     }
 
     .slogan {
@@ -2228,10 +2227,15 @@ footer {
         display: none;
     }
 
+    .list-banner {
+        margin-top: 20px;
+    }
+
     .img-ban {
         width: 56%;
         height: 322px;
         margin: 0 auto;
+        display: none;
     }
 
     .intro img {
@@ -2276,9 +2280,9 @@ footer {
     }
 
     .box-price {
-        #myTable {
+        /*  #myTable {
             display: none;
-        }
+        }*/
         /*display: block;
         width: 100%;
         overflow-x: auto;

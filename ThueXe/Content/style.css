@@ -389,7 +389,6 @@ header {
 }
 
 .custom-baner {
-  height: 70vh !important;
   background-image: var(--bg) !important;
 }
 
@@ -411,7 +410,7 @@ header {
 
 .banner {
   width: 100%;
-  height: 74vh;
+  height: 666px;
   background: url(images/img-main/banner-min.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -1866,7 +1865,7 @@ footer h2 {
     font-size: 20px;
   }
   #bookingForm {
-    width: 80%;
+    width: 93%;
     margin: 0 auto;
   }
   .social-fix, #suntory-alo-phoneIcon {
@@ -1912,7 +1911,7 @@ footer h2 {
   }
   .banner {
     width: 100%;
-    height: 40vh !important;
+    height: 20vh !important;
   }
   .slogan {
     font-size: 14px;
@@ -1924,10 +1923,14 @@ footer h2 {
     margin-bottom: 20px;
     display: none;
   }
+  .list-banner {
+    margin-top: 20px;
+  }
   .img-ban {
     width: 56%;
     height: 322px;
     margin: 0 auto;
+    display: none;
   }
   .intro img {
     width: 40px;
@@ -1962,6 +1965,9 @@ footer h2 {
     right: 0;
   }
   .box-price {
+    /*  #myTable {
+        display: none;
+    }*/
     /*display: block;
     width: 100%;
     overflow-x: auto;
@@ -1979,9 +1985,6 @@ footer h2 {
         scroll-padding: 1rem;
         grid-template-columns: unset;
     }*/
-  }
-  .box-price #myTable {
-    display: none;
   }
   .header-tb tr td {
     width: 187px;

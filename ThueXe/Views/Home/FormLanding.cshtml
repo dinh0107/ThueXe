@@ -1,39 +1,71 @@
 ﻿@model ThueXe.Models.Contact
 <form method="post" class="contact-part" id="bookingForm">
     <h2 class="form-title">
-        Kiểm tra xe trống và <br />
-        Nhận báo giá ưu đãi ngay
+        Đặt xe trực tuyến
     </h2>
     @Html.AntiForgeryToken()
-    <div class="mt-3">
-        @Html.LabelFor(a => a.Mobile, new { @class = "form-label" })
-        @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control", placeholder = "Họ và tên" })
-        <small class="valid-feedback">
-            @Html.ValidationMessageFor(a => a.Mobile)
-        </small>
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(a => a.From)
+        <div class="input-group">
+            @Html.TextBoxFor(a => a.From, new { @class = "form-control", @placeholder = "Nhập điểm đón" })
+        </div>
+        <small class="text-danger">@Html.ValidationMessageFor(a => a.From)</small>
     </div>
-    <div class="mt-3">
-        @Html.LabelFor(a => a.From, new { @class = "form-label" })
-        @Html.TextBoxFor(a => a.From, new { @class = "form-control", placeholder = "Nhập điểm đi" })
-        <small class="valid-feedback">
-            @Html.ValidationMessageFor(a => a.From)
-        </small>
+    <div class="form-group">
+        @Html.LabelFor(a => a.To)
+        <div class="input-group">
+            @Html.TextBoxFor(a => a.To, new { @class = "form-control", @placeholder = "Nhập điểm đến" })
+        </div>
+        <small class="text-danger">@Html.ValidationMessageFor(a => a.To)</small>
     </div>
-    @*<div class="mt-3">
-        @Html.LabelFor(a => a.To, new { @class = "form-label" })
-        @Html.TextBoxFor(a => a.To, new { @class = "form-control", placeholder = "Nhập điểm đến" })
-        <small class="valid-feedback">
-            @Html.ValidationMessageFor(a => a.From)
-        </small>
-    </div>*@
-    <div class="mt-3">
-        @Html.LabelFor(a => a.FromDate, new { @class = "form-label" })
-        @Html.TextBoxFor(a => a.FromDate, new { @class = "form-control", placeholder = "Nhập ngày đi", type = "datetime-local" })
-        <small class="valid-feedback">
-            @Html.ValidationMessageFor(a => a.FromDate)
-        </small>
+    <div class="way">
+        <div class="button-wrap">
+            <div class="button-bg">
+                <div class="button-switch"></div>
+            </div>
+        </div>
+        <span>2 chiều</span>
     </div>
-    <button type="submit">
-        nhận báo giá ngay
+    <div class="form-group">
+        @Html.LabelFor(a => a.FromDate)
+        <div class="input-group">
+            @Html.TextBoxFor(a => a.FromDate, new { @class = "form-control", @type = "datetime-local" })
+        </div>
+        <small class="text-danger">@Html.ValidationMessageFor(a => a.FromDate)</small>
+    </div>
+    <div class="form-group" id="toDate">
+        @Html.LabelFor(a => a.ToDate)
+        <div class="input-group">
+            @Html.TextBoxFor(a => a.ToDate, new { @class = "form-control", @type = "datetime-local" })
+        </div>
+        <small class="text-danger">@Html.ValidationMessageFor(a => a.ToDate)</small>
+    </div>
+    <div class="type-car">
+        <label class="filter-label">
+            <input type="radio" name="Contact.TypeCar" value="4 chỗ" checked />
+            <span class="checkmark"></span>
+            <span class="name">4 chỗ</span>
+        </label>
+        <label class="filter-label">
+            <input type="radio" name="Contact.TypeCar" value="7 chỗ" />
+            <span class="checkmark"></span>
+            <span class="name">7 chỗ</span>
+        </label>
+        <label class="filter-label">
+            <input type="radio" name="Contact.TypeCar" value="16 chỗ" />
+            <span class="checkmark"></span>
+            <span class="name">16 chỗ</span>
+        </label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.Mobile)
+        <div class="input-group">
+            @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control", @placeholder = "Số điện thoại" })
+        </div>
+        <small class="text-danger">@Html.ValidationMessageFor(a => a.Mobile)</small>
+    </div>
+    <button type="submit" class="mt-2">
+        Đặt xe
     </button>
 </form>
