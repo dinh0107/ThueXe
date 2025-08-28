@@ -406,7 +406,7 @@ header {
     }
 
     .form-control:focus {
-        box-shadow:none;
+        box-shadow: none;
     }
 
     .form-control {
@@ -415,7 +415,7 @@ header {
         border: none;
     }
 
-    #toDate {
+    .toDate {
         display: none;
 
         &.input-active {
@@ -548,6 +548,17 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: $black;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+    }
 }
 
 .title-banner {
@@ -584,7 +595,7 @@ header {
 }
 
 .btn-color {
-    cursor:pointer;
+    cursor: pointer;
     padding: 14px 23px 15px 23px;
     color: $white;
     text-align: center;
@@ -737,6 +748,7 @@ header {
         @include Bold;
         text-transform: capitalize;
         margin: 0;
+        max-width: 130px;
     }
 }
 
@@ -870,6 +882,7 @@ header {
         }
     }
 }
+
 .car-body {
     height: 100px;
     overflow: hidden;
@@ -878,6 +891,7 @@ header {
         height: auto;
     }
 }
+
 .box-price {
     border: 13px solid #FF4605;
     border-radius: 5px;
@@ -2110,6 +2124,7 @@ footer {
         margin-left: 0 !important;
     }
 }
+
 #priceTable, .filer-btn {
     display: none;
 }
@@ -2123,14 +2138,27 @@ footer {
         display: block;
     }
 
+    .filer-btn {
+        margin: 10px 0;
+
+        button {
+            font-size: 12px;
+            border: 1px solid $orange;
+        }
+
+        .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+            border-color: $orange !important;
+            color: $orange;
+        }
+    }
 
     .subject {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .article .date {
         color: #000;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .list-feedback .slick-next {
@@ -2151,7 +2179,7 @@ footer {
 
         i {
             color: $orange !important;
-            font-size: 20px;
+            font-size: 14px;
         }
     }
 
@@ -2218,6 +2246,7 @@ footer {
     .slogan {
         font-size: 14px;
         text-align: center;
+        color: $white;
     }
 
     .btn-color {
@@ -2300,6 +2329,7 @@ footer {
             scroll-padding: 1rem;
             grid-template-columns: unset;
         }*/
+        border: 0;
     }
 
     .header-tb tr td {
@@ -2308,6 +2338,7 @@ footer {
 
     .box-price tbody tr td {
         width: 187px;
+        font-size: 12px;
     }
 
     .hot img {
@@ -2318,7 +2349,7 @@ footer {
 
     .see {
         font-size: 12px;
-        height: 35px;
+        height: 29px;
         padding: 14px 10px 14px 10px;
     }
 
@@ -2395,5 +2426,46 @@ footer {
 
     .title-section {
         font-size: 20px;
+    }
+
+    .sub-title {
+        font-size: 13px;
+    }
+
+    .slick-slider {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .service-slide a {
+        font-size: 10px;
+        padding: 11px 12px 11px 12px;
+    }
+
+    .slick-arrow {
+        width: 30px;
+        height: 30px;
+    }
+
+    .slick-next {
+        right: -35px !important;
+    }
+
+    .slick-prev {
+        left: -35px !important;
+    }
+
+    .feedback-item {
+        padding: 18px;
+    }
+
+    hr {
+        margin: 10px 0;
+    }
+
+    .article-row {
+        > div {
+            padding: 0 5px;
+        }
     }
 }

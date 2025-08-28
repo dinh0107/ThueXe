@@ -34,7 +34,7 @@
         </div>
         <small class="text-danger">@Html.ValidationMessageFor(a => a.FromDate)</small>
     </div>
-    <div class="form-group" id="toDate">
+    <div class="form-group toDate">
         @Html.LabelFor(a => a.ToDate)
         <div class="input-group">
             @Html.TextBoxFor(a => a.ToDate, new { @class = "form-control", @type = "datetime-local" })

@@ -3,7 +3,7 @@
 });
 $('.button-wrap').on("click", function () {
     $(this).toggleClass('button-active');
-    $("#toDate").toggleClass('input-active');
+    $(".toDate").toggleClass('input-active');
 });
 function homeJs() {
     $('.service-slide').slick({
@@ -124,16 +124,14 @@ function homeJs() {
 
 
 
+    //var rowsmb = $("#priceTable tbody tr");
+    //var showCountmb = 5;
+    //rowsmb.slice(showCountmb).hide();
 
-
-    var rowsmb = $("#priceTable tbody tr");
-    var showCountmb = 5;
-    rowsmb.slice(showCountmb).hide();
-
-    $("#show-more-table").click(function () {
-        rowsmb.show();
-        $(this).hide();
-    });
+    //$("#show-more-table").click(function () {
+    //    rowsmb.show();
+    //    $(this).hide();
+    //});
 
     const routes = [
         {
@@ -239,7 +237,7 @@ function homeJs() {
           <tr>
             <td>${r.hanh_trinh}</td>
             <td>${r.khoang_cach_km}</td>
-            <td><b>${r.gia[type]}</b></td>
+            <td><strong>${r.gia[type]}</strong></td>
           </tr>
         `;
         });

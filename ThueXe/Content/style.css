@@ -291,10 +291,10 @@ header {
   background: #EFEFEF;
   border: none;
 }
-#bookingForm #toDate {
+#bookingForm .toDate {
   display: none;
 }
-#bookingForm #toDate.input-active {
+#bookingForm .toDate.input-active {
   display: block;
 }
 #bookingForm .btn-booking {
@@ -415,6 +415,16 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
+  position: relative;
+}
+.banner:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
 }
 
 .title-banner {
@@ -591,6 +601,7 @@ header {
   font-family: "Display-Bold";
   text-transform: capitalize;
   margin: 0;
+  max-width: 130px;
 }
 
 .page-section {
@@ -1837,12 +1848,23 @@ footer h2 {
   #priceTable, .filer-btn {
     display: block;
   }
+  .filer-btn {
+    margin: 10px 0;
+  }
+  .filer-btn button {
+    font-size: 12px;
+    border: 1px solid #FF4605;
+  }
+  .filer-btn .btn-check:checked + .btn, .filer-btn :not(.btn-check) + .btn:active, .filer-btn .btn:first-child:active, .filer-btn .btn.active, .filer-btn .btn.show {
+    border-color: #FF4605 !important;
+    color: #FF4605;
+  }
   .subject {
-    font-size: 16px;
+    font-size: 14px;
   }
   .article .date {
     color: #000;
-    font-size: 14px;
+    font-size: 12px;
   }
   .list-feedback .slick-next {
     right: 0;
@@ -1862,7 +1884,7 @@ footer h2 {
   }
   .slick-arrow i {
     color: #FF4605 !important;
-    font-size: 20px;
+    font-size: 14px;
   }
   #bookingForm {
     width: 93%;
@@ -1916,6 +1938,7 @@ footer h2 {
   .slogan {
     font-size: 14px;
     text-align: center;
+    color: #fff;
   }
   .btn-color {
     padding: 9px 16px 9px 16px;
@@ -1985,12 +2008,14 @@ footer h2 {
         scroll-padding: 1rem;
         grid-template-columns: unset;
     }*/
+    border: 0;
   }
   .header-tb tr td {
     width: 187px;
   }
   .box-price tbody tr td {
     width: 187px;
+    font-size: 12px;
   }
   .hot img {
     position: absolute;
@@ -1999,7 +2024,7 @@ footer h2 {
   }
   .see {
     font-size: 12px;
-    height: 35px;
+    height: 29px;
     padding: 14px 10px 14px 10px;
   }
   .service-title {
@@ -2057,5 +2082,35 @@ footer h2 {
   }
   .title-section {
     font-size: 20px;
+  }
+  .sub-title {
+    font-size: 13px;
+  }
+  .slick-slider {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .service-slide a {
+    font-size: 10px;
+    padding: 11px 12px 11px 12px;
+  }
+  .slick-arrow {
+    width: 30px;
+    height: 30px;
+  }
+  .slick-next {
+    right: -35px !important;
+  }
+  .slick-prev {
+    left: -35px !important;
+  }
+  .feedback-item {
+    padding: 18px;
+  }
+  hr {
+    margin: 10px 0;
+  }
+  .article-row > div {
+    padding: 0 5px;
   }
 }

@@ -28,33 +28,5 @@ namespace ThueXe
                 Application["ConfigSite"] = unitofWork.ConfigSiteRepository.GetQuery().FirstOrDefault();
             }
         }
-        protected void Application_Error()
-        {
-            var exception = Server.GetLastError();
-            Response.Clear();
-
-            var httpException = exception as HttpException;
-            if (httpException != null)
-            {
-                var code = httpException.GetHttpCode();
-
-                if (code == 404)
-                {
-                    Response.Clear();
-                    Server.ClearError();
-                    Response.TrySkipIisCustomErrors = true;
-                }
-                else
-                {
-                    Server.ClearError();
-                    Response.Redirect("/general");
-                }
-            }
-            else
-            {
-                Server.ClearError();
-                Response.Redirect("/not-found");
-            }
-        }
     }
 }
