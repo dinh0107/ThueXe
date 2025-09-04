@@ -158,8 +158,9 @@ namespace ThueXe.Controllers
             return PartialView();
         }
 
-        public PartialViewResult FormLanding()
+        public PartialViewResult FormLanding(string typeCar="")
         {
+            ViewBag.TypeCar = typeCar;
             return PartialView();
         }
         [HttpPost, ValidateAntiForgeryToken]

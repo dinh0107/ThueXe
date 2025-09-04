@@ -1924,7 +1924,7 @@ footer {
         display: block;
         height: 100vh;
         width: 50%;
-        background: #1b263b;
+        background: $orange;
         position: fixed;
         right: -100%;
         top: 0;
@@ -1937,9 +1937,13 @@ footer {
         right: 0;
     }
 
+    .logo-mb {
+        filter: brightness(0) invert(1) !important;
+    }
+
     .ul-mb {
         .li-mb {
-            border-bottom: 1px solid $blue;
+            border-bottom: 1px solid $white;
 
             i {
                 color: $white;
@@ -2134,8 +2138,47 @@ footer {
         font-size: 1.5rem;
     }
 
+    .close-header {
+        margin-right: 10px;
+    }
+
     #priceTable, .filer-btn {
         display: block;
+    }
+
+    header {
+        padding: 10px 0;
+        background: $white;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .hotline-mobie {
+        color: $white;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: $orange;
+
+        i {
+            font-size: 14px;
+        }
+    }
+
+    .mobile-btn {
+        i {
+            font-size: 24px;
+        }
+    }
+
+    .logo {
+        filter: none;
     }
 
     .filer-btn {
@@ -2144,6 +2187,7 @@ footer {
         button {
             font-size: 12px;
             border: 1px solid $orange;
+            width: 70px;
         }
 
         .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {

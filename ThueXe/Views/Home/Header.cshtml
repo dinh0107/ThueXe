@@ -6,6 +6,13 @@
 <header>
     <div class="container">
         <ul class="ul-reset nav">
+            <li class="d-lg-none d-block">
+                <div class="d-flex text-right w-100 justify-content-end align-items-center">
+                    <div class="mobile-btn text-dark" onclick="show()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </li>
             <li>
                 <a href="/">
                     @if (config.Image != null)
@@ -18,8 +25,8 @@
                 <a href="@Url.Action("Introduce")">Giới thiệu</a>
             </li>
             @*<li class="d-lg-block d-none">
-                <a href="@Url.Action("Introduce")">Bảng giá</a>
-            </li>*@
+            <a href="@Url.Action("Introduce")">Bảng giá</a>
+        </li>*@
             @if (Model.ArticleCategories.Any(a => a.ParentId == null))
             {
                 foreach (var item in Model.ArticleCategories.Where(a => a.ParentId == null))
@@ -29,7 +36,7 @@
                     {
                         cat = item.Url;
                     }
-                    <li  class="d-lg-block d-none @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id)) { @Html.Raw("'has-dropdown'") }">
+                    <li class="d-lg-block d-none @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id)) { @Html.Raw("'has-dropdown'") }">
                         <a href="@cat">
                             @item.CategoryName
                             @if (Model.ArticleCategories.Any(a => a.ParentId == item.Id))
@@ -58,15 +65,19 @@
                     </li>
                 }
             }
-            <li class="d-lg-block d-none">
-                <a href=""><i class="far fa-search"></i></a>
-            </li>
             <li class="d-lg-none d-block">
                 <div class="d-flex text-right w-100 justify-content-end align-items-center">
-                    <div class="mobile-btn text-white" onclick="show()">
-                        <i class="fas fa-bars"></i>
-                    </div>
+                    <a href="@config.Hotline" class="hotline-mobie">
+                        <i class="fa-solid fa-phone-flip fa-rotate-90"></i>
+                    </a>
                 </div>
+            </li>
+            @*<li class="d-lg-block d-none">
+            <a href=""><i class="far fa-search"></i></a>
+        </li>*@
+
+            <li class="d-lg-block d-none">
+                <a href="@Url.Action("Introduce")">Giới thiệu</a>
             </li>
         </ul>
     </div>

@@ -1679,7 +1679,7 @@ footer h2 {
     display: block;
     height: 100vh;
     width: 50%;
-    background: #1b263b;
+    background: #FF4605;
     position: fixed;
     right: -100%;
     top: 0;
@@ -1690,8 +1690,11 @@ footer h2 {
   .header-mobile.active {
     right: 0;
   }
+  .logo-mb {
+    filter: brightness(0) invert(1) !important;
+  }
   .ul-mb .li-mb {
-    border-bottom: 1px solid #004596;
+    border-bottom: 1px solid #fff;
   }
   .ul-mb .li-mb i {
     color: #fff;
@@ -1845,8 +1848,39 @@ footer h2 {
   .detail-subject {
     font-size: 1.5rem;
   }
+  .close-header {
+    margin-right: 10px;
+  }
   #priceTable, .filer-btn {
     display: block;
+  }
+  header {
+    padding: 10px 0;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .hotline-mobie {
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #FF4605;
+  }
+  .hotline-mobie i {
+    font-size: 14px;
+  }
+  .mobile-btn i {
+    font-size: 24px;
+  }
+  .logo {
+    filter: none;
   }
   .filer-btn {
     margin: 10px 0;
@@ -1854,6 +1888,7 @@ footer h2 {
   .filer-btn button {
     font-size: 12px;
     border: 1px solid #FF4605;
+    width: 70px;
   }
   .filer-btn .btn-check:checked + .btn, .filer-btn :not(.btn-check) + .btn:active, .filer-btn .btn:first-child:active, .filer-btn .btn.active, .filer-btn .btn.show {
     border-color: #FF4605 !important;

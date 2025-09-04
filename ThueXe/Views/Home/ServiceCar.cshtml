@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="col-lg-4 d-lg-flex d-none align-items-center">
-                @Html.Action("FormLanding")
+                @Html.Action("FormLanding" , new {typeCar = Model.CarService.Car})
             </div>
         </div>
     </div>

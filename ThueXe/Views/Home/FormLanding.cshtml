@@ -41,23 +41,24 @@
         </div>
         <small class="text-danger">@Html.ValidationMessageFor(a => a.ToDate)</small>
     </div>
-    <div class="type-car">
-        <label class="filter-label">
-            <input type="radio" name="Contact.TypeCar" value="4 chỗ" checked />
-            <span class="checkmark"></span>
-            <span class="name">4 chỗ</span>
-        </label>
-        <label class="filter-label">
-            <input type="radio" name="Contact.TypeCar" value="7 chỗ" />
-            <span class="checkmark"></span>
-            <span class="name">7 chỗ</span>
-        </label>
-        <label class="filter-label">
-            <input type="radio" name="Contact.TypeCar" value="16 chỗ" />
-            <span class="checkmark"></span>
-            <span class="name">16 chỗ</span>
-        </label>
-    </div>
+    @*<div class="type-car">
+            <label class="filter-label">
+                <input type="radio" name="Contact.TypeCar" value="4 chỗ" checked />
+                <span class="checkmark"></span>
+                <span class="name">4 chỗ</span>
+            </label>
+            <label class="filter-label">
+                <input type="radio" name="Contact.TypeCar" value="7 chỗ" />
+                <span class="checkmark"></span>
+                <span class="name">7 chỗ</span>
+            </label>
+            <label class="filter-label">
+                <input type="radio" name="Contact.TypeCar" value="16 chỗ" />
+                <span class="checkmark"></span>
+                <span class="name">16 chỗ</span>
+            </label>
+        </div>*@
+    <input type="hidden" name="Contact.TypeCar" value="@ViewBag.TypeCar" />
     <div class="form-group">
         @Html.LabelFor(a => a.Mobile)
         <div class="input-group">
