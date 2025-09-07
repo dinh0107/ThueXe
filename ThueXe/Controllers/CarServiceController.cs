@@ -58,6 +58,10 @@ namespace ThueXe.Controllers
                     {
                         model.ImageUrl = imgFile;
                     }
+                    if (Request.Files.Keys[i] == "Image")
+                    {
+                        model.Image = imgFile;
+                    }
                 }
                 model.Slug = HtmlHelpers.ConvertToUnSign(null, model.Slug ?? model.Title);
 
@@ -104,6 +108,10 @@ namespace ThueXe.Controllers
                     {
                         category.ImageUrl = imgFile;
                     }
+                    if (Request.Files.Keys[i] == "Image")
+                    {
+                        category.Image = imgFile;
+                    }
                 }
 
                 var file = Request.Files["ImageUrl"];
@@ -111,6 +119,13 @@ namespace ThueXe.Controllers
                 if (file != null && file.ContentLength == 0)
                 {
                     category.ImageUrl = fc["CurrentFile"] == "" ? null : fc["CurrentFile"];
+                }
+
+                var file2 = Request.Files["Image"];
+
+                if (file2 != null && file2.ContentLength == 0)
+                {
+                    category.Image = fc["CurrentFileImg"] == "" ? null : fc["CurrentFileImg"];
                 }
                 category.Slug = HtmlHelpers.ConvertToUnSign(null, category.Slug ?? category.Title);
                 _unitOfWork.CarServiceRepository.Update(category);

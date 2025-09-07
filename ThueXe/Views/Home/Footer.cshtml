@@ -6,13 +6,13 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <h2>Liên hệ</h2>
                 <div class="text-white">
-                    @Html.Raw(config.InfoFooter)
+                    @Html.Raw(config.InfoContact)
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <h2>Link nhanh</h2>
                 <ul class="ul-reset ul-ft">
                     <li>
@@ -28,10 +28,19 @@
             </div>
             <div class="col-lg-4">
                 <h2>fanpage</h2>
-
+                @if (config.Facebook != null)
+                {
+                    <div class="embed-responsive embed-responsive-16by9 fanpage">
+                        <div class="fb-page" data-href="@config.Facebook" data-tabs="" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="@config.Facebook" class="fb-xfbml-parse-ignore">
+                                <a href="@config.Facebook">@config.Title</a>
+                            </blockquote>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
-        <div class="row border-top pt-3">
+        <div class="row border-top pt-3 mt-3 d-lg-flex d-none">
             <div class="col-6">
                 <a href="/">
                     @if (config.Image != null)

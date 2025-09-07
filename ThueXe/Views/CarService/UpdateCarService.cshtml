@@ -67,6 +67,26 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Image, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.Image, new { type = "file" })
+                                <div class="text-danger mt-2">Chấp nhận ảnh jpg, png, gif, jpeg < 4MB</div>
+                            </div>
+                        </div>
+                        if (Model.Image != null)
+                        {
+                            <div class="mb-3 row" id="ImgPreview">
+                                <label class="col-form-label col-lg-3"></label>
+                                <div class="col-lg-9">
+                                    <img class="img-border mb-2" src="@Path.Combine("/images/carService/", Model.Image)" />
+                                    <a href="javascript:;" onclick="$('#CurrentFileImg').hide(); $('#CurrentFileImg').val('');" class="delete-img">
+                                        <img src="~/Content/images/admin/icon-delete-red.png" alt="" style="vertical-align: middle; margin-top: 0; height: 10px;" /> Xóa ảnh
+                                    </a>
+                                    <input type="hidden" name="CurrentFileImg" id="CurrentFileImg" value="@Model.Image" />
+                                </div>
+                            </div>
+                        }
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.ImageUrl, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 @Html.TextBoxFor(a => a.ImageUrl, new { type = "file" })
@@ -87,6 +107,46 @@
                             </div>
                         }
                         <div class="mb-3 row">
+                            <div class="col-lg-3">
+                                <label>Thông tin</label>
+                            </div>
+                            <div class="col-lg-9 row">
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Firm, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Firm, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Capacity, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Capacity, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Type, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Type, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Speed, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Speed, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.Body, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 @Html.EditorFor(a => a.Body)
@@ -94,10 +154,35 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Sort, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.Sort)
+                                @Html.ValidationMessageFor(a => Model.Sort)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Home, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="Home" @if (Model.Home) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Menu, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="Menu" @if (Model.Menu) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.Active, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 <label class="form-check-label">
-                                    <input type="checkbox" name="Active"  @if (Model.Active) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") }  />
+                                    <input type="checkbox" name="Active" @if (Model.Active) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />
                                     <span class="checkmark"></span>
                                 </label>
                             </div>

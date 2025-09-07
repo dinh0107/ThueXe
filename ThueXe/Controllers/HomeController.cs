@@ -34,6 +34,7 @@ namespace ThueXe.Controllers
             {
                 ProductCategories = ProductCategories.Where(a => a.ShowMenu),
                 ArticleCategories = ArticleCategories().Where(a => a.ShowMenu),
+                Services = _unitOfWork.CarServiceRepository.GetQuery(a => a.Active && a.Menu, o => o.OrderBy(a => a.Sort)),
                 Banner = _unitOfWork.BannerRepository.GetQuery(a => a.Active && a.GroupId == 1 && a.Image != null).FirstOrDefault()
             };
             return PartialView(model);
@@ -50,7 +51,7 @@ namespace ThueXe.Controllers
         public ActionResult Index()
         {
             var banner = _unitOfWork.BannerRepository.GetQuery(a => a.Active  , o => o.OrderBy(a => a.Sort ));
-            var service = _unitOfWork.ArticleCategoryRepository.GetQuery(a => a.CategoryActive && (a.TypePost == TypePost.Service && a.Home), o => o.OrderBy(a => a.CategorySort));
+            var service = _unitOfWork.CarServiceRepository.GetQuery(a => a.Active && a.Home, o => o.OrderBy(a => a.Sort));
             var articles = _unitOfWork.ArticleRepository.GetQuery(a => a.Active && (a.ArticleCategory.TypePost == TypePost.Article && a.Home), o => o.OrderByDescending(a => a.CreateDate));
             var model = new HomeViewModel
             {

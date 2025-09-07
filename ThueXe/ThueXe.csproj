@@ -164,6 +164,14 @@
     <Compile Include="Migrations\202508210851107_add-some-tb.Designer.cs">
       <DependentUpon>202508210851107_add-some-tb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202509070852577_add-option.cs" />
+    <Compile Include="Migrations\202509070852577_add-option.Designer.cs">
+      <DependentUpon>202509070852577_add-option.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509070906044_add-sort.cs" />
+    <Compile Include="Migrations\202509070906044_add-sort.Designer.cs">
+      <DependentUpon>202509070906044_add-sort.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Article.cs" />
@@ -240,6 +248,10 @@
     <Content Include="Content\images\img-main\tw.svg" />
     <Content Include="Content\images\img-main\zalo-logo.png" />
     <Content Include="Content\images\svg\drive.svg" />
+    <Content Include="Content\images\svg\icon-1.svg" />
+    <Content Include="Content\images\svg\icon-2.svg" />
+    <Content Include="Content\images\svg\icon-3.svg" />
+    <Content Include="Content\images\svg\icon-4.svg" />
     <Content Include="Content\images\svg\oto.svg" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\jquery.nice-number.css" />
@@ -655,6 +667,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202508210851107_add-some-tb.resx">
       <DependentUpon>202508210851107_add-some-tb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509070852577_add-option.resx">
+      <DependentUpon>202509070852577_add-option.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509070906044_add-sort.resx">
+      <DependentUpon>202509070906044_add-sort.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

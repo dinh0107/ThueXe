@@ -67,6 +67,13 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Image, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.TextBoxFor(a => a.Image, new { type = "file" })
+                                <div class="text-danger mt-2">Chấp nhận ảnh jpg, png, gif, jpeg < 4MB</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.ImageUrl, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 @Html.TextBoxFor(a => a.ImageUrl, new { type = "file" })
@@ -74,10 +81,75 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
+                            <div class="col-lg-3">
+                                <label>Thông tin</label>
+                            </div>
+                            <div class="col-lg-9 row">
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Firm, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Firm, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Capacity, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Capacity, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Type, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Type, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row mb-3">
+                                        @Html.LabelFor(a => a.Speed, new { @class = "col-form-label col-lg-3" })
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(a => a.Speed, new { @class = "form_control w300" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mb-3 row">
                             @Html.LabelFor(a => a.Body, new { @class = "col-form-label col-lg-3" })
                             <div class="col-lg-9">
                                 @Html.EditorFor(a => a.Body)
                                 @Html.ValidationMessageFor(a => Model.Body)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Sort, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                @Html.EditorFor(a => a.Sort)
+                                @Html.ValidationMessageFor(a => Model.Sort)
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Home, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="Home" value="true" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            @Html.LabelFor(a => a.Menu, new { @class = "col-form-label col-lg-3" })
+                            <div class="col-lg-9">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="Menu" value="true" />
+                                    <span class="checkmark"></span>
+                                </label>
                             </div>
                         </div>
                         <div class="mb-3 row">

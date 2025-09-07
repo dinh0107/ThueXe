@@ -24,6 +24,29 @@
             <li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Giới thiệu</a>
             </li>
+            <li class="d-lg-block d-none">
+                <a href="javascript:void(0);">
+                    Dịch vụ  
+                    @if (Model.Services.Any())
+                    {
+                        <i class="fa-regular fa-angle-down"></i>
+                    }
+                </a>
+                @if (Model.Services.Any())
+                {
+                    <ul class="ul-reset sub-nav">
+                        @foreach (var child in Model.Services)
+                        {
+                            var cat2 = Url.Action("ServiceCar", "Home", new { url = child.Slug });
+                            <li>
+                                <a href="@cat2">
+                                    <span>@child.Title</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
             @*<li class="d-lg-block d-none">
             <a href="@Url.Action("Introduce")">Bảng giá</a>
         </li>*@
@@ -100,6 +123,29 @@
         </div>
     </div>
     <ul class="ul-reset ul-mb mt-4">
+        <li class="li-mb">
+            <div class="d-flex align-items-center justify-content-between p-2 mx-3">
+                <a href="javascript:void(0);">
+                    Dịch vụ
+                </a>
+                @if (Model.Services.Any())
+                {
+                    <i class="fas fa-caret-down"></i>
+                }
+            </div>
+            @if (Model.Services.Any())
+            {
+                <ul>
+                    @foreach (var child in Model.Services)
+                    {
+                        var cat2 = Url.Action("ServiceCar", "Home", new { url = child.Slug });
+                        <li class="p-2">
+                            <a class="mx-4" href="@cat2">@child.Title</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
         @if (Model.ArticleCategories.Any(a => a.ParentId == null))
         {
             foreach (var item in Model.ArticleCategories.Where(a => a.ParentId == null))
@@ -137,5 +183,6 @@
             }
 
         }
+
     </ul>
 </div>

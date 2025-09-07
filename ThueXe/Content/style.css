@@ -251,6 +251,7 @@ header {
 }
 
 #bookingForm {
+  width: 100%;
   position: relative;
   background: #fff;
   padding: 25px 20px;
@@ -634,10 +635,10 @@ header {
   background: #ebebeb;
   transition: all 1s;
 }
-.service-slide img {
+.service-slide .car-img {
   width: 100%;
   object-fit: contain;
-  aspect-ratio: 1;
+  aspect-ratio: 1.4;
 }
 .service-slide h2 {
   color: #000;
@@ -721,6 +722,14 @@ header {
   background: linear-gradient(180deg, #FF4605 0%, #FF8A05 100%);
 }
 
+.info-car small {
+  color: #757579;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+}
+
 .car-body {
   height: 100px;
   overflow: hidden;
@@ -730,8 +739,9 @@ header {
 }
 
 .box-price {
-  border: 13px solid #FF4605;
-  border-radius: 5px;
+  background: linear-gradient(white, white) padding-box, linear-gradient(180deg, #FF4605, #FF8A05) border-box;
+  border: 13px solid transparent;
+  border-radius: 20px;
   margin-top: 30px;
 }
 .box-price tbody tr th {
@@ -847,6 +857,7 @@ header {
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: rotate(180deg);
 }
 
 .accordion-button::after {
@@ -855,7 +866,7 @@ header {
 
 /* Khi mở */
 .accordion-button:not(.collapsed) .accordion-icon {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
   background-color: #ff7c1e;
 }
 
@@ -1844,9 +1855,16 @@ footer h2 {
   display: none;
 }
 
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
 @media (max-width: 600px) {
   .detail-subject {
     font-size: 1.5rem;
+  }
+  #myTable {
+    display: none;
   }
   .close-header {
     margin-right: 10px;
@@ -1881,6 +1899,9 @@ footer h2 {
   }
   .logo {
     filter: none;
+  }
+  .note {
+    font-size: 12px;
   }
   .filer-btn {
     margin: 10px 0;

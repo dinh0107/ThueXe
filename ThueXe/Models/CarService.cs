@@ -17,10 +17,32 @@ namespace ThueXe.Models
         public string Slug { get; set; }
         [UIHint("TextArea")]
         public string Description { get; set; }
+        [Display(Name ="Ảnh banner")]
         public string ImageUrl { get; set; }
+        [Display(Name = "Ảnh đại diện")]
+        public string Image { get; set; }
+        //Option
+        [Display(Name = "Hãng xe")]
+        public string Firm { get; set; }
+
+        [Display(Name = "Dung tích")]
+        public string Capacity { get; set; }
+
+        [Display(Name = "Loại")]
+        public string Type { get; set; }
+
+        [Display(Name = "Vận tốc")]
+        public string Speed { get; set; }
+        //End
+
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         [Display(Name = "Hoạt động")]
         public bool Active { get; set; }
+        [Display(Name = "Trang chủ")]
+        public bool Home { get; set; }
+        [Display(Name = "Menu")]
+        public bool Menu { get; set; }
 
         [Display(Name = "Thẻ tiêu đề"), StringLength(100, ErrorMessage = "Tối đa 100 ký tự"), UIHint("TextBox")]
         public string TitleMeta { get; set; }
@@ -28,6 +50,8 @@ namespace ThueXe.Models
         public string DescriptionMeta { get; set; }
         [Display(Name = "Nội dung"), UIHint("EditorBox")]
         public string Body { get; set; }
+        [Display(Name = "Thứ tự"), Required(ErrorMessage = "Hãy nhập thứ tự"), RegularExpression(@"\d+", ErrorMessage = "Chỉ nhập số nguyên"), UIHint("NumberBox")]
+        public int Sort { get; set; }
         public virtual ICollection<CarServiceDetail> Details { get; set; }
         public virtual ICollection<CarServicePrice>  CarServicePrices { get; set; }
     }

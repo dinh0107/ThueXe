@@ -9,7 +9,7 @@ namespace ThueXe.ViewModel
     {
         public IEnumerable<Banner> Banners { get; set; }
         public IEnumerable<Article> Articles { get; set; }
-        public IEnumerable<ArticleCategory> Services { get; set; }
+        public IEnumerable<CarService> Services { get; set; }
     }
 
     public class ServiceCarViewModel
@@ -24,6 +24,7 @@ namespace ThueXe.ViewModel
     {
         public IEnumerable<ArticleCategory> ArticleCategories { get; set; }
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
+        public IEnumerable<CarService> Services { get; set; }
         public Banner Banner { get; set; }
     }
 

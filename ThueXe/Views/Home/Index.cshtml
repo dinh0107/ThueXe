@@ -73,27 +73,39 @@
 
 <section class="page-section">
     <h2 class="title">Dịch vụ của chúng tôi</h2>
-    <p class="sub-title">Dịch vụ thuê xe có lái chuyên nghiệp – linh hoạt theo ngày / tháng / năm đáp ứng mọi nhu cầu di chuyển cá nhân.</p>
+    <p class="sub-title">Dịch vụ cho thuê xe 4 – 7 – 16 – 29 – 45 chỗ giá rẻ, xe mới , tài xế chuyên nghiệp và thân thiện</p>
     <div class="container">
         <div class="service-slide">
             @foreach (var item in Model.Services)
             {
-                var match = System.Text.RegularExpressions.Regex.Match(item.CategoryName, @"\d+");
-                var seatCount = match.Success ? match.Value : null;
 
-                var cat = Url.Action("ArticleCategory", "Home", new { url = item.Url });
-                if (item.Redirect)
-                {
-                    cat = item.Url;
-                }
+                var cat = Url.Action("ServiceCar", "Home", new { url = item.Slug });
                 <article>
                     <div class="tag">
-                        <i class="fas fa-user"></i> @seatCount chỗ
+                        <i class="fas fa-user"></i> @item.Car
                     </div>
-                    <h2>@item.CategoryName</h2>
+                    <h2>@item.Title</h2>
+                    <div class="info-car row">
+                        <div class="col-6 d-flex align-items-center gap-2 mt-3">
+                            <img src="~/Content/images/svg/icon-1.svg" alt="Icon 1" width="19" height="13" />
+                            <small>@item.Firm</small>
+                        </div>
+                        <div class="col-6 d-flex align-items-center gap-2 mt-3">
+                            <img src="~/Content/images/svg/icon-2.svg" alt="Icon 1" width="19" height="13" />
+                            <small>@item.Speed</small>
+                        </div>
+                        <div class="col-6 d-flex align-items-center gap-2 mt-1">
+                            <img src="~/Content/images/svg/icon-3.svg" alt="Icon 1" width="19" height="13" />
+                            <small>@item.Type</small>
+                        </div>
+                        <div class="col-6 d-flex align-items-center gap-2 mt-1">
+                            <img src="~/Content/images/svg/icon-4.svg" alt="Icon 1" width="19" height="13" />
+                            <small>@item.Capacity</small>
+                        </div>
+                    </div>
                     @if (item.Image != null)
                     {
-                        <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/articleCategory/", item.Image)" alt="@item.CategoryName" class="lazyload" />
+                        <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/carService/", item.Image)" alt="@item.Title" class="lazyload car-img" />
                     }
                     <div class="row">
                         <div class="col-lg-6 text-center col-6">
@@ -130,7 +142,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
-            <table class="table table-bordered d-lg-block d-none" id="myTable">
+            <table class="table table-bordered" id="myTable">
                 <thead class="header-tb">
                     <tr>
                         <td scope="col">Hành trình</td>
@@ -284,6 +296,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="note mt-3">
+            <small><strong>Ghi chú:</strong></small>
+            <ul class="px-3">
+                <li><small>Giá trên đã bao gồm xăng dầu, lương lái xe, cầu đường quốc lộ, bến bãi</small></li>
+                <li><small>Giá chưa gồm thuế VAT8%</small></li>
+                <li><small>Giá trên có thể thay đổi theo từng thời điểm ( sự thay đổi giá nhiên liệu, hoặc tùy theo hành trình thuê xe của khách hàng)</small></li>
+                <li><small>Giá trên chưa bao gồm phí lưu đêm của xe ( nếu có ) </small></li>
+            </ul>
         </div>
     </div>
 </section>
