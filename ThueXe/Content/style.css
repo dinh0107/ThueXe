@@ -730,6 +730,35 @@ header {
   -webkit-line-clamp: 1;
 }
 
+#myTable {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 9px 9px 0 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  table-layout: fixed;
+}
+
+#myTable th,
+#myTable td {
+  border: none;
+  white-space: nowrap;
+}
+
+#myTable th:first-child,
+#myTable td:first-child {
+  width: 200px;
+}
+
+#myTable tr:not(:last-child) td {
+  border-bottom: 1px solid #ccc;
+}
+
+#myTable th:not(:last-child),
+#myTable td:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
 .car-body {
   height: 100px;
   overflow: hidden;
@@ -748,12 +777,14 @@ header {
   color: #004596;
   font-size: 16px;
   font-family: "Display-Regular";
+  width: 20%;
 }
 .box-price tbody tr td {
   padding: 15px 34px;
   text-align: center;
   color: #004596;
-  font-size: 16px;
+  font-size: 14px;
+  width: 20%;
 }
 .box-price tbody tr td:first-child {
   text-align: left;
@@ -763,7 +794,7 @@ header {
   border-radius: 5px 5px 0 0;
 }
 .header-tb tr td {
-  width: 20%;
+  /*width: calc(1);*/
   background: #004596;
   height: 47px;
   color: #fff;
@@ -1903,13 +1934,16 @@ footer h2 {
   .note {
     font-size: 12px;
   }
+  footer {
+    padding-bottom: 100px;
+  }
   .filer-btn {
     margin: 10px 0;
   }
   .filer-btn button {
     font-size: 12px;
     border: 1px solid #FF4605;
-    width: 70px;
+    width: 64px;
   }
   .filer-btn .btn-check:checked + .btn, .filer-btn :not(.btn-check) + .btn:active, .filer-btn .btn:first-child:active, .filer-btn .btn.active, .filer-btn .btn.show {
     border-color: #FF4605 !important;
@@ -1989,7 +2023,7 @@ footer h2 {
   }
   .banner {
     width: 100%;
-    height: 20vh !important;
+    height: 28vh !important;
   }
   .slogan {
     font-size: 14px;
@@ -2023,7 +2057,7 @@ footer h2 {
     margin-top: 42px;
   }
   .contact-part h2 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .contact-part button {
     font-size: 14px;
