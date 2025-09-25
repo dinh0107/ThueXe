@@ -432,6 +432,7 @@ header {
   font-family: "Blacksword";
   color: #004596;
   font-size: 64px;
+  width: 588px;
   text-align: center;
 }
 
@@ -445,7 +446,7 @@ header {
 .list-banner h2 {
   color: #FFF;
   font-family: "Aguda";
-  font-size: 48px;
+  font-size: 35px;
   text-transform: uppercase;
   width: 588px;
   height: 66px;

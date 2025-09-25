@@ -566,7 +566,7 @@ header {
     @include Blacksword;
     color: #004596;
     font-size: 64px;
-    text-align: center;
+    width: 588px; text-align: center;
 }
 
 .has-dropdown {
@@ -579,7 +579,7 @@ header {
     h2 {
         color: #FFF;
         @include Aguda;
-        font-size: 48px;
+        font-size: 35px;
         text-transform: uppercase;
         width: 588px;
         height: 66px;

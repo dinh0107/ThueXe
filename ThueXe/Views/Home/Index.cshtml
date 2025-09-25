@@ -19,7 +19,7 @@
                 @foreach (var item in Model.Banners.Where(a => a.GroupId == 1).Take(1))
                 {
                     <div class="list-banner">
-                        <div class="title-banner">Dịch vụ</div>
+                        <div class="title-banner">Dịch vụ cho thuê xe</div>
                         <h2>@item.BannerName</h2>
                         <div class="slogan">
                             @item.Slogan
@@ -109,7 +109,7 @@
                     }
                     <div class="row">
                         <div class="col-lg-6 text-center col-6">
-                            <a href="@cat" class="btn-blue d-lg-block d-md-block">tìm hiểu thêm</a>
+                            <a href="@cat" class="btn-blue d-lg-block d-md-block">Xem ảnh xe</a>
                         </div>
                         <div class="col-lg-6 col-6 text-center">
                             <a href="#bookingForm" class="btn-orange d-lg-block d-md-none">Đặt lịch ngay</a>
