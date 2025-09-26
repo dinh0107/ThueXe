@@ -902,10 +902,28 @@ header {
   background-color: #ff7c1e;
 }
 
+#marquee {
+  height: 500px;
+  overflow: hidden;
+}
+
+#car-img img {
+  width: 100%;
+  object-fit: cover;
+  height: 500px;
+  aspect-ratio: 1;
+}
+
+#marquee img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
 .feedback {
-  background: url(images/img-main/bg-min.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background: url(images/img-main/bg-min.png);
+   background-size: cover;
+   background-repeat: no-repeat;*/
   overflow: hidden;
 }
 
@@ -2222,5 +2240,11 @@ footer h2 {
   }
   .article-row > div {
     padding: 0 5px;
+  }
+  #car-img {
+    width: 100%;
+  }
+  #car-img img {
+    height: 200px;
   }
 }

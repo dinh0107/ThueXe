@@ -50,7 +50,7 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <label class="mb-1">Vị trí banner:</label>
-                            @Html.DropDownListFor(model => model.GroupId, Model.SelectGroup, "Tất cả vị trí", new { @class = "form_control w300", onchange = "window.location.href='/Banner/ListBanner?groupId='+this.value" })
+                            @Html.DropDownListFor(model => model.GroupId, Model.SelectGroup, "Tất cả vị trí", new { @class = "form_control w300", onchange = "window.location.href='/mms/danh-sach-banner?groupId='+this.value" })
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,6 @@
                                 <th style="width: 50px">STT</th>
                                 <th style="width: 150px">Hình ảnh</th>
                                 <th>Tên quảng cáo</th>
-                                <th>Vị trí</th>
                                 <th>Hoạt động</th>
                                 <th style="width: 80px"></th>
                             </tr>
@@ -104,7 +103,6 @@
                                         <strong>@banner.BannerName</strong><br /><br />
                                         @banner.Slogan
                                     </td>
-                                    <td>@Html.DisplayFor(model => banner.GroupId)</td>
                                     <td>
                                         <label class="form-check-label">
                                             <input type="checkbox" id="Active" @if (banner.Active) { @Html.Raw("value='true' checked")  } else { @Html.Raw("value='false'") } />

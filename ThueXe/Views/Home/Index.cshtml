@@ -11,6 +11,7 @@
         ViewBag.ImageShare = Request.Url?.GetLeftPart(UriPartial.Authority) + Path.Combine("/images/configs/", share);
     }
     int count = 1;
+    var banner = Model.Banners.Where(a => a.GroupId == 6).FirstOrDefault();
 }
 <section class="banner">
     <div class="container h-100">
@@ -470,46 +471,35 @@
         </div>
     </div>
 </section>
-
 <section class="page-section feedback">
     <div class="container">
-        <h2 class="title text-white">Feedback</h2>
-        <p class="sub-title text-white">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true</p>
-        <div class="list-feedback">
-            @foreach (var item in Model.Banners.Where(a => a.GroupId == 5))
-            {
-                <div class="feedback-item">
-                    <div class="feedback-content">
-                        @Html.Raw(item.Content)
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                        @if (item.Image != null)
+        <h2 class="title">Khách hàng nói gì về chúng tôi</h2>
+        <div class="row mt-3">
+            <div class="col-lg-7">
+                <div id="car-img">
+                    @if (banner.ListImage != null)
+                    {
+                        foreach (var img in banner.ListImage.Split(','))
+                        {
+                            <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/banners/", img)" alt="@banner.BannerName" class="lazyload" />
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div id="marquee">
+                    @foreach (var item in Model.Banners.Where(a => a.GroupId == 5))
+                    {
+                        if (item.Image != null)
                         {
                             <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/banners/", item.Image)" alt="@item.BannerName" class="lazyload" />
                         }
-                        <div class="feed-back-info">
-                            <div class="name-fb">
-                                @item.BannerName
-                            </div>
-                            <div class="fb-postion">
-                                @item.Slogan
-                            </div>
-                            <div class="fb-star">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
-            }
+            </div>
         </div>
-
     </div>
 </section>
-
 <section class="page-section">
     <div class="container">
         <h2 class="title ">tin tức -  sự kiện</h2>
@@ -539,10 +529,18 @@
         </div>
     </div>
 </section>
-
 @section scripts{
+    <script src="~/Scripts/jquery.marquee.min.js"></script>
     <script>
         homeJs()
+        $('#marquee').marquee({
+            speed: 90,        
+            gap: 0,
+            delayBeforeStart: 0,
+            direction: 'up',
+            duplicated: true,
+            pauseOnHover: true,
+        });
         document.addEventListener('DOMContentLoaded', function () {
             Fancybox.bind("[data-fancybox]", { Thumbs: { autoStart: true } });
         });

@@ -6,14 +6,22 @@ $('.button-wrap').on("click", function () {
     $(".toDate").toggleClass('input-active');
 });
 function homeJs() {
+    
+    
+    $('#car-img').slick({
+        slidesToShow: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+    })
     $('.service-slide').slick({
         centerMode: true,
         centerPadding: '0',
         slidesToShow: 3,
         infinite: true,
         dots: true,
-        //autoplay: true,
-        //autoplaySpeed: 3000,
+        autoplay: true,
+        autoplaySpeed: 3000,
         prevArrow: "<button type='button' aria-label='bên trái' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button'aria-label='bên phải' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
 
@@ -123,16 +131,6 @@ function homeJs() {
         $("#show-call-table").show();
     });
 
-
-
-    //var rowsmb = $("#priceTable tbody tr");
-    //var showCountmb = 5;
-    //rowsmb.slice(showCountmb).hide();
-
-    //$("#show-more-table").click(function () {
-    //    rowsmb.show();
-    //    $(this).hide();
-    //});
 
     const routes = [
         {
