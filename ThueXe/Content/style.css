@@ -1109,6 +1109,9 @@ footer h2 {
   aspect-ratio: 1/1;
 }
 
+.car-item {
+  cursor: pointer;
+}
 .car-item img {
   width: 100%;
   object-fit: cover;
@@ -1891,6 +1894,34 @@ footer h2 {
   box-shadow: none !important;
 }
 
+.hotline-mobie {
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Display-Bold";
+}
+.hotline-mobie .hotline-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #0075FF 0%, #004596 100%);
+}
+.hotline-mobie i {
+  font-size: 14px;
+}
+.hotline-mobie:hover {
+  color: #fff;
+}
+
+.mobile-btn i {
+  font-size: 24px;
+}
+
 @media (max-width: 600px) {
   .detail-subject {
     font-size: 1.5rem;
@@ -1909,25 +1940,17 @@ footer h2 {
     background: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
-  .hotline-mobie {
-    color: #fff;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+  .hotline-mobie .hotline-icon {
     background: #FF4605;
+  }
+  .hotline-mobie span {
+    display: none;
   }
   .hotline-mobie i {
     font-size: 14px;
   }
-  .mobile-btn i {
-    font-size: 24px;
+  .hotline-mobie:hover {
+    color: #fff;
   }
   .logo {
     filter: none;
@@ -1942,9 +1965,9 @@ footer h2 {
     margin: 10px 0;
   }
   .filer-btn button {
-    font-size: 12px;
+    font-size: 10px;
     border: 1px solid #FF4605;
-    width: 64px;
+    width: 60px;
   }
   .filer-btn .btn-check:checked + .btn, .filer-btn :not(.btn-check) + .btn:active, .filer-btn .btn:first-child:active, .filer-btn .btn.active, .filer-btn .btn.show {
     border-color: #FF4605 !important;
@@ -2024,6 +2047,7 @@ footer h2 {
   }
   .banner {
     width: 100%;
+    overflow: hidden;
     height: 28vh !important;
   }
   .slogan {
@@ -2079,30 +2103,14 @@ footer h2 {
     right: 0;
   }
   .box-price {
-    /*  #myTable {
-        display: none;
-    }*/
-    /*display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-
-    .table {
-        display: grid;
-        justify-content: flex-start;
-        grid-auto-columns: max-content;
-        overflow: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-snap-stop: always;
-        touch-action: manipulation;
-        scroll-padding: 1rem;
-        grid-template-columns: unset;
-    }*/
+    background: none;
     border: 0;
   }
   .header-tb tr td {
     width: 187px;
+  }
+  .page-section {
+    overflow: hidden;
   }
   .box-price tbody tr td {
     width: 187px;
@@ -2144,6 +2152,12 @@ footer h2 {
     width: 60px;
     height: 60px;
   }
+  #priceTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    display: inline-table;
+  }
   #priceTable thead tr th {
     background: #004596;
     color: #fff;
@@ -2151,6 +2165,11 @@ footer h2 {
     font-size: 12px;
     text-transform: uppercase;
     font-family: "Display-Regular";
+  }
+  #priceTable th,
+  #priceTable td {
+    padding: 12px;
+    border: 1px solid #ddd;
   }
   td b {
     font-size: 12px;

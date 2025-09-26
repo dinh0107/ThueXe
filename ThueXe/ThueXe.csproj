@@ -172,6 +172,14 @@
     <Compile Include="Migrations\202509070906044_add-sort.Designer.cs">
       <DependentUpon>202509070906044_add-sort.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202509260244579_add-img.cs" />
+    <Compile Include="Migrations\202509260244579_add-img.Designer.cs">
+      <DependentUpon>202509260244579_add-img.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509260428169_add-img-sv.cs" />
+    <Compile Include="Migrations\202509260428169_add-img-sv.Designer.cs">
+      <DependentUpon>202509260428169_add-img-sv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Article.cs" />
@@ -673,6 +681,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202509070906044_add-sort.resx">
       <DependentUpon>202509070906044_add-sort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509260244579_add-img.resx">
+      <DependentUpon>202509260244579_add-img.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509260428169_add-img-sv.resx">
+      <DependentUpon>202509260428169_add-img-sv.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

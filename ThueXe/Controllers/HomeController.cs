@@ -61,7 +61,7 @@ namespace ThueXe.Controllers
             };
             return View(model);
         }
-        [Route("{url}")]
+        [Route("dich-vu/{url}")]
         public ActionResult ServiceCar(string url)
         {
             var carService = _unitOfWork.CarServiceRepository.GetQuery(a => a.Slug ==  url).FirstOrDefault();
@@ -113,7 +113,7 @@ namespace ThueXe.Controllers
             }
             return View(model);
         }
-        [Route("{url}.html")]
+        [Route("bai-viet/{url}.html")]
         public ActionResult ArticleDetail(string url, string view = "")
         {
             var article = _unitOfWork.ArticleRepository.GetQuery(a => a.Url == url).FirstOrDefault();
@@ -208,6 +208,11 @@ namespace ThueXe.Controllers
             Response.StatusCode = 404;
             Response.TrySkipIisCustomErrors = true; 
             return View(); 
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _unitOfWork.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

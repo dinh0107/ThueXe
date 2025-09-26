@@ -123,8 +123,8 @@
     <script type="text/javascript">
         function deleteArticle(id) {
             if (confirm("Bạn có chắc chắn xóa không?")) {
-                $.post("/CarService/DeleteDetail", { id: id }, function (data) {
-                    if (data) {
+                $.post("/CarService/DeleteDetail", { id: id }, function (res) {
+                    if (res.success) {
                         $.toast({
                             text: 'Xóa thành công',
                             position: 'bottom-right',

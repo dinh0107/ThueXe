@@ -34,7 +34,7 @@ namespace ThueXe.Models
         [Display(Name = "Vận tốc")]
         public string Speed { get; set; }
         //End
-
+        public string ListImage { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         [Display(Name = "Hoạt động")]
@@ -61,6 +61,8 @@ namespace ThueXe.Models
         public int Id { get; set; }
         public int CarServiceId { get; set; }
         public string Image { get; set; }
+        [Display(Name = "Danh sách ảnh")]
+        public string ListImage { get; set; }
         [Required]
         [Display(Name = "Tên xe"), UIHint("TextBox")]
         public string Name { get; set; }

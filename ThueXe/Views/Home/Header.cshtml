@@ -26,7 +26,7 @@
             </li>
             <li class="d-lg-block d-none">
                 <a href="javascript:void(0);">
-                    Dịch vụ  
+                    Dịch vụ
                     @if (Model.Services.Any())
                     {
                         <i class="fa-regular fa-angle-down"></i>
@@ -88,19 +88,23 @@
                     </li>
                 }
             }
-            <li class="d-lg-none d-block">
-                <div class="d-flex text-right w-100 justify-content-end align-items-center">
-                    <a href="tel@config.Hotline" class="hotline-mobie">
-                        <i class="fa-solid fa-phone-flip fa-rotate-90"></i>
-                    </a>
-                </div>
-            </li>
+
             @*<li class="d-lg-block d-none">
             <a href=""><i class="far fa-search"></i></a>
         </li>*@
 
             <li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Giới thiệu</a>
+            </li>
+            <li class="d-block">
+                <div class="d-flex text-right w-100 justify-content-end align-items-center">
+                    <a href="tel:@config.Hotline" class="hotline-mobie">
+                        <div class="hotline-icon">
+                            <i class="fa-solid fa-phone-flip fa-rotate-90"></i>
+                        </div>
+                        <span>@config.Hotline</span>
+                    </a>
+                </div>
             </li>
         </ul>
     </div>

@@ -26,6 +26,12 @@
                     <div class="service-sub">
                         @Model.CarService.Description
                     </div>
+                    <a href="tel:@config.Hotline" class="btn-color d-flex mt-4">
+                        Đặt xe ngay
+                        <div class="box-icon">
+                            <i class="far fa-long-arrow-right"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-4 d-lg-flex d-none align-items-center">
@@ -76,11 +82,31 @@
             <div class="list-car">
                 @foreach (var item in Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.SupportedCar))
                 {
-                    <div class="car-item">
+                    var galleryId = "detail-" + item.Id;
+                    var listImgs = (item.ListImage ?? "")
+                      .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                      .Select(x => x.Trim())
+                      .Where(x => !string.IsNullOrWhiteSpace(x))
+                      .Distinct(StringComparer.OrdinalIgnoreCase)
+                      .ToList();
+
+                    <div class="car-item" onclick="document.querySelector('#@galleryId-first').click()">
                         @if (item.Image != null)
                         {
                             <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/detail/", item.Image)" alt="@item.Name" class="lazyload" />
                         }
+                        @if (listImgs.Any())
+                        {
+                            var firstImgUrl = Url.Content("~/images/detail/" + listImgs.First());
+                            <a id="@galleryId-first" href="@firstImgUrl" data-fancybox="@galleryId" data-caption="@item.Name" style="display:none"></a>
+
+                            foreach (var img in listImgs.Skip(1))
+                            {
+                                var imgUrl = Url.Content("~/images/detail/" + img);
+                                <a href="@imgUrl" data-fancybox="@galleryId" data-caption="@item.Name" style="display:none"></a>
+                            }
+                        }
+
                         <div class="car-name">
                             @item.Name
                         </div>
@@ -133,29 +159,66 @@
 <section class="page-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-7">
-                <div class="step bg-white">
-                    <h2 class="title text-left">quy trình dịch vụ</h2>
-                    @*<p class="sub-title">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true</p>*@
-                    <div class="row">
-                        @foreach (var item in Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.ProcessStep))
-                        {
-                            <div class="col-lg-3 col-6">
-                                <div class="d-flex flex-column align-items-center mt-4 gap-3">
-                                    <div class="step-count">
-                                        @count
-                                    </div>
-                                    <div class="step-name step-name-custom">
-                                        @item.Name
-                                    </div>
-                                </div>
+            <div class="col-lg-4">
+                <div class="step">
+                    <h2 class="title text-left">quy trình thuê xe đơn giản</h2>
+                    @foreach (var item in Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.ProcessStep))
+                    {
+                        <div class="d-flex mt-4 align-items-center gap-2">
+                            <div class="step-count">
+                                @count
                             </div>
-                            count+=1;
-                        }
-                    </div>
+                            <div class="step-name h-auto">
+                                @item.Name
+                            </div>
+                        </div>
+                        count += 1;
+                    }
                 </div>
             </div>
-            <div class="col-lg-5 position-relative QA">
+            <div class="col-lg-8 position-relative QA">
+                <h2 class="title">Câu hỏi thường gặp</h2>
+                <p class="sub-title">Câu hỏi thường gặp</p>
+                @{
+                    var banners = Model.CarService.Details.Where(a => a.CarServiceType == CarServiceType.Policy).ToList();
+                    int index = 0;
+                }
+
+                <div class="accordion" id="accordionExample">
+                    @foreach (var item in banners)
+                    {
+                        var headingId = $"heading{index}";
+                        var collapseId = $"collapse{index}";
+                        bool isFirst = index == 0;
+                        int delay = 200;
+                        <div class="accordion-item" data-aos-duration="700" data-aos-delay="@delay" data-aos="fade-right">
+                            <h2 class="accordion-header" id="@headingId">
+                                <button onclick="toggleAccordion(this)" class="accordion-button @(isFirst ? "" : "collapsed")"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#@collapseId"
+                                        aria-expanded="@(isFirst.ToString().ToLower())"
+                                        aria-controls="@collapseId">
+                                    @item.Name
+                                    <i class="fal fa-arrow-down accordion-icon"></i>
+                                </button>
+                            </h2>
+                            <div id="@collapseId"
+                                 class="accordion-collapse collapse @(isFirst ? "show" : "")"
+                                 aria-labelledby="@headingId"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @Html.Raw(item.Desciption)
+                                </div>
+                            </div>
+                        </div>
+
+                        index++; delay += 200;
+                    }
+                </div>
+
+            </div>
+            @*<div class="col-lg-5 position-relative QA">
                 <h2 class="title">cam kết dịch vụ</h2>
                 <p class="sub-title">cam kết dịch vụ</p>
                 @{
@@ -196,7 +259,7 @@
                     }
                 </div>
 
-            </div>
+            </div>*@
         </div>
     </div>
 </section>

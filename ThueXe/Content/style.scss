@@ -1293,6 +1293,7 @@ footer {
 }
 
 .car-item {
+    cursor:pointer;
     img {
         width: 100%;
         object-fit: cover;
@@ -2173,7 +2174,38 @@ footer {
 .accordion-button:focus {
     box-shadow: none !important;
 }
+.hotline-mobie {
+    color: $white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    @include Bold;
 
+    .hotline-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #0075FF 0%, #004596 100%);
+    }
+
+    i {
+        font-size: 14px;
+    }
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.mobile-btn {
+    i {
+        font-size: 24px;
+    }
+}
 @include maxWidth(600px) {
     .detail-subject {
         font-size: 1.5rem;
@@ -2198,27 +2230,19 @@ footer {
     }
 
     .hotline-mobie {
-        color: $white;
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        font-weight: 500;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: $orange;
+        .hotline-icon {
+            background: $orange;
+        }
+        span{
+            display:none;
+        }
 
         i {
             font-size: 14px;
         }
-    }
 
-    .mobile-btn {
-        i {
-            font-size: 24px;
+        &:hover {
+            color: $white;
         }
     }
 
@@ -2238,9 +2262,9 @@ footer {
         margin: 10px 0;
 
         button {
-            font-size: 12px;
-            border: 1px solid $orange;
-            width: 64px;
+            font-size: 10px;
+            border: 1px solid #FF4605;
+            width: 60px;
         }
 
         .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
@@ -2337,6 +2361,7 @@ footer {
 
     .banner {
         width: 100%;
+        overflow: hidden;
         height: 28vh !important;
     }
 
@@ -2406,31 +2431,16 @@ footer {
     }
 
     .box-price {
-        /*  #myTable {
-            display: none;
-        }*/
-        /*display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-
-        .table {
-            display: grid;
-            justify-content: flex-start;
-            grid-auto-columns: max-content;
-            overflow: auto;
-            overflow-y: hidden;
-            scroll-snap-type: x mandatory;
-            scroll-snap-stop: always;
-            touch-action: manipulation;
-            scroll-padding: 1rem;
-            grid-template-columns: unset;
-        }*/
+        background: none;
         border: 0;
     }
 
     .header-tb tr td {
         width: 187px;
+    }
+
+    .page-section {
+        overflow: hidden;
     }
 
     .box-price tbody tr td {
@@ -2480,6 +2490,11 @@ footer {
     }
 
     #priceTable {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        display: inline-table;
+
         thead {
             tr th {
                 background: #004596;
@@ -2490,6 +2505,12 @@ footer {
                 @include Regular
             }
         }
+    }
+
+    #priceTable th,
+    #priceTable td {
+        padding: 12px;
+        border: 1px solid #ddd;
     }
 
     td {

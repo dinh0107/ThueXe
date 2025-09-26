@@ -15,7 +15,7 @@
 <section class="banner">
     <div class="container h-100">
         <div class="row h-100">
-            <div class="col-lg-8 d-flex align-items-baseline justify-content-center">
+            <div class="col-lg-8 d-flex align-items-lg-baseline align-items-center justify-content-center">
                 @foreach (var item in Model.Banners.Where(a => a.GroupId == 1).Take(1))
                 {
                     <div class="list-banner">
@@ -78,6 +78,14 @@
         <div class="service-slide">
             @foreach (var item in Model.Services)
             {
+                var galleryId = "gallery-" + item.Id;
+                var listImgs = (item.ListImage ?? "")
+                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
 
                 var cat = Url.Action("ServiceCar", "Home", new { url = item.Slug });
                 <article>
@@ -86,30 +94,53 @@
                     </div>
                     <h2>@item.Title</h2>
                     <div class="info-car row">
-                        <div class="col-6 d-flex align-items-center gap-2 mt-3">
-                            <img src="~/Content/images/svg/icon-1.svg" alt="Icon 1" width="19" height="13" />
-                            <small>@item.Firm</small>
-                        </div>
-                        <div class="col-6 d-flex align-items-center gap-2 mt-3">
-                            <img src="~/Content/images/svg/icon-2.svg" alt="Icon 1" width="19" height="13" />
-                            <small>@item.Speed</small>
-                        </div>
-                        <div class="col-6 d-flex align-items-center gap-2 mt-1">
-                            <img src="~/Content/images/svg/icon-3.svg" alt="Icon 1" width="19" height="13" />
-                            <small>@item.Type</small>
-                        </div>
-                        <div class="col-6 d-flex align-items-center gap-2 mt-1">
-                            <img src="~/Content/images/svg/icon-4.svg" alt="Icon 1" width="19" height="13" />
-                            <small>@item.Capacity</small>
-                        </div>
+                        @if (item.Firm != null)
+                        {
+                            <div class="col-6 d-flex align-items-center gap-2 mt-3">
+                                <img src="~/Content/images/svg/icon-1.svg" alt="Icon 1" width="19" height="13" />
+                                <small>@item.Firm</small>
+                            </div>
+                        }
+                        @if (item.Speed != null)
+                        {
+                            <div class="col-6 d-flex align-items-center gap-2 mt-3">
+                                <img src="~/Content/images/svg/icon-2.svg" alt="Icon 1" width="19" height="13" />
+                                <small>@item.Speed</small>
+                            </div>
+                        }
+                        @if (item.Type != null)
+                        {
+                            <div class="col-6 d-flex align-items-center gap-2 mt-1">
+                                <img src="~/Content/images/svg/icon-3.svg" alt="Icon 1" width="19" height="13" />
+                                <small>@item.Type</small>
+                            </div>
+                        }
+                        @if (item.Capacity != null)
+                        {
+                            <div class="col-6 d-flex align-items-center gap-2 mt-1">
+                                <img src="~/Content/images/svg/icon-4.svg" alt="Icon 1" width="19" height="13" />
+                                <small>@item.Capacity</small>
+                            </div>
+                        }
                     </div>
                     @if (item.Image != null)
                     {
                         <img src="~/Content/images/img-main/base64.gif" data-src="@Path.Combine("/images/carService/", item.Image)" alt="@item.Title" class="lazyload car-img" />
                     }
+
                     <div class="row">
                         <div class="col-lg-6 text-center col-6">
-                            <a href="@cat" class="btn-blue d-lg-block d-md-block">Xem ảnh xe</a>
+                            @if (listImgs.Any())
+                            {
+                                var firstImgUrl = Url.Content("~/images/service/" + listImgs.First());
+                                <a href="@firstImgUrl" data-fancybox="@galleryId" class="btn-blue d-lg-block d-md-block">Xem ảnh xe</a>
+                                foreach (var img in listImgs.Skip(1))
+                                {
+                                    var imgUrl = Url.Content("~/images/service/" + img);
+                                    <a href="@imgUrl" data-fancybox="@galleryId" style="display:none"></a>
+                                }
+                            }
+
                         </div>
                         <div class="col-lg-6 col-6 text-center">
                             <a href="#bookingForm" class="btn-orange d-lg-block d-md-none">Đặt lịch ngay</a>
@@ -131,6 +162,7 @@
                 <button type="button" id="btn-16cho" class="btn">16 chỗ</button>
                 <button type="button" id="btn-29cho" class="btn">29 chỗ</button>
                 <button type="button" id="btn-45cho" class="btn">45 chỗ</button>
+                <button type="button" id="btn-Limousine" class="btn">Limousine</button>
             </div>
         </div>
         <div class="box-price">
@@ -138,7 +170,6 @@
                 <thead>
                     <tr>
                         <th>Hành trình</th>
-                        <th>KM</th>
                         <th id="priceHeader">Giá</th>
                     </tr>
                 </thead>
@@ -154,150 +185,167 @@
                         <td scope="col">16 chỗ</td>
                         <td scope="col">29 chỗ</td>
                         <td scope="col">45 chỗ</td>
+                        <td scope="col">Limousine</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td scope="row">Nội - Sơn La</td>
-                        <td>198</td>
                         <td>2.376.000 đ</td>
                         <td>2.772.000 đ</td>
                         <td>4.752.000 đ</td>
                         <td>4.752.000 đ</td>
                         <td>4.752.000 đ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Điện Biên</td>
-                        <td>436</td>
                         <td>5.232.000 đ</td>
                         <td>6.104.000 đ</td>
                         <td>10.464.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Lai Châu</td>
-                        <td>447</td>
                         <td>5.364.000 đ</td>
                         <td>6.258.000 đ</td>
                         <td>10.728.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Lào Cai</td>
-                        <td>291</td>
                         <td>3.492.000 đ</td>
                         <td>4.074.000 đ</td>
                         <td>6.984.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Yên Bái</td>
-                        <td>160</td>
                         <td>1.920.000 đ</td>
                         <td>2.240.000 đ</td>
                         <td>3.840.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Phú Thọ</td>
-                        <td>102</td>
                         <td>1.224.000 đ</td>
                         <td>1.428.000 đ</td>
                         <td>2.448.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Hà Giang</td>
-                        <td>297</td>
                         <td>3.564.000 đ</td>
                         <td>4.158.000 đ</td>
                         <td>7.128.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Tuyên Quang</td>
-                        <td>146</td>
                         <td>1.752.000 đ</td>
                         <td>2.044.000 đ</td>
                         <td>3.504.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Cao Bằng</td>
-                        <td>285</td>
                         <td>3.420.000 đ</td>
                         <td>3.990.000 đ</td>
                         <td>6.840.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Thái Nguyên</td>
-                        <td>90</td>
                         <td>1.080.000 đ</td>
                         <td>1.260.000 đ</td>
                         <td>2.160.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Lạng Sơn</td>
-                        <td>161</td>
                         <td>1.932.000 đ</td>
                         <td>2.254.000 đ</td>
                         <td>3.864.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr class="hot">
                         <td>Hà Nội - Quảng Ninh <img src="~/Content/images/hot-gif.gif" width="30" height="30" alt="Hot" /></td>
-                        <td>157</td>
                         <td>1.884.000 đ</td>
                         <td>2.198.000 đ</td>
                         <td>3.768.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Hải Phòng</td>
-                        <td>125</td>
                         <td>1.500.000 đ</td>
                         <td>1.750.000 đ</td>
                         <td>3.000.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Nam Định</td>
-                        <td>85</td>
                         <td>1.020.000 đ</td>
                         <td>1.190.000 đ</td>
                         <td>2.040.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Thái Bình</td>
-                        <td>105</td>
                         <td>1.260.000 đ</td>
                         <td>1.470.000 đ</td>
                         <td>2.520.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Ninh Bình</td>
-                        <td>95</td>
                         <td>1.140.000 đ</td>
                         <td>1.330.000 đ</td>
                         <td>2.280.000 đ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
                     </tr>
@@ -309,22 +357,25 @@
                         <td>4.032.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Nghệ An</td>
-                        <td>345</td>
                         <td>4.140.000 đ</td>
                         <td>4.830.000 đ</td>
                         <td>8.280.000 đ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                     </tr>
                     <tr>
                         <td>Hà Nội - Hà Tĩnh</td>
-                        <td>344</td>
                         <td>4.128.000 đ</td>
                         <td>4.816.000 đ</td>
                         <td>8.256.000 đ</td>
+                        <td>Liên hệ</td>
+                        <td>Liên hệ</td>
                         <td>Liên hệ</td>
                         <td>Liên hệ</td>
                     </tr>
@@ -370,7 +421,7 @@
                                 @item.BannerName
                             </div>
                         </div>
-                        count+=1;
+                        count += 1;
                     }
                 </div>
             </div>
@@ -489,30 +540,11 @@
     </div>
 </section>
 
-@*<section class="page-section">
-    <div class="container">
-        <div class="last-section">
-            <div class="row">
-                <div class="col-lg-5 order-lg-0 order-1">
-                    <h2 class="title text-white">Lorem ipsum dolor </h2>
-                    <span class="sub-title text-white">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true</span>
-                    <a href="@config.Zalo" class="btn-color mt-4 d-flex">
-                        đặt xe ngay
-                        <div class="box-icon">
-                            <i class="far fa-long-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-7 order-lg-1 order-0">
-                    <img src="~/Content/images/svg/oto.svg" alt="@config.Title" class="fa-motorcycle" />
-                </div>
-            </div>
-        </div>
-    </div>
-</section>*@
-
 @section scripts{
     <script>
         homeJs()
+        document.addEventListener('DOMContentLoaded', function () {
+            Fancybox.bind("[data-fancybox]", { Thumbs: { autoStart: true } });
+        });
     </script>
 }

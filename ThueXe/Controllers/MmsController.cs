@@ -62,7 +62,7 @@ namespace ThueXe.Controllers
             return RedirectToAction("Login", "Mms");
         }
         #endregion
-
+        [Route("")]
         public ActionResult Index()
         {
             var model = new InfoAdminViewModel

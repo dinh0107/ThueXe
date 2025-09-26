@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
@@ -64,7 +65,7 @@ namespace ThueXe.Controllers
                     }
                 }
                 model.Slug = HtmlHelpers.ConvertToUnSign(null, model.Slug ?? model.Title);
-
+                model.ListImage = fc["Pictures"];
                 _unitOfWork.CarServiceRepository.Insert(model);
                 _unitOfWork.Save();
                 return RedirectToAction("CarService", new { result = "success" });
@@ -127,6 +128,7 @@ namespace ThueXe.Controllers
                 {
                     category.Image = fc["CurrentFileImg"] == "" ? null : fc["CurrentFileImg"];
                 }
+                category.ListImage = fc["Pictures"] == "" ? null : fc["Pictures"];
                 category.Slug = HtmlHelpers.ConvertToUnSign(null, category.Slug ?? category.Title);
                 _unitOfWork.CarServiceRepository.Update(category);
                 _unitOfWork.Save();
@@ -332,6 +334,7 @@ namespace ThueXe.Controllers
                         model.CarServiceDetail.Image = imgFile;
                     }
                 }
+                model.CarServiceDetail.ListImage = fc["Pictures"];
                 model.CarServiceDetail.CarServiceId = service.Id;
                 _unitOfWork.CarServiceDetailRepository.Insert(model.CarServiceDetail);
                 _unitOfWork.Save();
@@ -386,6 +389,7 @@ namespace ThueXe.Controllers
                         detail.Image = imgFile;
                     }
                 }
+                detail.ListImage = fc["Pictures"] == "" ? null : fc["Pictures"];
                 detail.CarServiceId = detail.CarServiceId;
                 detail.Name = model.CarServiceDetail.Name;
                 detail.Sort = model.CarServiceDetail.Sort;
@@ -398,18 +402,25 @@ namespace ThueXe.Controllers
         }
 
         [HttpPost]
-        public bool DeleteDetail(int catId = 0)
+        public JsonResult DeleteDetail(int id)
         {
-
-            var category = _unitOfWork.CarServiceDetailRepository.GetById(catId);
+            var category = _unitOfWork.CarServiceDetailRepository.GetById(id);
             if (category == null)
             {
-                return false;
+                return Json(new { success = false });
             }
             _unitOfWork.CarServiceDetailRepository.Delete(category);
             _unitOfWork.Save();
-            return true;
+            return Json(new { success = true });
         }
+
+
+
         #endregion
+        protected override void Dispose(bool disposing)
+        {
+            _unitOfWork.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }
