@@ -24,6 +24,14 @@ function homeJs() {
         autoplaySpeed: 3000,
         arrows: false,
     })
+
+    $('.list-baner').slick({
+        slidesToShow: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+    })
+
     $('.service-slide').slick({
         centerMode: true,
         centerPadding: '0',

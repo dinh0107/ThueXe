@@ -367,8 +367,10 @@ header {
 }
 
 #bookingForm {
-    width:100%;
-    position: relative;
+    width: 450px;
+    position: absolute;
+    top: 100px;
+    right: 20%;
     background: $white;
     padding: 25px 20px;
     margin-top: 20px;
@@ -544,21 +546,13 @@ header {
 
 .banner {
     width: 100%;
-    height: 666px;
-    background: url(../Content/images/img-main/banner-min.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
+    /*height: 666px;*/
     position: relative;
 
-    &:before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: $black;
-        opacity: 0.4;
-        top: 0;
-        left: 0;
+    img {
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 2.3;
     }
 }
 
@@ -2223,6 +2217,39 @@ footer {
         font-size: 24px;
     }
 }
+@include maxWidth(1440px) {
+    #bookingForm {
+        top: 0;
+        right: 10%;
+    }
+}
+@include maxWidth(1024px) {
+    .banner img {
+        aspect-ratio: 1.9;
+    }
+
+    #bookingForm {
+        width: 450px;
+        position: absolute;
+        top: -16px;
+        right: 2%;
+        background: #fff;
+        padding: 25px 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+        box-shadow: 4px 7px 15px 0 rgba(63, 62, 62, .2);
+        scroll-margin-top: 180px;
+    }
+}
+@include maxWidth(768px) {
+    .banner img {
+        aspect-ratio: 1.7;
+    }
+
+    footer {
+        overflow: hidden;
+    }
+}
 @include maxWidth(600px) {
     .detail-subject {
         font-size: 1.5rem;
@@ -2323,6 +2350,7 @@ footer {
     }
 
     #bookingForm {
+        position: unset;
         width: 93%;
         margin: 0 auto
     }
@@ -2380,7 +2408,10 @@ footer {
     .banner {
         width: 100%;
         overflow: hidden;
-        height: 28vh !important;
+        /*height: 28vh !important;*/
+        .slick-slider{
+            width:100%;
+        }
     }
 
     .slogan {

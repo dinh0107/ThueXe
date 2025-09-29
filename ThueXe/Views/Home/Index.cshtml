@@ -14,38 +14,14 @@
     var banner = Model.Banners.Where(a => a.GroupId == 6).FirstOrDefault();
 }
 <section class="banner">
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-lg-8 d-flex align-items-lg-baseline align-items-center justify-content-center">
-                @foreach (var item in Model.Banners.Where(a => a.GroupId == 1).Take(1))
-                {
-                    <div class="list-banner">
-                        <div class="title-banner">Dịch vụ cho thuê xe</div>
-                        <h2>@item.BannerName</h2>
-                        <div class="slogan">
-                            @item.Slogan
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="@config.Zalo" class="btn-color">
-                                tìm hiểu thêm
-                                <div class="box-icon">
-                                    <i class="far fa-long-arrow-right"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="img-ban">
-                            @if (item.Image != null)
-                            {
-                                <img src="@Path.Combine("/images/banners/", item.Image)" alt="@item.BannerName" class="img-banner" />
-                            }
-                        </div>
-                    </div>
-                }
-            </div>
-            <div class="col-lg-4 d-lg-flex d-none align-items-center">
-                @Html.Action("Form")
-            </div>
-        </div>
+    <div class="list-baner">
+        @foreach (var item in Model.Banners.Where(a => a.GroupId == 1))
+        {
+            <img src="@Path.Combine("/images/banners/", item.Image)" alt="@item.BannerName" />
+        }
+    </div>
+    <div class="d-lg-flex d-none align-items-center">
+        @Html.Action("Form")
     </div>
 </section>
 <div class="container py-3">
