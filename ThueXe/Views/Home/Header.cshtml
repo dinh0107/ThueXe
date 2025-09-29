@@ -21,9 +21,9 @@
                     }
                 </a>
             </li>
-            <li class="d-lg-block d-none">
+            @*<li class="d-lg-block d-none">
                 <a href="@Url.Action("Introduce")">Giới thiệu</a>
-            </li>
+            </li>*@
             <li class="d-lg-block d-none">
                 <a href="javascript:void(0);">
                     Dịch vụ
@@ -94,7 +94,7 @@
         </li>*@
 
             <li class="d-lg-block d-none">
-                <a href="@Url.Action("Introduce")">Giới thiệu</a>
+                <a href="@Url.Action("Contact")">Liên hệ</a>
             </li>
             <li class="d-block">
                 <div class="d-flex text-right w-100 justify-content-end align-items-center">
@@ -183,6 +183,11 @@
                             }
                         </ul>
                     }
+                </li>
+                <li class="li-mb">
+                    <div class="d-flex align-items-center justify-content-between p-2 mx-3">
+                        <a href="@Url.Action("Contact")">Liên hệ</a>
+                    </div>
                 </li>
             }
 

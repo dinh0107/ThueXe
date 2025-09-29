@@ -7,7 +7,17 @@ $('.button-wrap').on("click", function () {
 });
 function homeJs() {
     
-    
+    $('#marquee').marquee({
+        speed: 90,
+        gap: 0,
+        delayBeforeStart: 0,
+        direction: 'up',
+        duplicated: true,
+        pauseOnHover: true,
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        Fancybox.bind("[data-fancybox]", { Thumbs: { autoStart: true } });
+    });
     $('#car-img').slick({
         slidesToShow: 1,
         autoplay: true,
